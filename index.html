@@ -10,7 +10,6 @@
 
 <title>3091</title>
 
-
 <style>
 
 /* =====================================================
@@ -32,7 +31,6 @@ body{
 }
 
 body{
-
     font-family:Arial,sans-serif;
 
     display:flex;
@@ -42,22 +40,22 @@ body{
     position:relative;
 
     background:
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(255,255,255,.95),
-            transparent 22%
-        ),
-        radial-gradient(
-            circle at 85% 15%,
-            rgba(255,220,230,.85),
-            transparent 25%
-        ),
-        linear-gradient(
-            135deg,
-            #fff8fa,
-            #ffe1ea,
-            #fff
-        );
+    radial-gradient(
+        circle at 15% 20%,
+        rgba(255,255,255,.95),
+        transparent 22%
+    ),
+    radial-gradient(
+        circle at 85% 15%,
+        rgba(255,220,230,.85),
+        transparent 25%
+    ),
+    linear-gradient(
+        135deg,
+        #fff8fa,
+        #ffe1ea,
+        #fff
+    );
 
     transition:background .6s ease;
 }
@@ -68,13 +66,9 @@ body{
 ===================================================== */
 
 .story{
-
     position:relative;
-
     z-index:10;
-
     width:min(94vw,420px);
-
     text-align:center;
 }
 
@@ -84,9 +78,7 @@ body{
 ===================================================== */
 
 #characterImage{
-
     width:min(75vw,280px);
-
     max-height:45vh;
 
     object-fit:cover;
@@ -94,8 +86,8 @@ body{
     border-radius:24px;
 
     box-shadow:
-        0 15px 40px
-        rgba(120,30,60,.20);
+    0 15px 40px
+    rgba(120,30,60,.20);
 }
 
 
@@ -104,13 +96,11 @@ body{
 ===================================================== */
 
 .story-text{
-
     min-height:58px;
 
     margin:20px 0;
 
     font-size:20px;
-
     font-weight:700;
 
     color:#6b2039;
@@ -118,8 +108,8 @@ body{
     line-height:1.8;
 
     text-shadow:
-        0 2px 8px
-        rgba(255,255,255,.8);
+    0 2px 8px
+    rgba(255,255,255,.8);
 }
 
 
@@ -128,11 +118,8 @@ body{
 ===================================================== */
 
 .buttons{
-
     position:relative;
-
     min-height:170px;
-
 }
 
 
@@ -141,7 +128,6 @@ body{
 ===================================================== */
 
 button{
-
     border:0;
 
     border-radius:999px;
@@ -157,8 +143,8 @@ button{
     cursor:pointer;
 
     box-shadow:
-        0 8px 22px
-        rgba(90,20,50,.18);
+    0 8px 22px
+    rgba(90,20,50,.18);
 
     position:relative;
 
@@ -167,7 +153,6 @@ button{
     user-select:none;
 
     touch-action:none;
-
 }
 
 
@@ -176,58 +161,47 @@ button{
 ===================================================== */
 
 #helloButton{
-
     background:
-        linear-gradient(
-            135deg,
-            #f7cbd8,
-            #fff0f5
-        );
+    linear-gradient(
+        135deg,
+        #f7cbd8,
+        #fff0f5
+    );
 
     color:#721d3d;
 }
 
-
 #sadButton{
-
     background:#f5eef1;
-
     color:#555;
-
-    transition:
-        left .06s linear,
-        top .06s linear;
 }
 
 
 /* =====================================================
-   SCENE 2
+   SCENE 2 BACKGROUND
 ===================================================== */
 
 body.sad{
-
     background:
-        linear-gradient(
-            180deg,
-            #172033,
-            #26354d
-        );
+    linear-gradient(
+        180deg,
+        #172033,
+        #26354d
+    );
 }
 
-
 body.sad .story-text{
-
     color:white;
 
     text-shadow:
-        0 2px 10px
-        rgba(0,0,0,.35);
+    0 2px 10px
+    rgba(0,0,0,.35);
 }
 
 
-/*
-   هەردوو دوگمە لە هەمان ڕیز
-*/
+/* =====================================================
+   SCENE 2 BUTTON AREA
+===================================================== */
 
 body.sad .buttons{
 
@@ -235,100 +209,95 @@ body.sad .buttons{
 
     flex-direction:row;
 
-    flex-wrap:nowrap;
-
     align-items:center;
 
     justify-content:center;
 
+    flex-wrap:nowrap;
+
     width:100%;
 
-    gap:0;
-
     min-height:170px;
+
+    gap:0;
 }
 
 
-/*
-   هەردووکیان سەرەتا لە تەنیشت یەکتر
-*/
+/* =====================================================
+   SCENE 2 FIXED BUTTON
+   بۆ بێتاقەتی
+===================================================== */
 
-body.sad #helloButton,
 body.sad #sadButton{
 
     display:inline-flex !important;
 
-    align-items:center;
-
-    justify-content:center;
-
-    flex:0 0 auto;
-
-    margin:2px;
-
-    padding:12px 15px;
-
-    white-space:nowrap;
-}
-
-
-/*
-   بێتاقەت مەبە
-   سەرەتا جێگیرە
-*/
-
-body.sad #helloButton{
-
-    position:relative;
-
-    left:auto;
-
-    top:auto;
-
-    right:auto;
-
-    bottom:auto;
-
-    transform:none;
-
-    background:
-        linear-gradient(
-            135deg,
-            #f7cbd8,
-            #fff0f5
-        );
-
-    color:#721d3d;
-}
-
-
-/*
-   بۆ بێتاقەتی
-   هەمیشە جێگیرە
-*/
-
-body.sad #sadButton{
-
     position:relative !important;
 
     left:auto !important;
-
     top:auto !important;
-
     right:auto !important;
-
     bottom:auto !important;
 
     transform:none !important;
 
+    flex:0 0 auto;
+
+    margin:3px;
+
+    padding:13px 17px;
+
+    white-space:nowrap;
+
     background:
-        linear-gradient(
-            135deg,
-            #d9e5f5,
-            #fff
-        );
+    linear-gradient(
+        135deg,
+        #d9e5f5,
+        #fff
+    );
 
     color:#26354d;
+
+    z-index:50;
+}
+
+
+/* =====================================================
+   SCENE 2 MOVING BUTTON
+   بێتاقەت مەبە
+===================================================== */
+
+body.sad #helloButton{
+
+    display:inline-flex !important;
+
+    position:relative;
+
+    left:auto;
+    top:auto;
+    right:auto;
+    bottom:auto;
+
+    transform:none;
+
+    flex:0 0 auto;
+
+    margin:3px;
+
+    padding:13px 17px;
+
+    white-space:nowrap;
+
+    background:
+    linear-gradient(
+        135deg,
+        #f7cbd8,
+        #fff0f5
+    );
+
+    color:#721d3d;
+
+    z-index:60;
 }
 
 
@@ -345,8 +314,8 @@ body.sad #sadButton{
     color:#432;
 
     transition:
-        left .08s linear,
-        top .08s linear;
+    left .08s linear,
+    top .08s linear;
 }
 
 
@@ -354,46 +323,44 @@ body.confused{
 
     background:
 
-        radial-gradient(
-            circle at 20% 20%,
-            #7b2cbf,
-            transparent 35%
-        ),
+    radial-gradient(
+        circle at 20% 20%,
+        #7b2cbf,
+        transparent 35%
+    ),
 
-        radial-gradient(
-            circle at 80% 30%,
-            #ff006e,
-            transparent 35%
-        ),
+    radial-gradient(
+        circle at 80% 30%,
+        #ff006e,
+        transparent 35%
+    ),
 
-        radial-gradient(
-            circle at 50% 80%,
-            #3a86ff,
-            transparent 35%
-        ),
+    radial-gradient(
+        circle at 50% 80%,
+        #3a86ff,
+        transparent 35%
+    ),
 
-        #18051f;
+    #18051f;
 
     animation:
-        confusedBackground
-        1.8s
-        ease-in-out
-        infinite;
+    confusedBackground
+    1.8s
+    ease-in-out
+    infinite;
 }
 
 
 body.confused .story-text{
-
     color:white;
 
     text-shadow:
-        0 0 12px
-        rgba(255,255,255,.5);
+    0 0 12px
+    rgba(255,255,255,.5);
 }
 
 
 body.confused #confusedButton{
-
     display:block;
 }
 
@@ -401,31 +368,27 @@ body.confused #confusedButton{
 @keyframes confusedBackground{
 
     0%,100%{
-
         transform:
-            translate(0,0)
-            rotate(0deg);
+        translate(0,0)
+        rotate(0deg);
     }
 
     25%{
-
         transform:
-            translate(3px,-2px)
-            rotate(.4deg);
+        translate(3px,-2px)
+        rotate(.4deg);
     }
 
     50%{
-
         transform:
-            translate(-3px,2px)
-            rotate(-.4deg);
+        translate(-3px,2px)
+        rotate(-.4deg);
     }
 
     75%{
-
         transform:
-            translate(2px,1px)
-            rotate(.3deg);
+        translate(2px,1px)
+        rotate(.3deg);
     }
 }
 
@@ -463,11 +426,11 @@ body.confused #confusedButton{
     font-size:15px;
 
     background:
-        linear-gradient(
-            135deg,
-            #f7d1dc,
-            #fff
-        );
+    linear-gradient(
+        135deg,
+        #f7d1dc,
+        #fff
+    );
 
     color:#6b2039;
 
@@ -480,19 +443,19 @@ body.confused #confusedButton{
 #notForgiveButton{
 
     transition:
-        left .06s linear,
-        top .06s linear;
+    left .06s linear,
+    top .06s linear;
 }
 
 
 #kissButton{
 
     background:
-        linear-gradient(
-            135deg,
-            #ffd0df,
-            #fff0f5
-        );
+    linear-gradient(
+        135deg,
+        #ffd0df,
+        #fff0f5
+    );
 
     color:#721d3d;
 }
@@ -502,24 +465,24 @@ body.scene4{
 
     background:
 
-        radial-gradient(
-            circle at 20% 20%,
-            #fff,
-            transparent 30%
-        ),
+    radial-gradient(
+        circle at 20% 20%,
+        #fff,
+        transparent 30%
+    ),
 
-        radial-gradient(
-            circle at 80% 80%,
-            #ffd0df,
-            transparent 35%
-        ),
+    radial-gradient(
+        circle at 80% 80%,
+        #ffd0df,
+        transparent 35%
+    ),
 
-        linear-gradient(
-            135deg,
-            #fff5f8,
-            #ffdce7,
-            #fff
-        );
+    linear-gradient(
+        135deg,
+        #fff5f8,
+        #ffdce7,
+        #fff
+    );
 }
 
 
@@ -536,7 +499,6 @@ body.scene4 .story-text{
 
 
 body.scene4 .scene4-button{
-
     display:inline-block;
 }
 
@@ -549,24 +511,24 @@ body.scene5{
 
     background:
 
-        radial-gradient(
-            circle at 20% 20%,
-            #fff,
-            transparent 30%
-        ),
+    radial-gradient(
+        circle at 20% 20%,
+        #fff,
+        transparent 30%
+    ),
 
-        radial-gradient(
-            circle at 80% 80%,
-            #ffd0df,
-            transparent 35%
-        ),
+    radial-gradient(
+        circle at 80% 80%,
+        #ffd0df,
+        transparent 35%
+    ),
 
-        linear-gradient(
-            135deg,
-            #fff5f8,
-            #ffdce7,
-            #fff
-        );
+    linear-gradient(
+        135deg,
+        #fff5f8,
+        #ffdce7,
+        #fff
+    );
 }
 
 
@@ -595,16 +557,16 @@ body.scene5 .story-text{
     color:#8b2348;
 
     animation:
-        finalAppear
-        .8s
-        ease
-        forwards;
+    finalAppear
+    .8s
+    ease
+    forwards;
 }
 
 
 .final-title{
 
-    font-size:25px;
+    font-size:20px;
 
     font-weight:800;
 
@@ -614,7 +576,7 @@ body.scene5 .story-text{
 
 .final-date{
 
-    font-size:14px;
+    font-size:13px;
 
     font-weight:500;
 
@@ -627,19 +589,13 @@ body.scene5 .story-text{
 @keyframes finalAppear{
 
     from{
-
         opacity:0;
-
-        transform:
-            translateY(15px);
+        transform:translateY(15px);
     }
 
     to{
-
         opacity:1;
-
-        transform:
-            translateY(0);
+        transform:translateY(0);
     }
 }
 
@@ -659,21 +615,20 @@ body.scene5 .story-text{
     user-select:none;
 
     filter:
-        drop-shadow(
-            0 5px 10px
-            rgba(180,50,90,.15)
-        );
+    drop-shadow(
+        0 5px 10px
+        rgba(180,50,90,.15)
+    );
 
     animation:
-        flowerFloat
-        5s
-        ease-in-out
-        infinite;
+    flowerFloat
+    5s
+    ease-in-out
+    infinite;
 }
 
 
 .flower1{
-
     top:5%;
     left:5%;
     font-size:48px;
@@ -681,7 +636,6 @@ body.scene5 .story-text{
 
 
 .flower2{
-
     top:10%;
     right:6%;
     font-size:42px;
@@ -690,7 +644,6 @@ body.scene5 .story-text{
 
 
 .flower3{
-
     bottom:8%;
     left:7%;
     font-size:45px;
@@ -699,7 +652,6 @@ body.scene5 .story-text{
 
 
 .flower4{
-
     bottom:12%;
     right:6%;
     font-size:50px;
@@ -708,7 +660,6 @@ body.scene5 .story-text{
 
 
 .flower5{
-
     top:38%;
     left:3%;
     font-size:35px;
@@ -717,7 +668,6 @@ body.scene5 .story-text{
 
 
 .flower6{
-
     top:42%;
     right:4%;
     font-size:37px;
@@ -726,7 +676,6 @@ body.scene5 .story-text{
 
 
 .flower7{
-
     bottom:30%;
     left:20%;
     font-size:28px;
@@ -735,7 +684,6 @@ body.scene5 .story-text{
 
 
 .flower8{
-
     bottom:25%;
     right:20%;
     font-size:30px;
@@ -746,24 +694,22 @@ body.scene5 .story-text{
 @keyframes flowerFloat{
 
     0%,100%{
-
         transform:
-            translateY(0)
-            rotate(-3deg);
+        translateY(0)
+        rotate(-3deg);
     }
 
     50%{
-
         transform:
-            translateY(-15px)
-            rotate(5deg);
+        translateY(-15px)
+        rotate(5deg);
     }
 }
 
 
-/*
-   گوڵەکان تەنیا لە Scene 1
-*/
+/* =====================================================
+   FLOWERS ONLY SCENE 1
+===================================================== */
 
 body.sad .romantic-flower,
 body.confused .romantic-flower,
@@ -781,30 +727,21 @@ body.scene5 .romantic-flower{
 @media(max-width:600px){
 
     .story{
-
         width:94vw;
     }
 
 
     #characterImage{
-
         width:min(72vw,270px);
     }
 
 
     .story-text{
-
         font-size:18px;
     }
 
 
-    /*
-       Scene 2
-       هەردوو دوگمە بە تەنیشت یەکتر
-    */
-
     body.sad .buttons{
-
         display:flex;
 
         flex-direction:row;
@@ -824,7 +761,7 @@ body.scene5 .romantic-flower{
     body.sad #helloButton,
     body.sad #sadButton{
 
-        padding:11px 13px;
+        padding:12px 14px;
 
         font-size:14px;
 
@@ -833,22 +770,18 @@ body.scene5 .romantic-flower{
 
 
     body.scene5 .story-text{
-
         font-size:18px;
     }
 
 
     .final-title{
-
-        font-size:23px;
+        font-size:20px;
     }
 
 
     .final-date{
-
         font-size:13px;
     }
-
 }
 
 </style>
@@ -893,9 +826,7 @@ body.scene5 .romantic-flower{
     </div>
 
 
-    <!-- =================================================
-         FINAL
-    ================================================== -->
+    <!-- FINAL -->
 
     <div id="finalEnd">
 
@@ -904,13 +835,9 @@ body.scene5 .romantic-flower{
         </div>
 
         <div class="final-date">
-
             6/9/2026
-
             <br>
-
             6 ئێوارە
-
         </div>
 
     </div>
@@ -919,9 +846,7 @@ body.scene5 .romantic-flower{
     <div class="buttons">
 
 
-        <!-- =================================================
-             SCENE 1 / SCENE 2
-        ================================================== -->
+        <!-- SCENE 1 / SCENE 2 -->
 
         <button id="helloButton">
             سڵاو گیان
@@ -933,9 +858,7 @@ body.scene5 .romantic-flower{
         </button>
 
 
-        <!-- =================================================
-             SCENE 3
-        ================================================== -->
+        <!-- SCENE 3 -->
 
         <button id="confusedButton">
             قەلەقی چیت
@@ -947,9 +870,7 @@ body.scene5 .romantic-flower{
         </button>
 
 
-        <!-- =================================================
-             SCENE 4
-        ================================================== -->
+        <!-- SCENE 4 -->
 
         <button
             id="notForgiveButton"
@@ -974,7 +895,6 @@ body.scene5 .romantic-flower{
 </div>
 
 
-
 <script>
 
 /* =====================================================
@@ -984,54 +904,45 @@ body.scene5 .romantic-flower{
 const body =
     document.body;
 
-
 const image =
     document.getElementById(
         "characterImage"
     );
-
 
 const text =
     document.getElementById(
         "storyText"
     );
 
-
 const finalEnd =
     document.getElementById(
         "finalEnd"
     );
-
 
 const helloButton =
     document.getElementById(
         "helloButton"
     );
 
-
 const sadButton =
     document.getElementById(
         "sadButton"
     );
-
 
 const confusedButton =
     document.getElementById(
         "confusedButton"
     );
 
-
 const skipButton =
     document.getElementById(
         "skipButton"
     );
 
-
 const notForgiveButton =
     document.getElementById(
         "notForgiveButton"
     );
-
 
 const kissButton =
     document.getElementById(
@@ -1046,18 +957,14 @@ const kissButton =
 const firstMessage =
     "سڵاو من کاوی، زۆرم خۆشەوێی بەساقەو بم نونی گیان";
 
-
 const secondMessage =
     "زۆر بێتاقەتم";
-
 
 const thirdMessage =
     "بەخوا زۆر قەلەقم 💔";
 
-
 const fourthMessage =
     "ئەوە بێزار بووی لێم دەی وەڵا ئەبێ ئاشتم کەیتەوە";
-
 
 const fifthMessage =
     "ئەی بەشاکەو بم هەر زانیم دڵم ناشکێنی";
@@ -1089,9 +996,7 @@ function typeText(
         setInterval(
             function(){
 
-                if(
-                    i < message.length
-                ){
+                if(i < message.length){
 
                     text.textContent +=
                         message[i];
@@ -1114,25 +1019,23 @@ function typeText(
 
 
 /* =====================================================
-   MOVE BUTTON FAR
+   MOVE FAR
+   SCENE 1 + SCENE 4
 ===================================================== */
 
 function moveButtonFar(button){
 
     const margin = 15;
 
-
     const maxX =
         window.innerWidth -
         button.offsetWidth -
         margin;
 
-
     const maxY =
         window.innerHeight -
         button.offsetHeight -
         margin;
-
 
     const x =
         margin +
@@ -1142,7 +1045,6 @@ function moveButtonFar(button){
             maxX - margin
         );
 
-
     const y =
         margin +
         Math.random() *
@@ -1151,32 +1053,20 @@ function moveButtonFar(button){
             maxY - margin
         );
 
-
-    /*
-       گرنگ:
-       لە کاتی پەنجەلێدان
-       دەبێتە fixed
-    */
-
     button.style.position =
         "fixed";
-
 
     button.style.left =
         x + "px";
 
-
     button.style.top =
         y + "px";
-
 
     button.style.right =
         "auto";
 
-
     button.style.bottom =
         "auto";
-
 
     button.style.transform =
         "none";
@@ -1185,7 +1075,6 @@ function moveButtonFar(button){
 
 /* =====================================================
    SCENE 1
-   سڵاو گیان → SCENE 2
 ===================================================== */
 
 helloButton.addEventListener(
@@ -1200,7 +1089,6 @@ helloButton.addEventListener(
         ){
 
             event.preventDefault();
-
             event.stopPropagation();
 
             goToScene2();
@@ -1213,7 +1101,7 @@ helloButton.addEventListener(
 
 /* =====================================================
    SCENE 1
-   خۆش حاڵ نەبووم → ڕاکردن
+   خۆش حاڵ نەبووم
 ===================================================== */
 
 sadButton.addEventListener(
@@ -1225,7 +1113,6 @@ sadButton.addEventListener(
         ){
 
             event.preventDefault();
-
             event.stopPropagation();
 
             moveButtonFar(
@@ -1266,7 +1153,7 @@ function goToScene2(){
 
 
     /*
-       هەموو شوێنی کۆنی پاک دەکەینەوە
+       پاککردنەوەی هەموو شوێنی کۆن
     */
 
     helloButton.style.position =
@@ -1307,10 +1194,6 @@ function goToScene2(){
         "none";
 
 
-    /*
-       هەردوو دوگمە دیارن
-    */
-
     helloButton.style.display =
         "inline-flex";
 
@@ -1336,10 +1219,152 @@ function goToScene2(){
 
 
 /* =====================================================
-   SCENE 2
-   بێتاقەت مەبە → ڕاکردن
+   SCENE 2 MOVEMENT
 
-   تەنیا pointerdown
+   بێتاقەت مەبە:
+   هەر جار پەنجەی لێ بدرێت
+   دەچێتە لایەکی تری
+   دوگمەی بۆ بێتاقەتی
+
+   هەمیشە لە تەنیشتی یەکتر
+===================================================== */
+
+let scene2Side = 0;
+
+
+function moveScene2Button(){
+
+    const fixedRect =
+        sadButton.getBoundingClientRect();
+
+
+    const movingWidth =
+        helloButton.offsetWidth;
+
+
+    const movingHeight =
+        helloButton.offsetHeight;
+
+
+    const gap = 5;
+
+
+    let newLeft;
+
+
+    /*
+       جارێک لە لای چەپ
+       جارێک لە لای ڕاست
+    */
+
+    if(scene2Side === 0){
+
+        /*
+           لای چەپ
+        */
+
+        newLeft =
+            fixedRect.left -
+            movingWidth -
+            gap;
+
+        scene2Side = 1;
+
+    }
+    else{
+
+        /*
+           لای ڕاست
+        */
+
+        newLeft =
+            fixedRect.right +
+            gap;
+
+        scene2Side = 0;
+
+    }
+
+
+    /*
+       ئەگەر لای ڕاست لە شاشە دەرچوو
+       دەیخەینە لای چەپ
+    */
+
+    if(
+        newLeft + movingWidth >
+        window.innerWidth - 5
+    ){
+
+        newLeft =
+            fixedRect.left -
+            movingWidth -
+            gap;
+
+        scene2Side = 1;
+
+    }
+
+
+    /*
+       ئەگەر لای چەپ لە شاشە دەرچوو
+       دەیخەینە لای ڕاست
+    */
+
+    if(
+        newLeft < 5
+    ){
+
+        newLeft =
+            fixedRect.right +
+            gap;
+
+        scene2Side = 0;
+
+    }
+
+
+    const newTop =
+        fixedRect.top +
+        (
+            fixedRect.height -
+            movingHeight
+        ) / 2;
+
+
+    /*
+       لە دوای پەنجەلێدان
+       دەبێتە fixed
+    */
+
+    helloButton.style.position =
+        "fixed";
+
+
+    helloButton.style.left =
+        newLeft + "px";
+
+
+    helloButton.style.top =
+        newTop + "px";
+
+
+    helloButton.style.right =
+        "auto";
+
+
+    helloButton.style.bottom =
+        "auto";
+
+
+    helloButton.style.transform =
+        "none";
+}
+
+
+/* =====================================================
+   SCENE 2
+   پەنجەلێدان → جوڵان
 ===================================================== */
 
 helloButton.addEventListener(
@@ -1351,12 +1376,9 @@ helloButton.addEventListener(
         ){
 
             event.preventDefault();
-
             event.stopPropagation();
 
-            moveButtonFar(
-                helloButton
-            );
+            moveScene2Button();
 
         }
 
@@ -1378,7 +1400,6 @@ sadButton.addEventListener(
         ){
 
             event.preventDefault();
-
             event.stopPropagation();
 
             goToScene3();
@@ -1426,10 +1447,6 @@ function goToScene3(){
     confusedStep = 0;
 
 
-    /*
-       سەرەتا جێگیر
-    */
-
     confusedButton.style.position =
         "relative";
 
@@ -1455,8 +1472,7 @@ function goToScene3(){
 
 
 /* =====================================================
-   SCENE 3
-   BUTTON MOVE
+   SCENE 3 MOVE
 ===================================================== */
 
 function moveConfusedButton(){
@@ -1465,12 +1481,9 @@ function moveConfusedButton(){
         "fixed";
 
 
-    const rangeX =
-        120;
+    const rangeX = 120;
 
-
-    const rangeY =
-        80;
+    const rangeY = 80;
 
 
     const centerX =
@@ -1523,7 +1536,6 @@ function confusedButtonAction(){
             "confused"
         )
     ){
-
         return;
     }
 
@@ -1569,7 +1581,6 @@ function confusedButtonAction(){
             "translateX(-50%)";
 
     }
-
     else{
 
         confusedButton.textContent =
@@ -1579,6 +1590,7 @@ function confusedButtonAction(){
         moveConfusedButton();
 
     }
+
 }
 
 
@@ -1591,7 +1603,6 @@ confusedButton.addEventListener(
     function(event){
 
         event.preventDefault();
-
         event.stopPropagation();
 
         confusedButtonAction();
@@ -1609,7 +1620,6 @@ skipButton.addEventListener(
     function(event){
 
         event.preventDefault();
-
         event.stopPropagation();
 
         goToScene4();
@@ -1658,10 +1668,6 @@ function goToScene4(){
         "inline-block";
 
 
-    /*
-       هەردووکیان سەرەتا جێگیر
-    */
-
     notForgiveButton.style.position =
         "relative";
 
@@ -1703,7 +1709,7 @@ function goToScene4(){
 
 /* =====================================================
    SCENE 4
-   ئاشت ناکەمەوە → ڕاکردن
+   ئاشت ناکەمەوە
 ===================================================== */
 
 notForgiveButton.addEventListener(
@@ -1717,7 +1723,6 @@ notForgiveButton.addEventListener(
         ){
 
             event.preventDefault();
-
             event.stopPropagation();
 
             moveButtonFar(
@@ -1746,7 +1751,6 @@ kissButton.addEventListener(
         ){
 
             event.preventDefault();
-
             event.stopPropagation();
 
             goToScene5();
@@ -1771,10 +1775,6 @@ function goToScene5(){
         "d8d37d3a68419f41f72da820b44eee9d.jpg";
 
 
-    /*
-       هەموو دوگمەکان ون
-    */
-
     helloButton.style.display =
         "none";
 
@@ -1798,10 +1798,6 @@ function goToScene5(){
         "none";
 
 
-    /*
-       دەقی وێنەی ٥
-    */
-
     typeText(
         fifthMessage,
         100
@@ -1809,7 +1805,7 @@ function goToScene5(){
 
 
     /*
-       دوای کەمێک:
+       کەمێک دوای دەق
        کۆتای + بەروار + کات
     */
 
@@ -1822,6 +1818,7 @@ function goToScene5(){
         },
         2500
     );
+
 }
 
 
