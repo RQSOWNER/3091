@@ -8,6 +8,7 @@
 <style>
 *{
   box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
 }
 
 html,body{
@@ -40,6 +41,7 @@ body{
   object-fit:cover;
   border-radius:24px;
   box-shadow:0 15px 40px rgba(0,0,0,.18);
+  transition:.5s;
 }
 
 .story-text{
@@ -48,7 +50,6 @@ body{
   font-size:20px;
   font-weight:700;
   color:#5a2438;
-  transition:.5s;
 }
 
 .buttons{
@@ -65,9 +66,9 @@ button{
   font-weight:700;
   cursor:pointer;
   box-shadow:0 8px 20px rgba(0,0,0,.16);
-  transition:all .2s ease;
   position:relative;
   z-index:30;
+  user-select:none;
   touch-action:none;
 }
 
@@ -93,11 +94,11 @@ button{
   font-size:12px;
   padding:6px 12px;
   min-width:90px;
-  background:#fff;
+  background:white;
   color:#444;
 }
 
-/* Emojis of first scene */
+/* ---------------- FIRST SCENE ---------------- */
 
 .flower,
 .lily,
@@ -185,7 +186,7 @@ button{
   }
 }
 
-/* Emojis of sad scene */
+/* ---------------- SAD SCENE ---------------- */
 
 .sad-emoji{
   position:absolute;
@@ -212,6 +213,7 @@ body.sad .sad-emoji{
 }
 
 @keyframes rain{
+
   0%{
     transform:translateY(-20vh);
     opacity:0;
@@ -227,7 +229,7 @@ body.sad .sad-emoji{
   }
 }
 
-/* Scene 3 - confused */
+/* ---------------- CONFUSED SCENE ---------------- */
 
 .confused-emoji{
   position:absolute;
@@ -285,7 +287,7 @@ body.confused .sad-emoji{
 }
 
 body.confused .story-text{
-  color:#fff;
+  color:white;
   text-shadow:0 0 12px rgba(255,255,255,.5);
 }
 
@@ -323,17 +325,19 @@ body.confused #confusedButton{
   }
 }
 
-/* Emojis only in scene 1 */
+/* Emojis only on first scene */
 
-body:not(.sad):not(.confused) #helloButton::before{
+body:not(.sad):not(.confused):not(.scene4)
+#helloButton::before{
   content:"🤎 ";
 }
 
-body:not(.sad):not(.confused) #helloButton::after{
+body:not(.sad):not(.confused):not(.scene4)
+#helloButton::after{
   content:" 🌷";
 }
 
-/* Scene 4 */
+/* ---------------- SCENE 4 ---------------- */
 
 body.scene4{
   background:linear-gradient(135deg,#fff5f8,#ffdce7);
@@ -349,6 +353,8 @@ body.scene4 .sad-emoji,
 body.scene4 .confused-emoji{
   display:none;
 }
+
+/* Mobile */
 
 @media(max-width:600px){
 
@@ -381,7 +387,7 @@ body.scene4 .confused-emoji{
 
 <body>
 
-<!-- First scene flowers -->
+<!-- Flowers -->
 
 <div class="flower f1">🌸</div>
 <div class="flower f2">🌷</div>
@@ -427,7 +433,10 @@ body.scene4 .confused-emoji{
     alt="story image"
   >
 
-  <div class="story-text" id="storyText"></div>
+  <div
+    class="story-text"
+    id="storyText">
+  </div>
 
   <div class="buttons">
 
@@ -464,12 +473,14 @@ const helloButton = document.getElementById("helloButton");
 
 const sadButton = document.getElementById("sadButton");
 
-const confusedButton = document.getElementById("confusedButton");
+const confusedButton =
+document.getElementById("confusedButton");
 
-const skipButton = document.getElementById("skipButton");
+const skipButton =
+document.getElementById("skipButton");
 
 
-/* Texts */
+/* Messages */
 
 const firstMessage =
 "سڵاو من کاوی، زۆرم خۆشەوێی بەساقەو بم نونی گیان";
@@ -486,7 +497,7 @@ let typingTimer = null;
 let confusedStep = 0;
 
 
-/* Letter by letter */
+/* Type text letter by letter */
 
 function typeText(message){
 
@@ -498,11 +509,13 @@ function typeText(message){
 
   typingTimer = setInterval(function(){
 
-    text.textContent += message[i] || "";
+    if(i < message.length){
 
-    i++;
+      text.textContent += message[i];
 
-    if(i > message.length){
+      i++;
+
+    }else{
 
       clearInterval(typingTimer);
 
@@ -512,47 +525,65 @@ function typeText(message){
 }
 
 
-/* Move button randomly */
+/* ---------------- MOVE BUTTON ---------------- */
+
+/*
+   ئەم فانکشنە دوگمەکە هەر جارێک
+   هەوڵی دەست لێدان/کلیک دەکرێت
+   شوێنی دەگۆڕێت.
+*/
+
+function moveAway(button){
+
+  const margin = 15;
+
+  const maxX =
+    window.innerWidth -
+    button.offsetWidth -
+    margin;
+
+  const maxY =
+    window.innerHeight -
+    button.offsetHeight -
+    margin;
+
+  const x =
+    margin +
+    Math.random() *
+    Math.max(1,maxX - margin);
+
+  const y =
+    margin +
+    Math.random() *
+    Math.max(1,maxY - margin);
+
+  button.style.position = "fixed";
+
+  button.style.left = x + "px";
+
+  button.style.top = y + "px";
+}
+
+
+/* ---------------- SCENE 2 BUTTON ---------------- */
 
 function moveSadButton(){
 
-  sadButton.style.position = "fixed";
+  moveAway(sadButton);
 
-  const x =
-    Math.random() *
-    (window.innerWidth - sadButton.offsetWidth - 30) + 15;
-
-  const y =
-    Math.random() *
-    (window.innerHeight - sadButton.offsetHeight - 30) + 15;
-
-  sadButton.style.left = x + "px";
-
-  sadButton.style.top = y + "px";
 }
 
 
-/* Scene 2 first button moves */
+/* ---------------- SCENE 2 BUTTON 1 ---------------- */
 
 function moveHelloButton(){
 
-  helloButton.style.position = "fixed";
+  moveAway(helloButton);
 
-  const x =
-    Math.random() *
-    (window.innerWidth - helloButton.offsetWidth - 30) + 15;
-
-  const y =
-    Math.random() *
-    (window.innerHeight - helloButton.offsetHeight - 30) + 15;
-
-  helloButton.style.left = x + "px";
-
-  helloButton.style.top = y + "px";
 }
 
 
-/* Scene 3 button moves moderately */
+/* ---------------- SCENE 3 BUTTON ---------------- */
 
 function moveConfusedButton(){
 
@@ -562,9 +593,11 @@ function moveConfusedButton(){
 
   const rangeY = 80;
 
-  const centerX = window.innerWidth / 2;
+  const centerX =
+    window.innerWidth / 2;
 
-  const centerY = window.innerHeight * 0.72;
+  const centerY =
+    window.innerHeight * .72;
 
   const x =
     centerX -
@@ -586,11 +619,12 @@ function moveConfusedButton(){
 }
 
 
-/* Scene 1 → Scene 2 */
+/* ---------------- SCENE 1 → SCENE 2 ---------------- */
 
 function goToScene2(){
 
   body.classList.remove("confused");
+
   body.classList.remove("scene4");
 
   body.classList.add("sad");
@@ -606,6 +640,9 @@ function goToScene2(){
   sadButton.textContent =
     "بۆ بێتاقەتی 🤔";
 
+
+  /* Reset positions */
+
   helloButton.style.position = "relative";
 
   helloButton.style.left = "";
@@ -618,17 +655,19 @@ function goToScene2(){
 
   sadButton.style.top = "";
 
+
   confusedButton.style.display = "none";
 
   skipButton.style.display = "none";
 }
 
 
-/* Scene 2 → Scene 3 */
+/* ---------------- SCENE 2 → SCENE 3 ---------------- */
 
 function goToScene3(){
 
   body.classList.remove("sad");
+
   body.classList.remove("scene4");
 
   body.classList.add("confused");
@@ -649,7 +688,8 @@ function goToScene3(){
 
   confusedStep = 0;
 
-  confusedButton.style.position = "relative";
+  confusedButton.style.position =
+    "relative";
 
   confusedButton.style.left = "";
 
@@ -659,7 +699,7 @@ function goToScene3(){
 }
 
 
-/* Scene 3 button */
+/* ---------------- SCENE 3 BUTTON ---------------- */
 
 function confusedButtonAction(){
 
@@ -669,21 +709,29 @@ function confusedButtonAction(){
 
   confusedStep++;
 
+
   if(confusedStep === 1){
 
     confusedButton.textContent =
       "نا نایڵێم ناز ئەکەم";
 
+    /* Move first */
+
     moveConfusedButton();
 
-    skipButton.style.display = "block";
+    /* Show skip */
 
-    /* Skip naz stays fixed below the moved button */
+    skipButton.style.display =
+      "block";
+
+
+    /* Put skip below button */
 
     const rect =
       confusedButton.getBoundingClientRect();
 
-    skipButton.style.position = "fixed";
+    skipButton.style.position =
+      "fixed";
 
     skipButton.style.left =
       (rect.left + rect.width / 2) + "px";
@@ -693,6 +741,7 @@ function confusedButtonAction(){
 
     skipButton.style.transform =
       "translateX(-50%)";
+
 
   }else{
 
@@ -705,123 +754,172 @@ function confusedButtonAction(){
 }
 
 
-/* Scene 3 → Scene 4 */
+/* ---------------- SCENE 3 → SCENE 4 ---------------- */
 
 function goToScene4(){
 
   body.classList.remove("confused");
+
   body.classList.remove("sad");
 
   body.classList.add("scene4");
+
 
   /* Image 4 */
 
   image.src =
     "ece914e7ddcc0c54f9f9e56c7dccc1e2.jpg";
 
-  /*
-    Text of scene 3 remains until you decide
-    what you want to put in scene 4.
-  */
 
-  text.textContent =
-    "💖";
+  /* Scene 4 text */
 
-  /* Hide old buttons */
+  text.textContent = "💖";
 
-  confusedButton.style.display = "none";
 
-  skipButton.style.display = "none";
+  /* Hide buttons */
 
-  helloButton.style.display = "none";
+  confusedButton.style.display =
+    "none";
 
-  sadButton.style.display = "none";
+  skipButton.style.display =
+    "none";
+
+  helloButton.style.display =
+    "none";
+
+  sadButton.style.display =
+    "none";
 }
 
 
-/* Start */
+/* ---------------- START ---------------- */
 
 typeText(firstMessage);
 
 
-/* Scene 1 button */
+/*
+   Scene 1:
+   سڵاو گیان → Scene 2
+*/
 
-helloButton.addEventListener("click",function(){
+helloButton.addEventListener(
+  "click",
+  function(){
 
-  if(body.classList.contains("sad")){
-    return;
-  }
+    if(body.classList.contains("sad")){
+      return;
+    }
 
-  if(body.classList.contains("confused")){
-    return;
-  }
+    if(body.classList.contains("confused")){
+      return;
+    }
 
-  goToScene2();
-
-});
-
-
-/* Scene 2 moving button */
-
-helloButton.addEventListener("pointerdown",function(event){
-
-  if(body.classList.contains("sad")){
-
-    event.preventDefault();
-
-    moveHelloButton();
+    goToScene2();
 
   }
+);
 
-});
 
+/*
+   Scene 2:
+   بێتاقەت مەبە → هەڵدێت
+*/
 
-/* Scene 1 second button */
+helloButton.addEventListener(
+  "pointerdown",
+  function(event){
 
-sadButton.addEventListener("pointerdown",function(event){
+    if(body.classList.contains("sad")){
 
-  if(!body.classList.contains("sad")){
+      event.preventDefault();
 
-    event.preventDefault();
+      moveHelloButton();
 
-    moveSadButton();
+    }
 
   }
+);
 
-});
+
+/*
+   Scene 1:
+   خۆش حاڵ نەبووم → هەڵدێت
+   هەر جارێک دەستت لێی دەدات
+*/
+
+sadButton.addEventListener(
+  "pointerdown",
+  function(event){
+
+    if(!body.classList.contains("sad")){
+
+      event.preventDefault();
+
+      moveSadButton();
+
+    }
+
+  }
+);
 
 
-/* Scene 2 fixed button → Scene 3 */
+/*
+   بۆ ئەوەی لە Scene 1
+   بە کلیک هیچ شتێک ڕوونەدات
+*/
 
-sadButton.addEventListener("click",function(){
+sadButton.addEventListener(
+  "click",
+  function(event){
 
-  if(body.classList.contains("sad")){
+    if(!body.classList.contains("sad")){
+
+      event.preventDefault();
+
+      moveSadButton();
+
+      return;
+
+    }
+
+    /* Scene 2 → Scene 3 */
 
     goToScene3();
 
   }
-
-});
-
-
-/* Scene 3 button */
-
-confusedButton.addEventListener("pointerdown",function(event){
-
-  event.preventDefault();
-
-  confusedButtonAction();
-
-});
+);
 
 
-/* Skip naz → Image 4 */
+/*
+   Scene 3 button
+*/
 
-skipButton.addEventListener("click",function(){
+confusedButton.addEventListener(
+  "pointerdown",
+  function(event){
 
-  goToScene4();
+    event.preventDefault();
 
-});
+    confusedButtonAction();
+
+  }
+);
+
+
+/*
+   Skip naz → Image 4
+*/
+
+skipButton.addEventListener(
+  "pointerdown",
+  function(event){
+
+    event.preventDefault();
+
+    goToScene4();
+
+  }
+);
 
 </script>
 
