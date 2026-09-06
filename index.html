@@ -163,6 +163,7 @@
                 opacity 0.7s ease;
         }
 
+
         .lily1 {
             top: 3%;
             right: 20%;
@@ -206,6 +207,7 @@
             transition:
                 opacity 0.7s ease;
         }
+
 
         .s1 {
             top: 15%;
@@ -427,13 +429,11 @@
         body.sad .flower,
         body.sad .lily,
         body.sad .sparkle {
-
             opacity: 0;
         }
 
 
         body.sad .sad-emoji {
-
             opacity: 0.72;
         }
 
@@ -610,7 +610,6 @@
 
 
         body.sad .story-text {
-
             color: #eeeeee;
         }
 
@@ -740,7 +739,7 @@
 
 
         /* =========================
-           SCENE 2
+           SCENE 2 BUTTONS
         ========================= */
 
         body.sad #helloButton {
@@ -805,7 +804,6 @@
 
 
             .buttons {
-
                 height: 115px;
             }
 
@@ -820,13 +818,11 @@
 
 
             #sadButton {
-
                 top: 50px;
             }
 
 
             .sad-emoji {
-
                 font-size: 27px;
             }
         }
@@ -855,7 +851,6 @@
 
 
             .buttons {
-
                 height: 100px;
             }
 
@@ -870,13 +865,11 @@
 
 
             #sadButton {
-
                 top: 43px;
             }
 
 
             .sad-emoji {
-
                 font-size: 23px;
             }
         }
@@ -889,13 +882,11 @@
         @media (min-width: 501px) {
 
             .character {
-
                 max-width: 320px;
             }
 
 
             .story-text {
-
                 font-size: 20px;
             }
         }
@@ -943,13 +934,10 @@
     <div class="sad-emoji sad-6">😢</div>
 
 
-
     <!-- STORY -->
 
     <div class="story">
 
-
-        <!-- IMAGE -->
 
         <img
             id="characterImage"
@@ -959,22 +947,16 @@
         >
 
 
-        <!-- TEXT -->
-
         <div
             class="story-text"
             id="storyText">
         </div>
 
 
-        <!-- BUTTONS -->
-
         <div
             class="buttons"
             id="buttonArea">
 
-
-            <!-- FIRST BUTTON -->
 
             <button
                 id="helloButton">
@@ -983,8 +965,6 @@
 
             </button>
 
-
-            <!-- SECOND BUTTON -->
 
             <button
                 id="sadButton">
@@ -1001,7 +981,6 @@
 
 
     <script>
-
 
         /* =========================
            ELEMENTS
@@ -1058,7 +1037,6 @@
 
         function typeText(message) {
 
-
             if (typingTimer) {
 
                 clearTimeout(
@@ -1075,19 +1053,15 @@
 
             function writeLetter() {
 
-
                 if (
                     i <
                     message.length
                 ) {
 
-
                     text.textContent +=
                         message.charAt(i);
 
-
                     i++;
-
 
                     typingTimer =
                         setTimeout(
@@ -1095,7 +1069,6 @@
                             75
                         );
                 }
-
             }
 
 
@@ -1112,12 +1085,11 @@
 
 
         /* =========================
-           MOVE SECOND BUTTON
-           SCENE 1
+           MOVE BUTTON 2
+           SCENE 1 ONLY
         ========================= */
 
         function moveSadButton() {
-
 
             if (
                 body.classList.contains(
@@ -1196,8 +1168,109 @@
 
 
         /* =========================
+           SCENE 1 BUTTON 2
+           TOUCH
+        ========================= */
+
+        sadButton.addEventListener(
+            "touchstart",
+            function (event) {
+
+                if (
+                    body.classList.contains(
+                        "sad"
+                    )
+                ) {
+
+                    return;
+                }
+
+
+                event.preventDefault();
+
+                moveSadButton();
+
+            },
+            {
+                passive: false
+            }
+        );
+
+
+
+        /* =========================
+           SCENE 1 BUTTON 2
+           POINTER
+        ========================= */
+
+        sadButton.addEventListener(
+            "pointerenter",
+            function () {
+
+                if (
+                    body.classList.contains(
+                        "sad"
+                    )
+                ) {
+
+                    return;
+                }
+
+
+                moveSadButton();
+
+            }
+        );
+
+
+        sadButton.addEventListener(
+            "pointerdown",
+            function (event) {
+
+                if (
+                    body.classList.contains(
+                        "sad"
+                    )
+                ) {
+
+                    return;
+                }
+
+
+                event.preventDefault();
+
+                moveSadButton();
+
+            }
+        );
+
+
+        sadButton.addEventListener(
+            "click",
+            function (event) {
+
+                if (
+                    body.classList.contains(
+                        "sad"
+                    )
+                ) {
+
+                    return;
+                }
+
+
+                event.preventDefault();
+
+                moveSadButton();
+
+            }
+        );
+
+
+
+        /* =========================
            BUTTON 1
-           SCENE 1 → SCENE 2
+           GO TO SCENE 2
         ========================= */
 
         helloButton.addEventListener(
@@ -1205,7 +1278,7 @@
             function () {
 
 
-                /* IMAGE */
+                /* IMAGE CHANGE */
 
                 image.style.opacity =
                     "0";
@@ -1214,7 +1287,6 @@
                 setTimeout(
                     function () {
 
-
                         image.src =
                             "7b4e45edfbedd4efbcc4bab78fbefaec.jpg";
 
@@ -1222,24 +1294,26 @@
                         image.style.opacity =
                             "1";
 
-
                     },
                     350
                 );
 
 
-                /* BACKGROUND */
+
+                /* SAD BACKGROUND */
 
                 body.classList.add(
                     "sad"
                 );
 
 
-                /* TEXT */
+
+                /* TEXT CHANGE */
 
                 typeText(
                     secondMessage
                 );
+
 
 
                 /* BUTTON TEXT */
@@ -1252,9 +1326,10 @@
                     "بۆ بێتاقەتی 🤔";
 
 
+
                 /*
                  * هەردوو دوگمە
-                 * لە سەرەتادا جێگیر دەبن.
+                 * لە سەرەتا جێگیر دەبن.
                  */
 
                 helloButton.style.position =
@@ -1288,132 +1363,12 @@
 
 
         /* =========================
-           SCENE 1
-           SAD BUTTON TOUCH
-        ========================= */
-
-        sadButton.addEventListener(
-            "touchstart",
-            function (event) {
-
-
-                if (
-                    body.classList.contains(
-                        "sad"
-                    )
-                ) {
-
-                    return;
-                }
-
-
-                event.preventDefault();
-
-
-                moveSadButton();
-
-            },
-            {
-                passive: false
-            }
-        );
-
-
-
-        /* =========================
-           SCENE 1
-           SAD BUTTON MOUSE
-        ========================= */
-
-        sadButton.addEventListener(
-            "pointerenter",
-            function () {
-
-
-                if (
-                    body.classList.contains(
-                        "sad"
-                    )
-                ) {
-
-                    return;
-                }
-
-
-                moveSadButton();
-
-            }
-        );
-
-
-
-        /* =========================
-           SCENE 1
-           SAD BUTTON POINTER
-        ========================= */
-
-        sadButton.addEventListener(
-            "pointerdown",
-            function (event) {
-
-
-                if (
-                    body.classList.contains(
-                        "sad"
-                    )
-                ) {
-
-                    return;
-                }
-
-
-                event.preventDefault();
-
-
-                moveSadButton();
-
-            }
-        );
-
-
-
-        /* =========================
-           SCENE 1
-           SAD BUTTON CLICK
-        ========================= */
-
-        sadButton.addEventListener(
-            "click",
-            function (event) {
-
-
-                if (
-                    body.classList.contains(
-                        "sad"
-                    )
-                ) {
-
-                    return;
-                }
-
-
-                event.preventDefault();
-
-
-                moveSadButton();
-
-            }
-        );
-
-
-
-        /* =========================
            SCENE 2
-           HELLO BUTTON MOVES
+           BUTTON 1 MOVEMENT
+           ONLY AFTER TOUCH
         ========================= */
 
         function moveHelloButton() {
-
 
             if (
                 !body.classList.contains(
@@ -1493,13 +1448,12 @@
 
         /* =========================
            SCENE 2
-           HELLO TOUCH
+           TOUCH
         ========================= */
 
         helloButton.addEventListener(
             "touchstart",
             function (event) {
-
 
                 if (
                     !body.classList.contains(
@@ -1512,7 +1466,6 @@
 
 
                 event.preventDefault();
-
 
                 moveHelloButton();
 
@@ -1526,41 +1479,13 @@
 
         /* =========================
            SCENE 2
-           HELLO MOUSE
-        ========================= */
-
-        helloButton.addEventListener(
-            "pointerenter",
-            function () {
-
-
-                if (
-                    !body.classList.contains(
-                        "sad"
-                    )
-                ) {
-
-                    return;
-                }
-
-
-                moveHelloButton();
-
-            }
-        );
-
-
-
-        /* =========================
-           SCENE 2
-           HELLO POINTER
+           POINTER DOWN
         ========================= */
 
         helloButton.addEventListener(
             "pointerdown",
             function (event) {
 
-
                 if (
                     !body.classList.contains(
                         "sad"
@@ -1572,37 +1497,6 @@
 
 
                 event.preventDefault();
-
-
-                moveHelloButton();
-
-            }
-        );
-
-
-
-        /* =========================
-           SCENE 2
-           HELLO CLICK
-        ========================= */
-
-        helloButton.addEventListener(
-            "click",
-            function (event) {
-
-
-                if (
-                    !body.classList.contains(
-                        "sad"
-                    )
-                ) {
-
-                    return;
-                }
-
-
-                event.preventDefault();
-
 
                 moveHelloButton();
 
