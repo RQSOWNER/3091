@@ -13,10 +13,6 @@
 
     <style>
 
-        /* =========================
-           RESET
-        ========================= */
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -24,24 +20,35 @@
         }
 
 
-        /* =========================
-           PAGE
-        ========================= */
-
         html,
         body {
-
             width: 100%;
             height: 100%;
-
             overflow: hidden;
         }
 
 
         body {
 
-            background:
+            min-height: 100vh;
+            height: 100vh;
 
+            font-family:
+                Arial,
+                "Noto Sans Arabic",
+                sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 8px;
+
+            overflow: hidden;
+
+            position: relative;
+
+            background:
                 radial-gradient(
                     circle at 15% 15%,
                     rgba(255, 210, 225, 0.65),
@@ -54,12 +61,6 @@
                     transparent 25%
                 ),
 
-                radial-gradient(
-                    circle at 20% 85%,
-                    rgba(240, 215, 255, 0.45),
-                    transparent 25%
-                ),
-
                 linear-gradient(
                     135deg,
                     #fffafd,
@@ -67,35 +68,13 @@
                     #fffdf8
                 );
 
-
-            min-height: 100vh;
-            height: 100vh;
-
-            font-family:
-                Arial,
-                "Noto Sans Arabic",
-                sans-serif;
-
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-
-            padding: 8px;
-
-
-            overflow: hidden;
-
-            position: relative;
+            transition:
+                background 1s ease;
         }
 
 
-
         /* =========================
-           BACKGROUND FLOWERS
+           HAPPY BACKGROUND
         ========================= */
 
         .flower {
@@ -110,82 +89,61 @@
 
             animation:
                 floating 5s ease-in-out infinite;
+
+            transition:
+                opacity 0.7s ease;
         }
 
 
         .flower1 {
-
             top: 4%;
-
             left: 5%;
-
             font-size: 34px;
         }
 
 
         .flower2 {
-
             top: 12%;
-
             right: 5%;
-
             font-size: 30px;
-
             animation-delay: 1s;
         }
 
 
         .flower3 {
-
             bottom: 8%;
-
             left: 6%;
-
             font-size: 38px;
-
             animation-delay: 2s;
         }
 
 
         .flower4 {
-
             bottom: 10%;
-
             right: 5%;
-
             font-size: 32px;
-
             animation-delay: 1.5s;
         }
 
 
         .flower5 {
-
             top: 45%;
-
             left: 2%;
-
             font-size: 25px;
-
             animation-delay: 2.5s;
         }
 
 
         .flower6 {
-
             top: 55%;
-
             right: 2%;
-
             font-size: 27px;
-
             animation-delay: 3s;
         }
 
 
-
         /* =========================
-           LILY FLOWERS
+           LILY
         ========================= */
 
         .lily {
@@ -208,42 +166,33 @@
 
             animation:
                 lilyFloat 6s ease-in-out infinite;
+
+            transition:
+                opacity 0.7s ease;
         }
 
 
         .lily1 {
-
             top: 3%;
-
             right: 20%;
-
             font-size: 34px;
         }
 
 
         .lily2 {
-
             bottom: 4%;
-
             left: 20%;
-
             font-size: 32px;
-
             animation-delay: 2s;
         }
 
 
         .lily3 {
-
             top: 62%;
-
             right: 15%;
-
             font-size: 28px;
-
             animation-delay: 1s;
         }
-
 
 
         /* =========================
@@ -264,46 +213,37 @@
 
             animation:
                 sparkleMove 3s ease-in-out infinite;
+
+            transition:
+                opacity 0.7s ease;
         }
 
 
         .s1 {
-
             top: 15%;
-
             left: 35%;
         }
 
 
         .s2 {
-
             top: 35%;
-
             right: 22%;
-
             animation-delay: 1s;
         }
 
 
         .s3 {
-
             bottom: 18%;
-
             right: 30%;
-
             animation-delay: 1.7s;
         }
 
 
         .s4 {
-
             bottom: 35%;
-
             left: 20%;
-
             animation-delay: 0.5s;
         }
-
 
 
         /* =========================
@@ -314,14 +254,12 @@
 
             0%,
             100% {
-
                 transform:
                     translateY(0)
                     rotate(0deg);
             }
 
             50% {
-
                 transform:
                     translateY(-12px)
                     rotate(7deg);
@@ -333,14 +271,12 @@
 
             0%,
             100% {
-
                 transform:
                     translateY(0)
                     rotate(-3deg);
             }
 
             50% {
-
                 transform:
                     translateY(-10px)
                     rotate(5deg);
@@ -352,26 +288,98 @@
 
             0%,
             100% {
-
                 opacity: 0.25;
-
-                transform:
-                    scale(0.7);
+                transform: scale(0.7);
             }
 
             50% {
-
                 opacity: 1;
+                transform: scale(1.25);
+            }
+        }
 
-                transform:
-                    scale(1.25);
+
+        /* =========================
+           SAD BACKGROUND
+        ========================= */
+
+        body.sad {
+
+            background:
+
+                radial-gradient(
+                    circle at 50% 20%,
+                    rgba(100, 110, 130, 0.35),
+                    transparent 35%
+                ),
+
+                linear-gradient(
+                    160deg,
+                    #252936,
+                    #171a23,
+                    #0d0f15
+                );
+        }
+
+
+        body.sad .flower,
+        body.sad .lily,
+        body.sad .sparkle {
+
+            opacity: 0;
+        }
+
+
+        /* Rain */
+
+        body.sad::before {
+
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: 1;
+
+            opacity: 0.35;
+
+            background-image:
+                repeating-linear-gradient(
+                    105deg,
+                    transparent 0px,
+                    transparent 18px,
+                    rgba(180, 200, 220, 0.25) 19px,
+                    transparent 20px
+                );
+
+            background-size:
+                30px 30px;
+
+            animation:
+                rain 0.7s linear infinite;
+        }
+
+
+        @keyframes rain {
+
+            from {
+                background-position:
+                    0 0;
+            }
+
+            to {
+                background-position:
+                    -30px 60px;
             }
         }
 
 
 
         /* =========================
-           MAIN STORY
+           STORY
         ========================= */
 
         .story {
@@ -404,7 +412,7 @@
 
 
         /* =========================
-           CHARACTER IMAGE
+           IMAGE
         ========================= */
 
         .character {
@@ -421,7 +429,8 @@
 
             display: block;
 
-            margin: 0 auto 10px auto;
+            margin:
+                0 auto 10px auto;
 
             user-select: none;
 
@@ -438,9 +447,23 @@
         }
 
 
+        @keyframes imageShow {
+
+            from {
+                opacity: 0;
+                transform: scale(0.94);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+
 
         /* =========================
-           STORY TEXT
+           TEXT
         ========================= */
 
         .story-text {
@@ -457,11 +480,22 @@
 
             max-width: 390px;
 
-            padding: 0 8px;
+            padding:
+                0 8px;
 
-            margin: 0 auto 8px auto;
+            margin:
+                0 auto 8px auto;
 
             font-weight: 500;
+
+            transition:
+                color 0.8s ease;
+        }
+
+
+        body.sad .story-text {
+
+            color: #eeeeee;
         }
 
 
@@ -484,7 +518,7 @@
 
 
         /* =========================
-           ALL BUTTONS
+           BUTTONS
         ========================= */
 
         button {
@@ -493,7 +527,8 @@
 
             max-width: 300px;
 
-            padding: 10px 15px;
+            padding:
+                10px 15px;
 
             background:
                 rgba(
@@ -526,21 +561,15 @@
                 );
 
             transition:
-
                 left 0.07s linear,
-
                 top 0.07s linear,
-
                 transform 0.07s linear;
-
-            backdrop-filter:
-                blur(5px);
         }
 
 
 
         /* =========================
-           FIRST BUTTON
+           BUTTON 1 - FIRST SCENE
         ========================= */
 
         #helloButton {
@@ -556,10 +585,6 @@
         }
 
 
-        /*
-         * 🤎 لە سەرەتای دوگمە
-         */
-
         #helloButton::before {
 
             content: "🤎";
@@ -569,10 +594,6 @@
             font-size: 20px;
         }
 
-
-        /*
-         * 🌷 لە لای چەپ
-         */
 
         #helloButton::after {
 
@@ -586,7 +607,7 @@
 
 
         /* =========================
-           SECOND BUTTON
+           BUTTON 2 - FIRST SCENE
         ========================= */
 
         #sadButton {
@@ -608,26 +629,44 @@
 
 
         /* =========================
-           IMAGE ANIMATION
+           SECOND SCENE
         ========================= */
 
-        @keyframes imageShow {
+        body.sad #helloButton {
 
-            from {
+            position: absolute;
 
-                opacity: 0;
+            top: 0;
 
-                transform:
-                    scale(0.94);
-            }
+            left: 50%;
 
-            to {
+            transform:
+                translateX(-50%);
+        }
 
-                opacity: 1;
 
-                transform:
-                    scale(1);
-            }
+        body.sad #helloButton::before {
+
+            content: "";
+        }
+
+
+        body.sad #helloButton::after {
+
+            content: "";
+        }
+
+
+        body.sad #sadButton {
+
+            position: absolute;
+
+            top: 55px;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
         }
 
 
@@ -668,7 +707,8 @@
 
             button {
 
-                padding: 8px 12px;
+                padding:
+                    8px 12px;
 
                 font-size: 15px;
             }
@@ -683,7 +723,7 @@
 
 
         /* =========================
-           VERY SMALL SCREENS
+           VERY SMALL SCREEN
         ========================= */
 
         @media (max-height: 600px) {
@@ -712,7 +752,8 @@
 
             button {
 
-                padding: 7px 10px;
+                padding:
+                    7px 10px;
 
                 font-size: 14px;
             }
@@ -754,96 +795,56 @@
 
 
     <!-- =========================
-         BACKGROUND FLOWERS
+         FLOWERS
     ========================= -->
 
+    <div class="flower flower1">🌸</div>
 
-    <div class="flower flower1">
-        🌸
-    </div>
+    <div class="flower flower2">🌷</div>
 
+    <div class="flower flower3">🌺</div>
 
-    <div class="flower flower2">
-        🌷
-    </div>
+    <div class="flower flower4">🌸</div>
 
+    <div class="flower flower5">🌷</div>
 
-    <div class="flower flower3">
-        🌺
-    </div>
-
-
-    <div class="flower flower4">
-        🌸
-    </div>
-
-
-    <div class="flower flower5">
-        🌷
-    </div>
-
-
-    <div class="flower flower6">
-        🌺
-    </div>
+    <div class="flower flower6">🌺</div>
 
 
 
     <!-- LILY -->
 
+    <div class="lily lily1">🌷</div>
 
-    <div class="lily lily1">
-        🌷
-    </div>
+    <div class="lily lily2">🌷</div>
 
-
-    <div class="lily lily2">
-        🌷
-    </div>
-
-
-    <div class="lily lily3">
-        🌷
-    </div>
+    <div class="lily lily3">🌷</div>
 
 
 
     <!-- SPARKLES -->
 
+    <div class="sparkle s1">✦</div>
 
-    <div class="sparkle s1">
-        ✦
-    </div>
+    <div class="sparkle s2">✧</div>
 
+    <div class="sparkle s3">✦</div>
 
-    <div class="sparkle s2">
-        ✧
-    </div>
-
-
-    <div class="sparkle s3">
-        ✦
-    </div>
-
-
-    <div class="sparkle s4">
-        ✧
-    </div>
+    <div class="sparkle s4">✧</div>
 
 
 
     <!-- =========================
-         MAIN STORY
+         STORY
     ========================= -->
-
 
     <div class="story">
 
 
         <!-- IMAGE -->
 
-
         <img
+            id="characterImage"
             src="bc2f39106e1a0c2f00d3cc1204eaec7a.jpg"
             alt="کاوی"
             class="character"
@@ -852,7 +853,6 @@
 
 
         <!-- TEXT -->
-
 
         <div
             class="story-text"
@@ -863,14 +863,12 @@
 
         <!-- BUTTONS -->
 
-
         <div
             class="buttons"
             id="buttonArea">
 
 
-            <!-- BUTTON 1 -->
-
+            <!-- FIRST BUTTON -->
 
             <button
                 id="helloButton">
@@ -881,8 +879,7 @@
 
 
 
-            <!-- BUTTON 2 -->
-
+            <!-- SECOND BUTTON -->
 
             <button
                 id="sadButton">
@@ -903,57 +900,23 @@
 
 
         /* =========================
-           TYPING EFFECT
+           ELEMENTS
         ========================= */
 
+        const body =
+            document.body;
 
-        const message =
-            "سڵاو من کاوی، زۆرم خۆشەوێی بەساقەو بم نونی گیان";
 
-
-        const textElement =
+        const image =
             document.getElementById(
-                "storyText"
+                "characterImage"
             );
 
 
-        let currentLetter = 0;
-
-
-        function typeText() {
-
-
-            if (
-                currentLetter <
-                message.length
-            ) {
-
-
-                textElement.textContent +=
-                    message.charAt(
-                        currentLetter
-                    );
-
-
-                currentLetter++;
-
-
-                setTimeout(
-                    typeText,
-                    70
-                );
-            }
-
-        }
-
-
-        typeText();
-
-
-
-        /* =========================
-           HELLO BUTTON
-        ========================= */
+        const text =
+            document.getElementById(
+                "storyText"
+            );
 
 
         const helloButton =
@@ -962,15 +925,95 @@
             );
 
 
-        helloButton.addEventListener(
-            "click",
-            function () {
+        const sadButton =
+            document.getElementById(
+                "sadButton"
+            );
 
-                alert(
-                    "سڵاو گیان ❤️"
+
+        const buttonArea =
+            document.getElementById(
+                "buttonArea"
+            );
+
+
+
+        /* =========================
+           FIRST TEXT
+        ========================= */
+
+        const firstMessage =
+            "سڵاو من کاوی، زۆرم خۆشەوێی بەساقەو بم نونی گیان";
+
+
+        /* =========================
+           SECOND TEXT
+        ========================= */
+
+        const secondMessage =
+            "زۆر بێتاقەتم";
+
+
+
+        /* =========================
+           TYPE TEXT FUNCTION
+        ========================= */
+
+        let typingTimer = null;
+
+
+        function typeText(message) {
+
+
+            if (typingTimer) {
+
+                clearTimeout(
+                    typingTimer
                 );
+            }
+
+
+            text.textContent = "";
+
+
+            let i = 0;
+
+
+            function writeLetter() {
+
+
+                if (
+                    i <
+                    message.length
+                ) {
+
+
+                    text.textContent +=
+                        message.charAt(i);
+
+
+                    i++;
+
+
+                    typingTimer =
+                        setTimeout(
+                            writeLetter,
+                            75
+                        );
+                }
 
             }
+
+
+            writeLetter();
+        }
+
+
+
+        /* Start */
+
+        typeText(
+            firstMessage
         );
 
 
@@ -978,18 +1021,6 @@
         /* =========================
            MOVING BUTTON
         ========================= */
-
-
-        const sadButton =
-            document.getElementById(
-                "sadButton"
-            );
-
-
-
-        /*
-         * شوێنی نوێی زۆر دوور
-         */
 
         function moveSadButton() {
 
@@ -1002,7 +1033,6 @@
                 sadButton.offsetHeight;
 
 
-
             const screenWidth =
                 window.innerWidth;
 
@@ -1010,11 +1040,6 @@
             const screenHeight =
                 window.innerHeight;
 
-
-
-            /*
-             * هەموو شاشەکە بەکاردێنین
-             */
 
             const maxX =
                 Math.max(
@@ -1034,11 +1059,6 @@
                 );
 
 
-
-            /*
-             * شوێنی هەڕەمەکی
-             */
-
             const randomX =
                 Math.floor(
                     Math.random() *
@@ -1052,11 +1072,6 @@
                     maxY
                 );
 
-
-
-            /*
-             * لە هەموو شاشەکەدا دەجوڵێت
-             */
 
             sadButton.style.position =
                 "fixed";
@@ -1077,15 +1092,152 @@
 
 
         /* =========================
-           TOUCH
+           FIRST BUTTON
+           GO TO SECOND SCENE
         ========================= */
 
+        helloButton.addEventListener(
+            "click",
+            function () {
+
+
+                /* Change image */
+
+                image.style.opacity = "0";
+
+
+                setTimeout(
+                    function () {
+
+
+                        image.src =
+                            "7b4e45edfbedd4efbcc4bab78fbefaec.jpg";
+
+
+                        image.style.opacity =
+                            "1";
+
+
+                    },
+                    350
+                );
+
+
+
+                /* Change background */
+
+                body.classList.add(
+                    "sad"
+                );
+
+
+
+                /* Change text */
+
+                typeText(
+                    secondMessage
+                );
+
+
+
+                /* Change first button */
+
+                helloButton.textContent =
+                    "بێتاقەت مەبە 🤗";
+
+
+
+                /* Change second button */
+
+                sadButton.textContent =
+                    "بۆ بێتاقەتی 🤔";
+
+
+
+                /*
+                 * گرنگ:
+                 * لە قۆناغی دووەمدا
+                 * دوگمەکان جێگیر دەبن.
+                 */
+
+                sadButton.style.position =
+                    "absolute";
+
+
+                sadButton.style.left =
+                    "50%";
+
+
+                sadButton.style.top =
+                    "55px";
+
+
+                sadButton.style.transform =
+                    "translateX(-50%)";
+
+
+                helloButton.style.position =
+                    "absolute";
+
+
+                helloButton.style.left =
+                    "50%";
+
+
+                helloButton.style.top =
+                    "0";
+
+
+                helloButton.style.transform =
+                    "translateX(-50%)";
+
+
+                /*
+                 * لە قۆناغی دووەمدا
+                 * ئەم دوگمەیەش ناچالاک دەکەین
+                 * بۆ ئەوەی تەنیا وەک دوگمەی
+                 * جێگیر بمێنێتەوە.
+                 */
+
+                helloButton.disabled =
+                    true;
+
+
+                sadButton.disabled =
+                    true;
+
+            }
+        );
+
+
+
+        /* =========================
+           MOVING BUTTON - TOUCH
+           ONLY FIRST SCENE
+        ========================= */
 
         sadButton.addEventListener(
             "touchstart",
             function (event) {
 
+
+                /*
+                 * ئەگەر قۆناغی دووەمە،
+                 * هیچ مەجوڵێنین.
+                 */
+
+                if (
+                    body.classList.contains(
+                        "sad"
+                    )
+                ) {
+
+                    return;
+                }
+
+
                 event.preventDefault();
+
 
                 moveSadButton();
 
@@ -1098,13 +1250,24 @@
 
 
         /* =========================
-           MOUSE
+           MOVING BUTTON - MOUSE
+           ONLY FIRST SCENE
         ========================= */
-
 
         sadButton.addEventListener(
             "pointerenter",
             function () {
+
+
+                if (
+                    body.classList.contains(
+                        "sad"
+                    )
+                ) {
+
+                    return;
+                }
+
 
                 moveSadButton();
 
@@ -1114,15 +1277,27 @@
 
 
         /* =========================
-           POINTER DOWN
+           MOVING BUTTON - POINTER
+           ONLY FIRST SCENE
         ========================= */
-
 
         sadButton.addEventListener(
             "pointerdown",
             function (event) {
 
+
+                if (
+                    body.classList.contains(
+                        "sad"
+                    )
+                ) {
+
+                    return;
+                }
+
+
                 event.preventDefault();
+
 
                 moveSadButton();
 
@@ -1133,14 +1308,26 @@
 
         /* =========================
            CLICK
+           ONLY FIRST SCENE
         ========================= */
-
 
         sadButton.addEventListener(
             "click",
             function (event) {
 
+
+                if (
+                    body.classList.contains(
+                        "sad"
+                    )
+                ) {
+
+                    return;
+                }
+
+
                 event.preventDefault();
+
 
                 moveSadButton();
 
