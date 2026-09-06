@@ -100,6 +100,7 @@ body{
     margin:20px 0;
 
     font-size:20px;
+
     font-weight:700;
 
     color:#6b2039;
@@ -123,7 +124,7 @@ body{
 
 
 /* =========================
-   BUTTONS
+   ALL BUTTONS
 ========================= */
 
 button{
@@ -172,7 +173,6 @@ button{
 
 
 #sadButton{
-
     background:#f5eef1;
 
     color:#555;
@@ -295,22 +295,53 @@ body.sad .story-text{
 
 
 /*
-   هەردوو دوگمەی وێنەی ٢
-   هەمیشە دیارن
+   وێنەی ٢:
+   هەردوو دوگمە لە تەنیشت یەک
 */
+
+body.sad .buttons{
+
+    display:flex;
+
+    flex-direction:row;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:4px;
+
+    min-height:170px;
+}
+
 
 body.sad #helloButton,
 body.sad #sadButton{
 
-    display:inline-block !important;
+    display:inline-flex !important;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin:5px;
+
+    white-space:nowrap;
 }
 
 
 /*
-   دوگمەی یەکەم
+   دوگمەی بێتاقەت مەبە
+   سەرەتا جێگیر
 */
 
 body.sad #helloButton{
+
+    position:relative;
+
+    left:auto;
+
+    top:auto;
 
     background:
         linear-gradient(
@@ -320,15 +351,27 @@ body.sad #helloButton{
         );
 
     color:#721d3d;
+
+    transition:
+        left .08s linear,
+        top .08s linear;
 }
 
 
 /*
-   دوگمەی دووەم
-   جێگیرە
+   دوگمەی بۆ بێتاقەتی
+   هەمیشە جێگیر
 */
 
 body.sad #sadButton{
+
+    position:relative !important;
+
+    left:auto !important;
+
+    top:auto !important;
+
+    transform:none !important;
 
     background:
         linear-gradient(
@@ -338,13 +381,6 @@ body.sad #sadButton{
         );
 
     color:#26354d;
-
-    position:relative !important;
-
-    left:auto !important;
-    top:auto !important;
-
-    transform:none !important;
 }
 
 
@@ -424,7 +460,6 @@ body.confused #confusedButton{
             translate(2px,1px)
             rotate(.3deg);
     }
-
 }
 
 
@@ -464,6 +499,7 @@ body.scene4 .story-text{
     font-size:20px;
 
     margin-top:20px;
+
     margin-bottom:18px;
 }
 
@@ -573,7 +609,6 @@ body.scene5 .story-text{
         transform:
             translateY(0);
     }
-
 }
 
 
@@ -681,11 +716,12 @@ body.scene5 .story-text{
             translateY(-15px)
             rotate(5deg);
     }
-
 }
 
 
-/* گوڵەکان تەنیا لە Scene 1 */
+/*
+   گوڵەکان تەنیا لە Scene 1
+*/
 
 body.sad .romantic-flower,
 body.confused .romantic-flower,
@@ -703,7 +739,7 @@ body.scene5 .romantic-flower{
 @media(max-width:600px){
 
     .story{
-        width:92vw;
+        width:94vw;
     }
 
     #characterImage{
@@ -726,6 +762,23 @@ body.scene5 .romantic-flower{
         font-size:13px;
     }
 
+
+    /*
+       لە مۆبایل هەردوو دوگمەی
+       Scene 2 بە تەنیشت یەک
+    */
+
+    body.sad .buttons{
+        gap:2px;
+    }
+
+    body.sad #helloButton,
+    body.sad #sadButton{
+        padding:13px 18px;
+        font-size:15px;
+        margin:4px;
+    }
+
 }
 
 </style>
@@ -736,9 +789,9 @@ body.scene5 .romantic-flower{
 <body>
 
 
-<!-- =========================================
+<!-- =========================
      FLOWERS
-========================================= -->
+========================= -->
 
 <div class="romantic-flower flower1">🌹</div>
 <div class="romantic-flower flower2">🌷</div>
@@ -750,9 +803,10 @@ body.scene5 .romantic-flower{
 <div class="romantic-flower flower8">🌷</div>
 
 
-<!-- =========================================
+
+<!-- =========================
      STORY
-========================================= -->
+========================= -->
 
 <div class="story">
 
@@ -770,9 +824,7 @@ body.scene5 .romantic-flower{
     </div>
 
 
-    <!-- =====================================
-         FINAL TEXT
-    ====================================== -->
+    <!-- FINAL -->
 
     <div id="finalEnd">
 
@@ -781,9 +833,11 @@ body.scene5 .romantic-flower{
         </div>
 
         <div class="final-date">
+
             6/9/2026
             <br>
             6 ئێوارە
+
         </div>
 
     </div>
@@ -792,9 +846,7 @@ body.scene5 .romantic-flower{
     <div class="buttons">
 
 
-        <!-- =================================
-             SCENE 1 / SCENE 2
-        ================================== -->
+        <!-- SCENE 1 / SCENE 2 -->
 
         <button id="helloButton">
             سڵاو گیان
@@ -806,9 +858,7 @@ body.scene5 .romantic-flower{
         </button>
 
 
-        <!-- =================================
-             SCENE 3
-        ================================== -->
+        <!-- SCENE 3 -->
 
         <button id="confusedButton">
             قەلەقی چیت
@@ -820,9 +870,7 @@ body.scene5 .romantic-flower{
         </button>
 
 
-        <!-- =================================
-             SCENE 4
-        ================================== -->
+        <!-- SCENE 4 -->
 
         <button
             id="notForgiveButton"
@@ -851,9 +899,9 @@ body.scene5 .romantic-flower{
 <script>
 
 
-/* =========================================
+/* =========================
    ELEMENTS
-========================================= */
+========================= */
 
 const body =
     document.body;
@@ -913,9 +961,9 @@ const kissButton =
     );
 
 
-/* =========================================
+/* =========================
    TEXTS
-========================================= */
+========================= */
 
 const firstMessage =
     "سڵاو من کاوی، زۆرم خۆشەوێی بەساقەو بم نونی گیان";
@@ -942,10 +990,9 @@ let typingTimer = null;
 let confusedStep = 0;
 
 
-
-/* =========================================
+/* =========================
    TYPE TEXT
-========================================= */
+========================= */
 
 function typeText(
     message,
@@ -993,9 +1040,9 @@ function typeText(
 
 
 
-/* =========================================
+/* =========================
    MOVE BUTTON FAR
-========================================= */
+========================= */
 
 function moveButtonFar(button){
 
@@ -1079,6 +1126,8 @@ helloButton.addEventListener(
 /* =========================================
    SCENE 1
    خۆش حاڵ نەبووم
+
+   سەرەتا جێگیرە
    تەنیا دوای پەنجەلێدان دەجوڵێت
 ========================================= */
 
@@ -1124,14 +1173,6 @@ function goToScene2(){
     );
 
 
-    helloButton.style.display =
-        "inline-block";
-
-
-    sadButton.style.display =
-        "inline-block";
-
-
     helloButton.textContent =
         "بێتاقەت مەبە 🤗";
 
@@ -1141,14 +1182,25 @@ function goToScene2(){
 
 
     /*
-       سەرەتا هەردووکیان جێگیر
+       هەردوو دوگمە سەرەتا
+       لە تەنیشت یەک
     */
+
+    helloButton.style.display =
+        "inline-flex";
+
+
+    sadButton.style.display =
+        "inline-flex";
+
 
     helloButton.style.position =
         "relative";
 
+
     helloButton.style.left =
         "";
+
 
     helloButton.style.top =
         "";
@@ -1157,8 +1209,10 @@ function goToScene2(){
     sadButton.style.position =
         "relative";
 
+
     sadButton.style.left =
         "";
+
 
     sadButton.style.top =
         "";
@@ -1188,7 +1242,9 @@ function goToScene2(){
 
 /* =========================================
    SCENE 2
-   بێتاقەت مەبە → MOVE
+   بێتاقەت مەبە
+
+   تەنیا دوای پەنجەلێدان ڕادەکات
 ========================================= */
 
 helloButton.addEventListener(
@@ -1216,7 +1272,10 @@ helloButton.addEventListener(
 
 /* =========================================
    SCENE 2
-   بۆ بێتاقەتی → SCENE 3
+   بۆ بێتاقەتی
+
+   جێگیرە
+   → SCENE 3
 ========================================= */
 
 sadButton.addEventListener(
@@ -1285,8 +1344,10 @@ function goToScene3(){
     confusedButton.style.position =
         "relative";
 
+
     confusedButton.style.left =
         "";
+
 
     confusedButton.style.top =
         "";
@@ -1299,8 +1360,7 @@ function goToScene3(){
 
 
 /* =========================================
-   SCENE 3
-   MOVE
+   SCENE 3 MOVE
 ========================================= */
 
 function moveConfusedButton(){
@@ -1511,14 +1571,16 @@ function goToScene4(){
 
 
     /*
-       هەردوو دوگمە سەرەتا جێگیر
+       هەردووکیان سەرەتا جێگیر
     */
 
     notForgiveButton.style.position =
         "relative";
 
+
     notForgiveButton.style.left =
         "";
+
 
     notForgiveButton.style.top =
         "";
@@ -1527,8 +1589,10 @@ function goToScene4(){
     kissButton.style.position =
         "relative";
 
+
     kissButton.style.left =
         "";
+
 
     kissButton.style.top =
         "";
@@ -1538,7 +1602,8 @@ function goToScene4(){
 
 /* =========================================
    SCENE 4
-   ئاشت ناکەمەوە → MOVE
+   ئاشت ناکەمەوە
+   تەنیا دوای پەنجەلێدان دەجوڵێت
 ========================================= */
 
 notForgiveButton.addEventListener(
@@ -1615,33 +1680,33 @@ function goToScene5(){
     helloButton.style.display =
         "none";
 
+
     sadButton.style.display =
         "none";
+
 
     confusedButton.style.display =
         "none";
 
+
     skipButton.style.display =
         "none";
+
 
     notForgiveButton.style.display =
         "none";
 
+
     kissButton.style.display =
         "none";
 
-
-    /*
-       کۆتای بشارەوە
-    */
 
     finalEnd.style.display =
         "none";
 
 
     /*
-       دەقی وێنەی ٥
-       پیت بە پیت
+       دەقی کۆتایی
     */
 
     typeText(
@@ -1651,8 +1716,7 @@ function goToScene5(){
 
 
     /*
-       دوای کەمێک
-       کۆتای + بەروار + کات
+       دوای ٢.٥ چرکە
     */
 
     setTimeout(
