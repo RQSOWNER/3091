@@ -1,1 +1,501 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
 
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>3091</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: white;
+            min-height: 100vh;
+
+            font-family:
+                Arial,
+                "Noto Sans Arabic",
+                sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+        }
+
+        .story {
+            width: 100%;
+            max-width: 520px;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           وێنە
+        ========================= */
+
+        .character {
+            width: 100%;
+            max-width: 470px;
+
+            height: auto;
+
+            display: block;
+
+            margin: 0 auto 25px auto;
+
+            object-fit: contain;
+
+            user-select: none;
+
+            -webkit-user-drag: none;
+
+            animation: imageShow 0.8s ease;
+        }
+
+
+        /* =========================
+           تێکست
+        ========================= */
+
+        .story-text {
+
+            color: #222;
+
+            font-size: 22px;
+
+            line-height: 2;
+
+            min-height: 95px;
+
+            max-width: 480px;
+
+            margin: 0 auto 25px auto;
+
+            padding: 0 10px;
+        }
+
+
+        /* =========================
+           شوێنی دوگمەکان
+        ========================= */
+
+        .buttons {
+
+            position: relative;
+
+            width: 100%;
+
+            height: 160px;
+        }
+
+
+        /* =========================
+           دوگمەکان
+        ========================= */
+
+        button {
+
+            width: 85%;
+
+            max-width: 340px;
+
+            padding: 13px 20px;
+
+            background: white;
+
+            color: #222;
+
+            border: 1px solid #dddddd;
+
+            border-radius: 12px;
+
+            font-size: 17px;
+
+            font-family: inherit;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 3px 12px
+                rgba(0, 0, 0, 0.08);
+
+            transition:
+                left 0.12s ease,
+                top 0.12s ease,
+                transform 0.12s ease;
+        }
+
+
+        /* =========================
+           دوگمەی یەکەم
+        ========================= */
+
+        #helloButton {
+
+            position: absolute;
+
+            top: 0;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+        }
+
+
+        /* =========================
+           دوگمەی دووەم
+        ========================= */
+
+        #sadButton {
+
+            position: absolute;
+
+            top: 65px;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+        }
+
+
+        /* =========================
+           Animation ـی وێنە
+        ========================= */
+
+        @keyframes imageShow {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    scale(0.95);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    scale(1);
+            }
+        }
+
+
+        /* =========================
+           مۆبایل
+        ========================= */
+
+        @media (max-width: 500px) {
+
+            body {
+
+                padding: 15px;
+            }
+
+            .character {
+
+                max-width: 96vw;
+            }
+
+            .story-text {
+
+                font-size: 20px;
+            }
+
+            button {
+
+                width: 90%;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <div class="story">
+
+
+        <!-- =========================
+             وێنەی یەکەم
+        ========================= -->
+
+        <img
+            src="bc2f39106e1a0c2f00d3cc1204eaec7a.jpg"
+            alt="کاوی"
+            class="character"
+        >
+
+
+        <!-- =========================
+             تێکستی چیرۆک
+        ========================= -->
+
+        <div
+            class="story-text"
+            id="storyText">
+        </div>
+
+
+        <!-- =========================
+             دوگمەکان
+        ========================= -->
+
+        <div
+            class="buttons"
+            id="buttonArea">
+
+
+            <!-- دوگمەی یەکەم -->
+
+            <button
+                id="helloButton">
+
+                سڵاو گیان
+
+            </button>
+
+
+            <!-- دوگمەی دووەم -->
+
+            <button
+                id="sadButton">
+
+                خۆش حاڵ نەبووم
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+
+        /* =========================
+           تێکستی چیرۆک
+        ========================= */
+
+        const message =
+            "سڵاو من کاوی، زۆرم خۆشەوێی بەساقەو بم نونی گیان";
+
+
+        const textElement =
+            document.getElementById(
+                "storyText"
+            );
+
+
+        let currentLetter = 0;
+
+
+        /* =========================
+           نووسینی وردە وردە
+        ========================= */
+
+        function typeText() {
+
+            if (
+                currentLetter <
+                message.length
+            ) {
+
+                textElement.textContent +=
+                    message.charAt(
+                        currentLetter
+                    );
+
+                currentLetter++;
+
+                setTimeout(
+                    typeText,
+                    70
+                );
+            }
+        }
+
+
+        typeText();
+
+
+        /* =========================
+           دوگمەی سڵاو گیان
+        ========================= */
+
+        const helloButton =
+            document.getElementById(
+                "helloButton"
+            );
+
+
+        helloButton.addEventListener(
+            "click",
+            function () {
+
+                alert(
+                    "سڵاو گیان ❤️"
+                );
+
+            }
+        );
+
+
+        /* =========================
+           دوگمەی
+           خۆش حاڵ نەبووم
+        ========================= */
+
+        const sadButton =
+            document.getElementById(
+                "sadButton"
+            );
+
+
+        const buttonArea =
+            document.getElementById(
+                "buttonArea"
+            );
+
+
+        /* =========================
+           گۆڕینی شوێنی دوگمە
+        ========================= */
+
+        function moveSadButton() {
+
+            const areaWidth =
+                buttonArea.clientWidth;
+
+            const areaHeight =
+                buttonArea.clientHeight;
+
+
+            const buttonWidth =
+                sadButton.offsetWidth;
+
+            const buttonHeight =
+                sadButton.offsetHeight;
+
+
+            /* سنووری X */
+
+            const maxX =
+                Math.max(
+                    0,
+                    areaWidth -
+                    buttonWidth
+                );
+
+
+            /* سنووری Y */
+
+            const maxY =
+                Math.max(
+                    0,
+                    areaHeight -
+                    buttonHeight
+                );
+
+
+            /* شوێنی هەڕەمەکی */
+
+            const randomX =
+                Math.floor(
+                    Math.random() *
+                    maxX
+                );
+
+
+            const randomY =
+                Math.floor(
+                    Math.random() *
+                    maxY
+                );
+
+
+            /* دوگمەکە بگوازەوە */
+
+            sadButton.style.left =
+                randomX + "px";
+
+
+            sadButton.style.top =
+                randomY + "px";
+
+
+            sadButton.style.transform =
+                "none";
+        }
+
+
+        /* =========================
+           مۆبایل
+        ========================= */
+
+        sadButton.addEventListener(
+            "touchstart",
+            function (event) {
+
+                event.preventDefault();
+
+                moveSadButton();
+
+            },
+            {
+                passive: false
+            }
+        );
+
+
+        /* =========================
+           کۆمپیوتەر
+        ========================= */
+
+        sadButton.addEventListener(
+            "pointerenter",
+            function () {
+
+                moveSadButton();
+
+            }
+        );
+
+
+        /* =========================
+           ئەگەر کلیکیش کرا
+        ========================= */
+
+        sadButton.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                moveSadButton();
+
+            }
+        );
+
+
+    </script>
+
+</body>
+
+</html>
