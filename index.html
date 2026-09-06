@@ -10,7 +10,6 @@
 
     <title>3091</title>
 
-
     <style>
 
         * {
@@ -19,14 +18,12 @@
             padding: 0;
         }
 
-
         html,
         body {
             width: 100%;
             height: 100%;
             overflow: hidden;
         }
-
 
         body {
 
@@ -74,7 +71,7 @@
 
 
         /* =========================
-           HAPPY BACKGROUND
+           FLOWERS
         ========================= */
 
         .flower {
@@ -101,14 +98,12 @@
             font-size: 34px;
         }
 
-
         .flower2 {
             top: 12%;
             right: 5%;
             font-size: 30px;
             animation-delay: 1s;
         }
-
 
         .flower3 {
             bottom: 8%;
@@ -117,7 +112,6 @@
             animation-delay: 2s;
         }
 
-
         .flower4 {
             bottom: 10%;
             right: 5%;
@@ -125,14 +119,12 @@
             animation-delay: 1.5s;
         }
 
-
         .flower5 {
             top: 45%;
             left: 2%;
             font-size: 25px;
             animation-delay: 2.5s;
         }
-
 
         .flower6 {
             top: 55%;
@@ -171,13 +163,11 @@
                 opacity 0.7s ease;
         }
 
-
         .lily1 {
             top: 3%;
             right: 20%;
             font-size: 34px;
         }
-
 
         .lily2 {
             bottom: 4%;
@@ -185,7 +175,6 @@
             font-size: 32px;
             animation-delay: 2s;
         }
-
 
         .lily3 {
             top: 62%;
@@ -218,12 +207,10 @@
                 opacity 0.7s ease;
         }
 
-
         .s1 {
             top: 15%;
             left: 35%;
         }
-
 
         .s2 {
             top: 35%;
@@ -231,13 +218,11 @@
             animation-delay: 1s;
         }
 
-
         .s3 {
             bottom: 18%;
             right: 30%;
             animation-delay: 1.7s;
         }
-
 
         .s4 {
             bottom: 35%;
@@ -247,7 +232,118 @@
 
 
         /* =========================
-           ANIMATIONS
+           SAD EMOJIS
+        ========================= */
+
+        .sad-emoji {
+
+            position: fixed;
+
+            pointer-events: none;
+
+            user-select: none;
+
+            z-index: 1;
+
+            opacity: 0;
+
+            font-size: 34px;
+
+            filter:
+                drop-shadow(
+                    0 3px 8px
+                    rgba(0, 0, 0, 0.25)
+                );
+
+            transition:
+                opacity 1s ease;
+        }
+
+
+        .sad-1 {
+            top: 8%;
+            left: 7%;
+            animation:
+                sadFloat1 5s ease-in-out infinite;
+        }
+
+        .sad-2 {
+            top: 20%;
+            right: 8%;
+            animation:
+                sadFloat2 6s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+
+        .sad-3 {
+            top: 43%;
+            left: 5%;
+            animation:
+                sadFloat1 5.5s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .sad-4 {
+            top: 50%;
+            right: 5%;
+            animation:
+                sadFloat2 5s ease-in-out infinite;
+            animation-delay: 1.5s;
+        }
+
+        .sad-5 {
+            bottom: 10%;
+            left: 12%;
+            animation:
+                sadFloat1 6s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+
+        .sad-6 {
+            bottom: 8%;
+            right: 12%;
+            animation:
+                sadFloat2 5.5s ease-in-out infinite;
+            animation-delay: 2.5s;
+        }
+
+
+        @keyframes sadFloat1 {
+
+            0%,
+            100% {
+                transform:
+                    translateY(0)
+                    rotate(-4deg);
+            }
+
+            50% {
+                transform:
+                    translateY(-15px)
+                    rotate(5deg);
+            }
+        }
+
+
+        @keyframes sadFloat2 {
+
+            0%,
+            100% {
+                transform:
+                    translateY(0)
+                    rotate(4deg);
+            }
+
+            50% {
+                transform:
+                    translateY(13px)
+                    rotate(-5deg);
+            }
+        }
+
+
+        /* =========================
+           NORMAL ANIMATIONS
         ========================= */
 
         @keyframes floating {
@@ -308,9 +404,15 @@
             background:
 
                 radial-gradient(
-                    circle at 50% 20%,
+                    circle at 50% 15%,
                     rgba(100, 110, 130, 0.35),
                     transparent 35%
+                ),
+
+                radial-gradient(
+                    circle at 20% 80%,
+                    rgba(60, 65, 80, 0.4),
+                    transparent 30%
                 ),
 
                 linear-gradient(
@@ -330,7 +432,15 @@
         }
 
 
-        /* Rain */
+        body.sad .sad-emoji {
+
+            opacity: 0.72;
+        }
+
+
+        /* =========================
+           RAIN
+        ========================= */
 
         body.sad::before {
 
@@ -342,16 +452,22 @@
 
             pointer-events: none;
 
-            z-index: 1;
+            z-index: 0;
 
-            opacity: 0.35;
+            opacity: 0.32;
 
             background-image:
+
                 repeating-linear-gradient(
                     105deg,
                     transparent 0px,
                     transparent 18px,
-                    rgba(180, 200, 220, 0.25) 19px,
+                    rgba(
+                        180,
+                        200,
+                        220,
+                        0.25
+                    ) 19px,
                     transparent 20px
                 );
 
@@ -377,7 +493,6 @@
         }
 
 
-
         /* =========================
            STORY
         ========================= */
@@ -396,7 +511,7 @@
 
             position: relative;
 
-            z-index: 2;
+            z-index: 5;
 
             display: flex;
 
@@ -408,7 +523,6 @@
 
             overflow: visible;
         }
-
 
 
         /* =========================
@@ -444,6 +558,9 @@
 
             animation:
                 imageShow 0.8s ease;
+
+            transition:
+                opacity 0.35s ease;
         }
 
 
@@ -459,7 +576,6 @@
                 transform: scale(1);
             }
         }
-
 
 
         /* =========================
@@ -499,7 +615,6 @@
         }
 
 
-
         /* =========================
            BUTTON AREA
         ========================= */
@@ -514,7 +629,6 @@
 
             overflow: visible;
         }
-
 
 
         /* =========================
@@ -567,9 +681,8 @@
         }
 
 
-
         /* =========================
-           BUTTON 1 - FIRST SCENE
+           FIRST BUTTON
         ========================= */
 
         #helloButton {
@@ -605,9 +718,8 @@
         }
 
 
-
         /* =========================
-           BUTTON 2 - FIRST SCENE
+           SECOND BUTTON
         ========================= */
 
         #sadButton {
@@ -627,9 +739,8 @@
         }
 
 
-
         /* =========================
-           SECOND SCENE
+           SECOND SCENE BUTTONS
         ========================= */
 
         body.sad #helloButton {
@@ -645,12 +756,7 @@
         }
 
 
-        body.sad #helloButton::before {
-
-            content: "";
-        }
-
-
+        body.sad #helloButton::before,
         body.sad #helloButton::after {
 
             content: "";
@@ -670,9 +776,8 @@
         }
 
 
-
         /* =========================
-           SMALL PHONES
+           MOBILE
         ========================= */
 
         @media (max-height: 700px) {
@@ -718,8 +823,13 @@
 
                 top: 50px;
             }
-        }
 
+
+            .sad-emoji {
+
+                font-size: 27px;
+            }
+        }
 
 
         /* =========================
@@ -763,12 +873,17 @@
 
                 top: 43px;
             }
+
+
+            .sad-emoji {
+
+                font-size: 23px;
+            }
         }
 
 
-
         /* =========================
-           WIDE PHONES
+           WIDE SCREEN
         ========================= */
 
         @media (min-width: 501px) {
@@ -790,12 +905,11 @@
 </head>
 
 
-
 <body>
 
 
     <!-- =========================
-         FLOWERS
+         HAPPY FLOWERS
     ========================= -->
 
     <div class="flower flower1">🌸</div>
@@ -811,7 +925,6 @@
     <div class="flower flower6">🌺</div>
 
 
-
     <!-- LILY -->
 
     <div class="lily lily1">🌷</div>
@@ -819,7 +932,6 @@
     <div class="lily lily2">🌷</div>
 
     <div class="lily lily3">🌷</div>
-
 
 
     <!-- SPARKLES -->
@@ -835,13 +947,41 @@
 
 
     <!-- =========================
-         STORY
+         SAD EMOJIS
+    ========================= -->
+
+    <div class="sad-emoji sad-1">
+        😟
+    </div>
+
+    <div class="sad-emoji sad-2">
+        🙁
+    </div>
+
+    <div class="sad-emoji sad-3">
+        😿
+    </div>
+
+    <div class="sad-emoji sad-4">
+        ☹️
+    </div>
+
+    <div class="sad-emoji sad-5">
+        😭
+    </div>
+
+    <div class="sad-emoji sad-6">
+        😢
+    </div>
+
+
+
+    <!-- =========================
+         MAIN STORY
     ========================= -->
 
     <div class="story">
 
-
-        <!-- IMAGE -->
 
         <img
             id="characterImage"
@@ -851,17 +991,11 @@
         >
 
 
-
-        <!-- TEXT -->
-
         <div
             class="story-text"
             id="storyText">
         </div>
 
-
-
-        <!-- BUTTONS -->
 
         <div
             class="buttons"
@@ -878,7 +1012,6 @@
             </button>
 
 
-
             <!-- SECOND BUTTON -->
 
             <button
@@ -890,7 +1023,6 @@
 
 
         </div>
-
 
     </div>
 
@@ -931,36 +1063,26 @@
             );
 
 
-        const buttonArea =
-            document.getElementById(
-                "buttonArea"
-            );
-
-
 
         /* =========================
-           FIRST TEXT
+           TEXTS
         ========================= */
 
         const firstMessage =
             "سڵاو من کاوی، زۆرم خۆشەوێی بەساقەو بم نونی گیان";
 
 
-        /* =========================
-           SECOND TEXT
-        ========================= */
-
         const secondMessage =
             "زۆر بێتاقەتم";
 
 
-
-        /* =========================
-           TYPE TEXT FUNCTION
-        ========================= */
-
         let typingTimer = null;
 
+
+
+        /* =========================
+           TYPE TEXT
+        ========================= */
 
         function typeText(message) {
 
@@ -1010,7 +1132,7 @@
 
 
 
-        /* Start */
+        /* FIRST MESSAGE */
 
         typeText(
             firstMessage
@@ -1019,7 +1141,7 @@
 
 
         /* =========================
-           MOVING BUTTON
+           MOVE BUTTON
         ========================= */
 
         function moveSadButton() {
@@ -1092,8 +1214,8 @@
 
 
         /* =========================
-           FIRST BUTTON
-           GO TO SECOND SCENE
+           BUTTON 1
+           CHANGE TO SCENE 2
         ========================= */
 
         helloButton.addEventListener(
@@ -1103,7 +1225,8 @@
 
                 /* Change image */
 
-                image.style.opacity = "0";
+                image.style.opacity =
+                    "0";
 
 
                 setTimeout(
@@ -1124,7 +1247,7 @@
 
 
 
-                /* Change background */
+                /* Sad background */
 
                 body.classList.add(
                     "sad"
@@ -1140,25 +1263,18 @@
 
 
 
-                /* Change first button */
+                /* Change buttons */
 
                 helloButton.textContent =
                     "بێتاقەت مەبە 🤗";
 
-
-
-                /* Change second button */
 
                 sadButton.textContent =
                     "بۆ بێتاقەتی 🤔";
 
 
 
-                /*
-                 * گرنگ:
-                 * لە قۆناغی دووەمدا
-                 * دوگمەکان جێگیر دەبن.
-                 */
+                /* Stop movement */
 
                 sadButton.style.position =
                     "absolute";
@@ -1193,10 +1309,8 @@
 
 
                 /*
-                 * لە قۆناغی دووەمدا
-                 * ئەم دوگمەیەش ناچالاک دەکەین
-                 * بۆ ئەوەی تەنیا وەک دوگمەی
-                 * جێگیر بمێنێتەوە.
+                 * دوگمەکان لە قۆناغی دووەمدا
+                 * جێگیر دەبن.
                  */
 
                 helloButton.disabled =
@@ -1212,19 +1326,14 @@
 
 
         /* =========================
-           MOVING BUTTON - TOUCH
-           ONLY FIRST SCENE
+           MOVING BUTTON
+           TOUCH
         ========================= */
 
         sadButton.addEventListener(
             "touchstart",
             function (event) {
 
-
-                /*
-                 * ئەگەر قۆناغی دووەمە،
-                 * هیچ مەجوڵێنین.
-                 */
 
                 if (
                     body.classList.contains(
@@ -1250,8 +1359,8 @@
 
 
         /* =========================
-           MOVING BUTTON - MOUSE
-           ONLY FIRST SCENE
+           MOVING BUTTON
+           MOUSE
         ========================= */
 
         sadButton.addEventListener(
@@ -1277,8 +1386,8 @@
 
 
         /* =========================
-           MOVING BUTTON - POINTER
-           ONLY FIRST SCENE
+           MOVING BUTTON
+           POINTER DOWN
         ========================= */
 
         sadButton.addEventListener(
@@ -1307,8 +1416,8 @@
 
 
         /* =========================
+           MOVING BUTTON
            CLICK
-           ONLY FIRST SCENE
         ========================= */
 
         sadButton.addEventListener(
@@ -1336,7 +1445,6 @@
 
 
     </script>
-
 
 </body>
 
