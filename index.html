@@ -9,86 +9,149 @@
 
 <style>
 
+/* =========================
+   GENERAL
+========================= */
+
 *{
-  box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
-  width:100%;
-  height:100%;
-  margin:0;
-  padding:0;
-  overflow:hidden;
+html,
+body{
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+    overflow:hidden;
 }
 
 body{
-  font-family:Arial,sans-serif;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
+    font-family:Arial,sans-serif;
 
-  background:
-    radial-gradient(circle at 15% 20%,rgba(255,255,255,.95),transparent 22%),
-    radial-gradient(circle at 85% 15%,rgba(255,220,230,.85),transparent 25%),
-    linear-gradient(135deg,#fff8fa,#ffe1ea,#fff);
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-  transition:background .6s ease;
-}
+    position:relative;
 
-.story{
-  position:relative;
-  z-index:10;
-  width:min(92vw,420px);
-  text-align:center;
-}
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(255,255,255,.95),
+            transparent 22%
+        ),
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(255,220,230,.85),
+            transparent 25%
+        ),
+        linear-gradient(
+            135deg,
+            #fff8fa,
+            #ffe1ea,
+            #fff
+        );
 
-#characterImage{
-  width:min(75vw,280px);
-  max-height:45vh;
-  object-fit:cover;
-  border-radius:24px;
-  box-shadow:0 15px 40px rgba(120,30,60,.20);
-}
-
-.story-text{
-  min-height:58px;
-  margin:20px 0;
-  font-size:20px;
-  font-weight:700;
-  color:#6b2039;
-  text-shadow:0 2px 8px rgba(255,255,255,.8);
-}
-
-.buttons{
-  position:relative;
-  min-height:170px;
+    transition:background .6s ease;
 }
 
 
 /* =========================
-   ALL BUTTONS
+   STORY
+========================= */
+
+.story{
+    position:relative;
+    z-index:10;
+    width:min(92vw,420px);
+    text-align:center;
+}
+
+
+/* =========================
+   IMAGE
+========================= */
+
+#characterImage{
+    width:min(75vw,280px);
+    max-height:45vh;
+
+    object-fit:cover;
+
+    border-radius:24px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(120,30,60,.20);
+
+    transition:.6s;
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+.story-text{
+    min-height:58px;
+
+    margin:20px 0;
+
+    font-size:20px;
+    font-weight:700;
+
+    color:#6b2039;
+
+    line-height:1.8;
+
+    text-shadow:
+        0 2px 8px
+        rgba(255,255,255,.8);
+}
+
+
+/* =========================
+   BUTTON AREA
+========================= */
+
+.buttons{
+    position:relative;
+    min-height:170px;
+}
+
+
+/* =========================
+   BUTTONS
 ========================= */
 
 button{
-  border:0;
-  border-radius:999px;
-  padding:14px 24px;
-  margin:7px;
+    border:0;
 
-  font-size:16px;
-  font-weight:700;
+    border-radius:999px;
 
-  cursor:pointer;
+    padding:14px 24px;
 
-  box-shadow:0 8px 22px rgba(90,20,50,.18);
+    margin:7px;
 
-  position:relative;
-  z-index:30;
+    font-size:16px;
 
-  user-select:none;
-  touch-action:none;
+    font-weight:700;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 22px
+        rgba(90,20,50,.18);
+
+    position:relative;
+
+    z-index:30;
+
+    user-select:none;
+
+    touch-action:none;
 }
 
 
@@ -97,17 +160,26 @@ button{
 ========================= */
 
 #helloButton{
-  background:linear-gradient(135deg,#f7cbd8,#fff0f5);
-  color:#721d3d;
+    background:
+        linear-gradient(
+            135deg,
+            #f7cbd8,
+            #fff0f5
+        );
+
+    color:#721d3d;
 }
 
-#sadButton{
-  background:#f5eef1;
-  color:#555;
 
-  transition:
-    left .05s linear,
-    top .05s linear;
+#sadButton{
+
+    background:#f5eef1;
+
+    color:#555;
+
+    transition:
+        left .05s linear,
+        top .05s linear;
 }
 
 
@@ -116,27 +188,38 @@ button{
 ========================= */
 
 #confusedButton{
-  display:none;
-  background:#ffd166;
-  color:#432;
 
-  transition:
-    left .08s linear,
-    top .08s linear;
+    display:none;
+
+    background:#ffd166;
+
+    color:#432;
+
+    transition:
+        left .08s linear,
+        top .08s linear;
 }
 
+
+/* =========================
+   SKIP
+========================= */
+
 #skipButton{
-  display:none;
 
-  position:fixed;
+    display:none;
 
-  font-size:12px;
-  padding:6px 12px;
+    position:fixed;
 
-  min-width:90px;
+    font-size:12px;
 
-  background:#fff;
-  color:#444;
+    padding:6px 12px;
+
+    min-width:90px;
+
+    background:#fff;
+
+    color:#444;
 }
 
 
@@ -145,171 +228,44 @@ button{
 ========================= */
 
 .scene4-button{
-  display:none;
 
-  font-size:15px;
+    display:none;
 
-  background:linear-gradient(135deg,#f7d1dc,#fff);
+    font-size:15px;
 
-  color:#6b2039;
+    background:
+        linear-gradient(
+            135deg,
+            #f7d1dc,
+            #fff
+        );
 
-  white-space:normal;
+    color:#6b2039;
 
-  max-width:90vw;
+    white-space:normal;
+
+    max-width:90vw;
 }
+
 
 #notForgiveButton{
-  transition:
-    left .05s linear,
-    top .05s linear;
+
+    transition:
+        left .05s linear,
+        top .05s linear;
 }
+
 
 #kissButton{
-  background:linear-gradient(135deg,#ffd0df,#fff0f5);
-  color:#721d3d;
-}
 
+    background:
+        linear-gradient(
+            135deg,
+            #ffd0df,
+            #fff0f5
+        );
 
-/* =========================
-   SCENE 5
-========================= */
-
-body.scene5{
-  background:
-    radial-gradient(circle at 20% 20%,#fff,transparent 30%),
-    radial-gradient(circle at 80% 80%,#ffd0df,transparent 35%),
-    linear-gradient(135deg,#fff5f8,#ffdce7,#fff);
-}
-
-body.scene5 .story-text{
-  color:#6b2039;
-  font-size:20px;
-  line-height:2;
-}
-
-#finalEnd{
-  display:none;
-
-  margin-top:28px;
-
-  font-size:22px;
-  font-weight:800;
-
-  color:#8b2348;
-
-  animation:finalAppear .8s ease forwards;
-}
-
-@keyframes finalAppear{
-
-  from{
-    opacity:0;
-    transform:translateY(15px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-
-}
-
-
-/* =========================
-   FLOWERS
-========================= */
-
-.romantic-flower{
-  position:absolute;
-  z-index:1;
-  pointer-events:none;
-  user-select:none;
-
-  filter:
-    drop-shadow(
-      0 5px 10px
-      rgba(180,50,90,.15)
-    );
-
-  animation:
-    flowerFloat 5s ease-in-out infinite;
-}
-
-.flower1{
-  top:5%;
-  left:5%;
-  font-size:48px;
-}
-
-.flower2{
-  top:10%;
-  right:6%;
-  font-size:42px;
-  animation-delay:1s;
-}
-
-.flower3{
-  bottom:8%;
-  left:7%;
-  font-size:45px;
-  animation-delay:2s;
-}
-
-.flower4{
-  bottom:12%;
-  right:6%;
-  font-size:50px;
-  animation-delay:.7s;
-}
-
-.flower5{
-  top:38%;
-  left:3%;
-  font-size:35px;
-  animation-delay:1.5s;
-}
-
-.flower6{
-  top:42%;
-  right:4%;
-  font-size:37px;
-  animation-delay:2.5s;
-}
-
-.flower7{
-  bottom:30%;
-  left:20%;
-  font-size:28px;
-  animation-delay:1.8s;
-}
-
-.flower8{
-  bottom:25%;
-  right:20%;
-  font-size:30px;
-  animation-delay:.5s;
-}
-
-@keyframes flowerFloat{
-
-  0%,100%{
-    transform:translateY(0) rotate(-3deg);
-  }
-
-  50%{
-    transform:translateY(-15px) rotate(5deg);
-  }
-
-}
-
-
-/* Flowers only Scene 1 */
-
-body.sad .romantic-flower,
-body.confused .romantic-flower,
-body.scene4 .romantic-flower,
-body.scene5 .romantic-flower{
-  display:none;
+    color:#721d3d;
 }
 
 
@@ -318,55 +274,77 @@ body.scene5 .romantic-flower{
 ========================= */
 
 body.sad{
-  background:
-    linear-gradient(
-      180deg,
-      #172033,
-      #26354d
-    );
+
+    background:
+        linear-gradient(
+            180deg,
+            #172033,
+            #26354d
+        );
 }
 
+
 body.sad .story-text{
-  color:#fff;
-  text-shadow:0 2px 10px rgba(0,0,0,.35);
+
+    color:#fff;
+
+    text-shadow:
+        0 2px 10px
+        rgba(0,0,0,.35);
 }
 
 
 /*
-   IMPORTANT:
-   Both Scene 2 buttons are ALWAYS visible.
+   هەردوو دوگمەی وێنەی ٢
+   هەمیشە دیارن
 */
 
 body.sad #helloButton,
 body.sad #sadButton{
-  display:inline-block !important;
+
+    display:inline-block !important;
 }
 
 
-/* Moving button */
+/*
+   دوگمەی یەکەم
+*/
 
 body.sad #helloButton{
-  background:linear-gradient(135deg,#f7cbd8,#fff0f5);
-  color:#721d3d;
 
-  transition:
-    left .05s linear,
-    top .05s linear;
+    background:
+        linear-gradient(
+            135deg,
+            #f7cbd8,
+            #fff0f5
+        );
+
+    color:#721d3d;
 }
 
 
-/* Fixed button */
+/*
+   دوگمەی دووەم
+   جێگیرە
+*/
 
 body.sad #sadButton{
-  background:linear-gradient(135deg,#d9e5f5,#fff);
-  color:#26354d;
 
-  position:relative !important;
+    background:
+        linear-gradient(
+            135deg,
+            #d9e5f5,
+            #fff
+        );
 
-  left:auto !important;
-  top:auto !important;
+    color:#26354d;
 
-  transform:none !important;
+    position:relative !important;
+
+    left:auto !important;
+    top:auto !important;
+
+    transform:none !important;
 }
 
 
@@ -376,44 +354,76 @@ body.sad #sadButton{
 
 body.confused{
 
-  background:
-    radial-gradient(circle at 20% 20%,#7b2cbf,transparent 35%),
-    radial-gradient(circle at 80% 30%,#ff006e,transparent 35%),
-    radial-gradient(circle at 50% 80%,#3a86ff,transparent 35%),
-    #18051f;
+    background:
 
-  animation:
-    confusedBackground 1.8s ease-in-out infinite;
+        radial-gradient(
+            circle at 20% 20%,
+            #7b2cbf,
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 80% 30%,
+            #ff006e,
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 50% 80%,
+            #3a86ff,
+            transparent 35%
+        ),
+
+        #18051f;
+
+    animation:
+        confusedBackground
+        1.8s
+        ease-in-out
+        infinite;
 }
+
 
 body.confused .story-text{
-  color:white;
 
-  text-shadow:
-    0 0 12px rgba(255,255,255,.5);
+    color:white;
+
+    text-shadow:
+        0 0 12px
+        rgba(255,255,255,.5);
 }
+
 
 body.confused #confusedButton{
-  display:block;
+    display:block;
 }
+
 
 @keyframes confusedBackground{
 
-  0%,100%{
-    transform:translate(0,0) rotate(0deg);
-  }
+    0%,100%{
+        transform:
+            translate(0,0)
+            rotate(0deg);
+    }
 
-  25%{
-    transform:translate(3px,-2px) rotate(.4deg);
-  }
+    25%{
+        transform:
+            translate(3px,-2px)
+            rotate(.4deg);
+    }
 
-  50%{
-    transform:translate(-3px,2px) rotate(-.4deg);
-  }
+    50%{
+        transform:
+            translate(-3px,2px)
+            rotate(-.4deg);
+    }
 
-  75%{
-    transform:translate(2px,1px) rotate(.3deg);
-  }
+    75%{
+        transform:
+            translate(2px,1px)
+            rotate(.3deg);
+    }
 
 }
 
@@ -424,23 +434,265 @@ body.confused #confusedButton{
 
 body.scene4{
 
-  background:
-    radial-gradient(circle at 20% 20%,#fff,transparent 30%),
-    radial-gradient(circle at 80% 80%,#ffd0df,transparent 35%),
-    linear-gradient(135deg,#fff5f8,#ffdce7,#fff);
+    background:
+
+        radial-gradient(
+            circle at 20% 20%,
+            #fff,
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 80% 80%,
+            #ffd0df,
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #fff5f8,
+            #ffdce7,
+            #fff
+        );
 }
+
 
 body.scene4 .story-text{
-  color:#6b2039;
 
-  font-size:20px;
+    color:#6b2039;
 
-  margin-top:20px;
-  margin-bottom:18px;
+    font-size:20px;
+
+    margin-top:20px;
+    margin-bottom:18px;
 }
 
+
 body.scene4 .scene4-button{
-  display:inline-block;
+    display:inline-block;
+}
+
+
+/* =========================
+   SCENE 5
+========================= */
+
+body.scene5{
+
+    background:
+
+        radial-gradient(
+            circle at 20% 20%,
+            #fff,
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 80% 80%,
+            #ffd0df,
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #fff5f8,
+            #ffdce7,
+            #fff
+        );
+}
+
+
+body.scene5 .story-text{
+
+    color:#6b2039;
+
+    font-size:20px;
+
+    line-height:2;
+
+    margin-bottom:5px;
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+#finalEnd{
+
+    display:none;
+
+    margin-top:18px;
+
+    color:#8b2348;
+
+    animation:
+        finalAppear
+        .8s
+        ease
+        forwards;
+}
+
+
+.final-title{
+
+    font-size:25px;
+
+    font-weight:800;
+
+    margin-bottom:8px;
+}
+
+
+.final-date{
+
+    font-size:14px;
+
+    font-weight:500;
+
+    line-height:1.8;
+
+    opacity:.85;
+}
+
+
+@keyframes finalAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* =========================
+   FLOWERS
+========================= */
+
+.romantic-flower{
+
+    position:absolute;
+
+    z-index:1;
+
+    pointer-events:none;
+
+    user-select:none;
+
+    filter:
+        drop-shadow(
+            0 5px 10px
+            rgba(180,50,90,.15)
+        );
+
+    animation:
+        flowerFloat
+        5s
+        ease-in-out
+        infinite;
+}
+
+
+.flower1{
+    top:5%;
+    left:5%;
+    font-size:48px;
+}
+
+
+.flower2{
+    top:10%;
+    right:6%;
+    font-size:42px;
+    animation-delay:1s;
+}
+
+
+.flower3{
+    bottom:8%;
+    left:7%;
+    font-size:45px;
+    animation-delay:2s;
+}
+
+
+.flower4{
+    bottom:12%;
+    right:6%;
+    font-size:50px;
+    animation-delay:.7s;
+}
+
+
+.flower5{
+    top:38%;
+    left:3%;
+    font-size:35px;
+    animation-delay:1.5s;
+}
+
+
+.flower6{
+    top:42%;
+    right:4%;
+    font-size:37px;
+    animation-delay:2.5s;
+}
+
+
+.flower7{
+    bottom:30%;
+    left:20%;
+    font-size:28px;
+    animation-delay:1.8s;
+}
+
+
+.flower8{
+    bottom:25%;
+    right:20%;
+    font-size:30px;
+    animation-delay:.5s;
+}
+
+
+@keyframes flowerFloat{
+
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(-3deg);
+    }
+
+    50%{
+        transform:
+            translateY(-15px)
+            rotate(5deg);
+    }
+
+}
+
+
+/* گوڵەکان تەنیا لە Scene 1 */
+
+body.sad .romantic-flower,
+body.confused .romantic-flower,
+body.scene4 .romantic-flower,
+body.scene5 .romantic-flower{
+
+    display:none;
 }
 
 
@@ -450,38 +702,43 @@ body.scene4 .scene4-button{
 
 @media(max-width:600px){
 
-  .story{
-    width:92vw;
-  }
+    .story{
+        width:92vw;
+    }
 
-  #characterImage{
-    width:min(72vw,270px);
-  }
+    #characterImage{
+        width:min(72vw,270px);
+    }
 
-  .story-text{
-    font-size:18px;
-  }
+    .story-text{
+        font-size:18px;
+    }
 
-  body.scene5 .story-text{
-    font-size:18px;
-  }
+    body.scene5 .story-text{
+        font-size:18px;
+    }
 
-  #finalEnd{
-    font-size:21px;
-  }
+    .final-title{
+        font-size:23px;
+    }
+
+    .final-date{
+        font-size:13px;
+    }
 
 }
 
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- =========================
+<!-- =========================================
      FLOWERS
-========================= -->
+========================================= -->
 
 <div class="romantic-flower flower1">🌹</div>
 <div class="romantic-flower flower2">🌷</div>
@@ -493,131 +750,191 @@ body.scene4 .scene4-button{
 <div class="romantic-flower flower8">🌷</div>
 
 
-<!-- =========================
+<!-- =========================================
      STORY
-========================= -->
+========================================= -->
 
 <div class="story">
 
-  <img
-    id="characterImage"
-    src="bc2f39106e1a0c2f00d3cc1204eaec7a.jpg"
-    alt="story image"
-  >
 
-  <div
-    id="storyText"
-    class="story-text">
-  </div>
-
-  <div id="finalEnd">
-    کۆتای
-  </div>
-
-  <div class="buttons">
+    <img
+        id="characterImage"
+        src="bc2f39106e1a0c2f00d3cc1204eaec7a.jpg"
+        alt="story image"
+    >
 
 
-    <!-- SCENE 1 + SCENE 2 -->
-
-    <button id="helloButton">
-      سڵاو گیان
-    </button>
-
-    <button id="sadButton">
-      خۆش حاڵ نەبووم
-    </button>
+    <div
+        id="storyText"
+        class="story-text">
+    </div>
 
 
-    <!-- SCENE 3 -->
+    <!-- =====================================
+         FINAL TEXT
+    ====================================== -->
 
-    <button id="confusedButton">
-      قەلەقی چیت
-    </button>
+    <div id="finalEnd">
 
-    <button id="skipButton">
-      skip naz
-    </button>
+        <div class="final-title">
+            کۆتای
+        </div>
+
+        <div class="final-date">
+            6/9/2026
+            <br>
+            6 ئێوارە
+        </div>
+
+    </div>
 
 
-    <!-- SCENE 4 -->
+    <div class="buttons">
 
-    <button
-      id="notForgiveButton"
-      class="scene4-button">
 
-      ئاشت ناکەمەوە
+        <!-- =================================
+             SCENE 1 / SCENE 2
+        ================================== -->
 
-    </button>
+        <button id="helloButton">
+            سڵاو گیان
+        </button>
 
-    <button
-      id="kissButton"
-      class="scene4-button">
 
-      وەرە بە ماچت کەم و ئاشت بینەوە
+        <button id="sadButton">
+            خۆش حاڵ نەبووم
+        </button>
 
-    </button>
 
-  </div>
+        <!-- =================================
+             SCENE 3
+        ================================== -->
+
+        <button id="confusedButton">
+            قەلەقی چیت
+        </button>
+
+
+        <button id="skipButton">
+            skip naz
+        </button>
+
+
+        <!-- =================================
+             SCENE 4
+        ================================== -->
+
+        <button
+            id="notForgiveButton"
+            class="scene4-button">
+
+            ئاشت ناکەمەوە
+
+        </button>
+
+
+        <button
+            id="kissButton"
+            class="scene4-button">
+
+            وەرە بە ماچت کەم و ئاشت بینەوە
+
+        </button>
+
+
+    </div>
 
 </div>
+
 
 
 <script>
 
 
-/* =========================
+/* =========================================
    ELEMENTS
-========================= */
+========================================= */
 
 const body =
-document.body;
+    document.body;
+
 
 const image =
-document.getElementById("characterImage");
+    document.getElementById(
+        "characterImage"
+    );
+
 
 const text =
-document.getElementById("storyText");
+    document.getElementById(
+        "storyText"
+    );
+
 
 const finalEnd =
-document.getElementById("finalEnd");
+    document.getElementById(
+        "finalEnd"
+    );
+
 
 const helloButton =
-document.getElementById("helloButton");
+    document.getElementById(
+        "helloButton"
+    );
+
 
 const sadButton =
-document.getElementById("sadButton");
+    document.getElementById(
+        "sadButton"
+    );
+
 
 const confusedButton =
-document.getElementById("confusedButton");
+    document.getElementById(
+        "confusedButton"
+    );
+
 
 const skipButton =
-document.getElementById("skipButton");
+    document.getElementById(
+        "skipButton"
+    );
+
 
 const notForgiveButton =
-document.getElementById("notForgiveButton");
+    document.getElementById(
+        "notForgiveButton"
+    );
+
 
 const kissButton =
-document.getElementById("kissButton");
+    document.getElementById(
+        "kissButton"
+    );
 
 
-/* =========================
+/* =========================================
    TEXTS
-========================= */
+========================================= */
 
 const firstMessage =
-"سڵاو من کاوی، زۆرم خۆشەوێی بەساقەو بم نونی گیان";
+    "سڵاو من کاوی، زۆرم خۆشەوێی بەساقەو بم نونی گیان";
+
 
 const secondMessage =
-"زۆر بێتاقەتم";
+    "زۆر بێتاقەتم";
+
 
 const thirdMessage =
-"بەخوا زۆر قەلەقم 💔";
+    "بەخوا زۆر قەلەقم 💔";
+
 
 const fourthMessage =
-"ئەوە بێزار بووی لێم دەی وەڵا ئەبێ ئاشتم کەیتەوە";
+    "ئەوە بێزار بووی لێم دەی وەڵا ئەبێ ئاشتم کەیتەوە";
+
 
 const fifthMessage =
-"ئەی بەشاکەو بم هەر زانیم دڵم ناشکێنی";
+    "ئەی بەشاکەو بم هەر زانیم دڵم ناشکێنی";
 
 
 let typingTimer = null;
@@ -625,682 +942,743 @@ let typingTimer = null;
 let confusedStep = 0;
 
 
-/* =========================
-   LETTER BY LETTER
-========================= */
 
-function typeText(message,speed=75){
+/* =========================================
+   TYPE TEXT
+========================================= */
 
-  clearInterval(typingTimer);
+function typeText(
+    message,
+    speed = 75
+){
 
-  text.textContent="";
+    clearInterval(
+        typingTimer
+    );
 
-  let i=0;
 
-  typingTimer=setInterval(function(){
+    text.textContent = "";
 
-    if(i < message.length){
 
-      text.textContent += message[i];
+    let i = 0;
 
-      i++;
 
-    }else{
+    typingTimer =
+        setInterval(
+            function(){
 
-      clearInterval(typingTimer);
+                if(
+                    i < message.length
+                ){
 
-    }
+                    text.textContent +=
+                        message[i];
 
-  },speed);
+                    i++;
+
+                }
+
+                else{
+
+                    clearInterval(
+                        typingTimer
+                    );
+
+                }
+
+            },
+            speed
+        );
 }
 
 
-/* =========================
+
+/* =========================================
    MOVE BUTTON FAR
-========================= */
+========================================= */
 
 function moveButtonFar(button){
 
-  const margin=10;
+    const margin = 10;
 
-  const maxX =
-    window.innerWidth -
-    button.offsetWidth -
-    margin;
 
-  const maxY =
-    window.innerHeight -
-    button.offsetHeight -
-    margin;
+    const maxX =
+        window.innerWidth -
+        button.offsetWidth -
+        margin;
 
-  const x =
-    margin +
-    Math.random() *
-    Math.max(
-      1,
-      maxX-margin
-    );
 
-  const y =
-    margin +
-    Math.random() *
-    Math.max(
-      1,
-      maxY-margin
-    );
+    const maxY =
+        window.innerHeight -
+        button.offsetHeight -
+        margin;
 
-  button.style.position="fixed";
 
-  button.style.left=x+"px";
+    const x =
+        margin +
+        Math.random() *
+        Math.max(
+            1,
+            maxX - margin
+        );
 
-  button.style.top=y+"px";
+
+    const y =
+        margin +
+        Math.random() *
+        Math.max(
+            1,
+            maxY - margin
+        );
+
+
+    button.style.position =
+        "fixed";
+
+
+    button.style.left =
+        x + "px";
+
+
+    button.style.top =
+        y + "px";
 }
 
 
-/* ==================================================
+
+/* =========================================
    SCENE 1
-   HELLO → SCENE 2
-================================================== */
+   سڵاو گیان → SCENE 2
+========================================= */
 
 helloButton.addEventListener(
-  "pointerdown",
-  function(event){
+    "pointerdown",
+    function(event){
 
-    event.preventDefault();
-    event.stopPropagation();
+        event.preventDefault();
 
-    if(
-      !body.classList.contains("sad") &&
-      !body.classList.contains("confused") &&
-      !body.classList.contains("scene4") &&
-      !body.classList.contains("scene5")
-    ){
+        event.stopPropagation();
 
-      goToScene2();
+
+        if(
+            !body.classList.contains("sad") &&
+            !body.classList.contains("confused") &&
+            !body.classList.contains("scene4") &&
+            !body.classList.contains("scene5")
+        ){
+
+            goToScene2();
+
+        }
 
     }
-
-  }
 );
 
 
-/* ==================================================
+
+/* =========================================
    SCENE 1
-   SAD BUTTON MOVES
-================================================== */
+   خۆش حاڵ نەبووم
+   تەنیا دوای پەنجەلێدان دەجوڵێت
+========================================= */
 
 sadButton.addEventListener(
-  "pointerdown",
-  function(event){
+    "pointerdown",
+    function(event){
 
-    if(
-      !body.classList.contains("sad")
-    ){
+        if(
+            !body.classList.contains("sad")
+        ){
 
-      event.preventDefault();
-      event.stopPropagation();
+            event.preventDefault();
 
-      moveButtonFar(
-        sadButton
-      );
+            event.stopPropagation();
+
+            moveButtonFar(
+                sadButton
+            );
+
+        }
 
     }
-
-  }
 );
 
 
-sadButton.addEventListener(
-  "pointerenter",
-  function(){
 
-    if(
-      !body.classList.contains("sad")
-    ){
-
-      moveButtonFar(
-        sadButton
-      );
-
-    }
-
-  }
-);
-
-
-sadButton.addEventListener(
-  "click",
-  function(event){
-
-    if(
-      !body.classList.contains("sad")
-    ){
-
-      event.preventDefault();
-      event.stopPropagation();
-
-      moveButtonFar(
-        sadButton
-      );
-
-    }
-
-  }
-);
-
-
-/* ==================================================
+/* =========================================
    SCENE 2
-================================================== */
+========================================= */
 
 function goToScene2(){
 
-  body.className="sad";
+    body.className =
+        "sad";
 
 
-  image.src =
-    "7b4e45edfbedd4efbcc4bab78fbefaec.jpg";
+    image.src =
+        "7b4e45edfbedd4efbcc4bab78fbefaec.jpg";
 
 
-  typeText(
-    secondMessage
-  );
+    typeText(
+        secondMessage
+    );
 
 
-  /*
-     هەردوو دوگمەکە
-     دیار بن
-  */
+    helloButton.style.display =
+        "inline-block";
 
-  helloButton.style.display =
-    "inline-block";
 
-  sadButton.style.display =
-    "inline-block";
+    sadButton.style.display =
+        "inline-block";
 
 
-  /*
-     ناوی دوگمەکان
-  */
+    helloButton.textContent =
+        "بێتاقەت مەبە 🤗";
 
-  helloButton.textContent =
-    "بێتاقەت مەبە 🤗";
 
-  sadButton.textContent =
-    "بۆ بێتاقەتی 🤔";
+    sadButton.textContent =
+        "بۆ بێتاقەتی 🤔";
 
 
-  /*
-     دوگمەی یەکەم
-     لە سەرەتا جێگیر
-  */
+    /*
+       سەرەتا هەردووکیان جێگیر
+    */
 
-  helloButton.style.position =
-    "relative";
+    helloButton.style.position =
+        "relative";
 
-  helloButton.style.left="";
+    helloButton.style.left =
+        "";
 
-  helloButton.style.top="";
+    helloButton.style.top =
+        "";
 
 
-  /*
-     دوگمەی دووەم
-     هەمیشە جێگیر
-  */
+    sadButton.style.position =
+        "relative";
 
-  sadButton.style.position =
-    "relative";
+    sadButton.style.left =
+        "";
 
-  sadButton.style.left="";
+    sadButton.style.top =
+        "";
 
-  sadButton.style.top="";
 
-
-  confusedButton.style.display =
-    "none";
-
-  skipButton.style.display =
-    "none";
-
-  notForgiveButton.style.display =
-    "none";
-
-  kissButton.style.display =
-    "none";
-
-  finalEnd.style.display =
-    "none";
-}
-
-
-/* ==================================================
-   SCENE 2
-   بێتاقەت مەبە → MOVE
-================================================== */
-
-helloButton.addEventListener(
-  "pointerdown",
-  function(event){
-
-    if(
-      body.classList.contains("sad")
-    ){
-
-      event.preventDefault();
-      event.stopPropagation();
-
-      moveButtonFar(
-        helloButton
-      );
-
-    }
-
-  }
-);
-
-
-/* ==================================================
-   SCENE 2
-   بۆ بێتاقەتی → SCENE 3
-================================================== */
-
-sadButton.addEventListener(
-  "pointerdown",
-  function(event){
-
-    if(
-      body.classList.contains("sad")
-    ){
-
-      event.preventDefault();
-      event.stopPropagation();
-
-      goToScene3();
-
-    }
-
-  }
-);
-
-
-/* ==================================================
-   SCENE 3
-================================================== */
-
-function goToScene3(){
-
-  body.className="confused";
-
-
-  image.src =
-    "610ab076d09e74dd9d2b8bdd5fcaf35e.jpg";
-
-
-  typeText(
-    thirdMessage
-  );
-
-
-  helloButton.style.display =
-    "none";
-
-  sadButton.style.display =
-    "none";
-
-
-  confusedButton.style.display =
-    "block";
-
-
-  confusedButton.textContent =
-    "قەلەقی چیت";
-
-
-  confusedStep=0;
-
-
-  confusedButton.style.position =
-    "relative";
-
-  confusedButton.style.left="";
-
-  confusedButton.style.top="";
-
-
-  skipButton.style.display =
-    "none";
-
-}
-
-
-/* ==================================================
-   SCENE 3 BUTTON MOVE
-================================================== */
-
-function moveConfusedButton(){
-
-  confusedButton.style.position =
-    "fixed";
-
-
-  const rangeX=120;
-  const rangeY=80;
-
-
-  const centerX =
-    window.innerWidth/2;
-
-  const centerY =
-    window.innerHeight*.72;
-
-
-  const x =
-    centerX -
-    rangeX/2 +
-    Math.random()*rangeX -
-    confusedButton.offsetWidth/2;
-
-
-  const y =
-    centerY -
-    rangeY/2 +
-    Math.random()*rangeY -
-    confusedButton.offsetHeight/2;
-
-
-  confusedButton.style.left =
-    Math.max(10,x)+"px";
-
-  confusedButton.style.top =
-    Math.max(10,y)+"px";
-
-}
-
-
-/* ==================================================
-   SCENE 3 ACTION
-================================================== */
-
-function confusedButtonAction(){
-
-  if(
-    !body.classList.contains("confused")
-  ){
-    return;
-  }
-
-
-  confusedStep++;
-
-
-  if(
-    confusedStep===1
-  ){
-
-    confusedButton.textContent =
-      "نا نایڵێم ناز ئەکەم";
-
-
-    moveConfusedButton();
+    confusedButton.style.display =
+        "none";
 
 
     skipButton.style.display =
-      "block";
+        "none";
 
 
-    const rect =
-      confusedButton.getBoundingClientRect();
+    notForgiveButton.style.display =
+        "none";
 
 
-    skipButton.style.left =
-      (
-        rect.left+
-        rect.width/2
-      )+"px";
+    kissButton.style.display =
+        "none";
 
 
-    skipButton.style.top =
-      (
-        rect.bottom+12
-      )+"px";
+    finalEnd.style.display =
+        "none";
+}
 
 
-    skipButton.style.transform =
-      "translateX(-50%)";
 
-  }
+/* =========================================
+   SCENE 2
+   بێتاقەت مەبە → MOVE
+========================================= */
 
-  else{
+helloButton.addEventListener(
+    "pointerdown",
+    function(event){
+
+        if(
+            body.classList.contains("sad")
+        ){
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+            moveButtonFar(
+                helloButton
+            );
+
+        }
+
+    }
+);
+
+
+
+/* =========================================
+   SCENE 2
+   بۆ بێتاقەتی → SCENE 3
+========================================= */
+
+sadButton.addEventListener(
+    "pointerdown",
+    function(event){
+
+        if(
+            body.classList.contains("sad")
+        ){
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+            goToScene3();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================
+   SCENE 3
+========================================= */
+
+function goToScene3(){
+
+    body.className =
+        "confused";
+
+
+    image.src =
+        "610ab076d09e74dd9d2b8bdd5fcaf35e.jpg";
+
+
+    typeText(
+        thirdMessage
+    );
+
+
+    helloButton.style.display =
+        "none";
+
+
+    sadButton.style.display =
+        "none";
+
+
+    confusedButton.style.display =
+        "block";
+
 
     confusedButton.textContent =
-      "دەی نازم زیاتر هەڵگرە 🤓";
+        "قەلەقی چیت";
 
 
-    moveConfusedButton();
+    confusedStep = 0;
 
-  }
+
+    /*
+       سەرەتا جێگیر
+    */
+
+    confusedButton.style.position =
+        "relative";
+
+    confusedButton.style.left =
+        "";
+
+    confusedButton.style.top =
+        "";
+
+
+    skipButton.style.display =
+        "none";
+}
+
+
+
+/* =========================================
+   SCENE 3
+   MOVE
+========================================= */
+
+function moveConfusedButton(){
+
+    confusedButton.style.position =
+        "fixed";
+
+
+    const rangeX =
+        120;
+
+
+    const rangeY =
+        80;
+
+
+    const centerX =
+        window.innerWidth / 2;
+
+
+    const centerY =
+        window.innerHeight * .72;
+
+
+    const x =
+        centerX -
+        rangeX / 2 +
+        Math.random() *
+        rangeX -
+        confusedButton.offsetWidth / 2;
+
+
+    const y =
+        centerY -
+        rangeY / 2 +
+        Math.random() *
+        rangeY -
+        confusedButton.offsetHeight / 2;
+
+
+    confusedButton.style.left =
+        Math.max(
+            10,
+            x
+        ) + "px";
+
+
+    confusedButton.style.top =
+        Math.max(
+            10,
+            y
+        ) + "px";
+}
+
+
+
+/* =========================================
+   SCENE 3 ACTION
+========================================= */
+
+function confusedButtonAction(){
+
+    if(
+        !body.classList.contains(
+            "confused"
+        )
+    ){
+
+        return;
+    }
+
+
+    confusedStep++;
+
+
+    if(
+        confusedStep === 1
+    ){
+
+        confusedButton.textContent =
+            "نا نایڵێم ناز ئەکەم";
+
+
+        moveConfusedButton();
+
+
+        skipButton.style.display =
+            "block";
+
+
+        const rect =
+            confusedButton
+            .getBoundingClientRect();
+
+
+        skipButton.style.left =
+            (
+                rect.left +
+                rect.width / 2
+            ) + "px";
+
+
+        skipButton.style.top =
+            (
+                rect.bottom + 12
+            ) + "px";
+
+
+        skipButton.style.transform =
+            "translateX(-50%)";
+
+    }
+
+
+    else{
+
+        confusedButton.textContent =
+            "دەی نازم زیاتر هەڵگرە 🤓";
+
+
+        moveConfusedButton();
+
+    }
 
 }
 
 
+
+/* =========================================
+   SCENE 3 BUTTON
+========================================= */
+
 confusedButton.addEventListener(
-  "pointerdown",
-  function(event){
+    "pointerdown",
+    function(event){
 
-    event.preventDefault();
-    event.stopPropagation();
+        event.preventDefault();
 
-    confusedButtonAction();
+        event.stopPropagation();
 
-  }
+        confusedButtonAction();
+
+    }
 );
 
 
-/* ==================================================
+
+/* =========================================
    SKIP → SCENE 4
-================================================== */
+========================================= */
 
 skipButton.addEventListener(
-  "pointerdown",
-  function(event){
+    "pointerdown",
+    function(event){
 
-    event.preventDefault();
-    event.stopPropagation();
+        event.preventDefault();
 
-    goToScene4();
+        event.stopPropagation();
 
-  }
+        goToScene4();
+
+    }
 );
 
 
-/* ==================================================
+
+/* =========================================
    SCENE 4
-================================================== */
+========================================= */
 
 function goToScene4(){
 
-  body.className="scene4";
+    body.className =
+        "scene4";
 
 
-  image.src =
-    "ece914e7ddcc0c54f9f9e56c7dccc1e2.jpg";
+    image.src =
+        "ece914e7ddcc0c54f9f9e56c7dccc1e2.jpg";
 
 
-  typeText(
-    fourthMessage
-  );
+    typeText(
+        fourthMessage
+    );
 
 
-  helloButton.style.display =
-    "none";
-
-  sadButton.style.display =
-    "none";
-
-  confusedButton.style.display =
-    "none";
-
-  skipButton.style.display =
-    "none";
+    helloButton.style.display =
+        "none";
 
 
-  notForgiveButton.style.display =
-    "inline-block";
-
-  kissButton.style.display =
-    "inline-block";
+    sadButton.style.display =
+        "none";
 
 
-  notForgiveButton.style.position =
-    "relative";
-
-  notForgiveButton.style.left="";
-
-  notForgiveButton.style.top="";
+    confusedButton.style.display =
+        "none";
 
 
-  kissButton.style.position =
-    "relative";
+    skipButton.style.display =
+        "none";
 
-  kissButton.style.left="";
 
-  kissButton.style.top="";
+    notForgiveButton.style.display =
+        "inline-block";
 
+
+    kissButton.style.display =
+        "inline-block";
+
+
+    /*
+       هەردوو دوگمە سەرەتا جێگیر
+    */
+
+    notForgiveButton.style.position =
+        "relative";
+
+    notForgiveButton.style.left =
+        "";
+
+    notForgiveButton.style.top =
+        "";
+
+
+    kissButton.style.position =
+        "relative";
+
+    kissButton.style.left =
+        "";
+
+    kissButton.style.top =
+        "";
 }
 
 
-/* ==================================================
+
+/* =========================================
    SCENE 4
    ئاشت ناکەمەوە → MOVE
-================================================== */
+========================================= */
 
 notForgiveButton.addEventListener(
-  "pointerdown",
-  function(event){
+    "pointerdown",
+    function(event){
 
-    if(
-      body.classList.contains("scene4")
-    ){
+        if(
+            body.classList.contains(
+                "scene4"
+            )
+        ){
 
-      event.preventDefault();
-      event.stopPropagation();
+            event.preventDefault();
 
-      moveButtonFar(
-        notForgiveButton
-      );
+            event.stopPropagation();
+
+            moveButtonFar(
+                notForgiveButton
+            );
+
+        }
 
     }
-
-  }
 );
 
 
-notForgiveButton.addEventListener(
-  "pointerenter",
-  function(){
 
-    if(
-      body.classList.contains("scene4")
-    ){
-
-      moveButtonFar(
-        notForgiveButton
-      );
-
-    }
-
-  }
-);
-
-
-/* ==================================================
+/* =========================================
    SCENE 4
    ماچ → SCENE 5
-================================================== */
+========================================= */
 
 kissButton.addEventListener(
-  "pointerdown",
-  function(event){
+    "pointerdown",
+    function(event){
 
-    if(
-      body.classList.contains("scene4")
-    ){
+        if(
+            body.classList.contains(
+                "scene4"
+            )
+        ){
 
-      event.preventDefault();
-      event.stopPropagation();
+            event.preventDefault();
 
-      goToScene5();
+            event.stopPropagation();
+
+            goToScene5();
+
+        }
 
     }
-
-  }
 );
 
 
-/* ==================================================
+
+/* =========================================
    SCENE 5
-================================================== */
+========================================= */
 
 function goToScene5(){
 
-  body.className="scene5";
+    body.className =
+        "scene5";
 
 
-  image.src =
-    "d8d37d3a68419f41f72da820b44eee9d.jpg";
+    image.src =
+        "d8d37d3a68419f41f72da820b44eee9d.jpg";
 
 
-  helloButton.style.display =
-    "none";
+    /*
+       هەموو دوگمەکان ون
+    */
 
-  sadButton.style.display =
-    "none";
+    helloButton.style.display =
+        "none";
 
-  confusedButton.style.display =
-    "none";
+    sadButton.style.display =
+        "none";
 
-  skipButton.style.display =
-    "none";
+    confusedButton.style.display =
+        "none";
 
-  notForgiveButton.style.display =
-    "none";
+    skipButton.style.display =
+        "none";
 
-  kissButton.style.display =
-    "none";
+    notForgiveButton.style.display =
+        "none";
 
-
-  finalEnd.style.display =
-    "none";
-
-
-  typeText(
-    fifthMessage,
-    100
-  );
+    kissButton.style.display =
+        "none";
 
 
-  setTimeout(
-    function(){
+    /*
+       کۆتای بشارەوە
+    */
 
-      finalEnd.style.display =
-        "block";
+    finalEnd.style.display =
+        "none";
 
-    },
-    2500
-  );
+
+    /*
+       دەقی وێنەی ٥
+       پیت بە پیت
+    */
+
+    typeText(
+        fifthMessage,
+        100
+    );
+
+
+    /*
+       دوای کەمێک
+       کۆتای + بەروار + کات
+    */
+
+    setTimeout(
+        function(){
+
+            finalEnd.style.display =
+                "block";
+
+        },
+        2500
+    );
 
 }
 
 
-/* ==================================================
+
+/* =========================================
    START
-================================================== */
+========================================= */
 
 typeText(
-  firstMessage
+    firstMessage
 );
 
 </script>
 
 </body>
+
 </html>
