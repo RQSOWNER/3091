@@ -47,13 +47,11 @@ body{
             rgba(255,255,255,.95),
             transparent 22%
         ),
-
         radial-gradient(
             circle at 85% 15%,
             rgba(255,220,230,.85),
             transparent 25%
         ),
-
         linear-gradient(
             135deg,
             #fff8fa,
@@ -61,8 +59,7 @@ body{
             #fff
         );
 
-    transition:
-        background .6s ease;
+    transition:background .6s ease;
 }
 
 
@@ -76,7 +73,7 @@ body{
 
     z-index:10;
 
-    width:min(92vw,420px);
+    width:min(94vw,420px);
 
     text-align:center;
 }
@@ -99,8 +96,6 @@ body{
     box-shadow:
         0 15px 40px
         rgba(120,30,60,.20);
-
-    transition:.6s;
 }
 
 
@@ -137,6 +132,7 @@ body{
     position:relative;
 
     min-height:170px;
+
 }
 
 
@@ -171,6 +167,7 @@ button{
     user-select:none;
 
     touch-action:none;
+
 }
 
 
@@ -198,94 +195,8 @@ button{
     color:#555;
 
     transition:
-        left .05s linear,
-        top .05s linear;
-}
-
-
-/* =====================================================
-   SCENE 3
-===================================================== */
-
-#confusedButton{
-
-    display:none;
-
-    background:#ffd166;
-
-    color:#432;
-
-    transition:
-        left .08s linear,
-        top .08s linear;
-}
-
-
-/* =====================================================
-   SKIP
-===================================================== */
-
-#skipButton{
-
-    display:none;
-
-    position:fixed;
-
-    font-size:12px;
-
-    padding:6px 12px;
-
-    min-width:90px;
-
-    background:#fff;
-
-    color:#444;
-}
-
-
-/* =====================================================
-   SCENE 4
-===================================================== */
-
-.scene4-button{
-
-    display:none;
-
-    font-size:15px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #f7d1dc,
-            #fff
-        );
-
-    color:#6b2039;
-
-    white-space:normal;
-
-    max-width:90vw;
-}
-
-
-#notForgiveButton{
-
-    transition:
-        left .05s linear,
-        top .05s linear;
-}
-
-
-#kissButton{
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffd0df,
-            #fff0f5
-        );
-
-    color:#721d3d;
+        left .06s linear,
+        top .06s linear;
 }
 
 
@@ -306,7 +217,7 @@ body.sad{
 
 body.sad .story-text{
 
-    color:#fff;
+    color:white;
 
     text-shadow:
         0 2px 10px
@@ -315,11 +226,7 @@ body.sad .story-text{
 
 
 /*
-=========================================================
-   SCENE 2 BUTTONS
-
-   هەردوو دوگمە بە تەنیشت یەکتر
-=========================================================
+   هەردوو دوگمە لە هەمان ڕیز
 */
 
 body.sad .buttons{
@@ -342,6 +249,10 @@ body.sad .buttons{
 }
 
 
+/*
+   هەردووکیان سەرەتا لە تەنیشت یەکتر
+*/
+
 body.sad #helloButton,
 body.sad #sadButton{
 
@@ -353,35 +264,32 @@ body.sad #sadButton{
 
     flex:0 0 auto;
 
-    margin:3px;
+    margin:2px;
 
-    padding:13px 17px;
+    padding:12px 15px;
 
     white-space:nowrap;
 }
 
 
 /*
-=========================================================
-   دوگمەی بێتاقەت مەبە
-
+   بێتاقەت مەبە
    سەرەتا جێگیرە
-=========================================================
 */
 
 body.sad #helloButton{
 
-    position:relative !important;
+    position:relative;
 
-    left:auto !important;
+    left:auto;
 
-    top:auto !important;
+    top:auto;
 
-    right:auto !important;
+    right:auto;
 
-    bottom:auto !important;
+    bottom:auto;
 
-    transform:none !important;
+    transform:none;
 
     background:
         linear-gradient(
@@ -391,19 +299,12 @@ body.sad #helloButton{
         );
 
     color:#721d3d;
-
-    transition:
-        left .08s linear,
-        top .08s linear;
 }
 
 
 /*
-=========================================================
-   دوگمەی بۆ بێتاقەتی
-
+   بۆ بێتاقەتی
    هەمیشە جێگیرە
-=========================================================
 */
 
 body.sad #sadButton{
@@ -434,6 +335,20 @@ body.sad #sadButton{
 /* =====================================================
    SCENE 3
 ===================================================== */
+
+#confusedButton{
+
+    display:none;
+
+    background:#ffd166;
+
+    color:#432;
+
+    transition:
+        left .08s linear,
+        top .08s linear;
+}
+
 
 body.confused{
 
@@ -516,8 +431,72 @@ body.confused #confusedButton{
 
 
 /* =====================================================
+   SKIP NAZ
+===================================================== */
+
+#skipButton{
+
+    display:none;
+
+    position:fixed;
+
+    font-size:12px;
+
+    padding:6px 12px;
+
+    min-width:90px;
+
+    background:#fff;
+
+    color:#444;
+}
+
+
+/* =====================================================
    SCENE 4
 ===================================================== */
+
+.scene4-button{
+
+    display:none;
+
+    font-size:15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f7d1dc,
+            #fff
+        );
+
+    color:#6b2039;
+
+    white-space:normal;
+
+    max-width:90vw;
+}
+
+
+#notForgiveButton{
+
+    transition:
+        left .06s linear,
+        top .06s linear;
+}
+
+
+#kissButton{
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffd0df,
+            #fff0f5
+        );
+
+    color:#721d3d;
+}
+
 
 body.scene4{
 
@@ -696,9 +675,7 @@ body.scene5 .story-text{
 .flower1{
 
     top:5%;
-
     left:5%;
-
     font-size:48px;
 }
 
@@ -706,11 +683,8 @@ body.scene5 .story-text{
 .flower2{
 
     top:10%;
-
     right:6%;
-
     font-size:42px;
-
     animation-delay:1s;
 }
 
@@ -718,11 +692,8 @@ body.scene5 .story-text{
 .flower3{
 
     bottom:8%;
-
     left:7%;
-
     font-size:45px;
-
     animation-delay:2s;
 }
 
@@ -730,11 +701,8 @@ body.scene5 .story-text{
 .flower4{
 
     bottom:12%;
-
     right:6%;
-
     font-size:50px;
-
     animation-delay:.7s;
 }
 
@@ -742,11 +710,8 @@ body.scene5 .story-text{
 .flower5{
 
     top:38%;
-
     left:3%;
-
     font-size:35px;
-
     animation-delay:1.5s;
 }
 
@@ -754,11 +719,8 @@ body.scene5 .story-text{
 .flower6{
 
     top:42%;
-
     right:4%;
-
     font-size:37px;
-
     animation-delay:2.5s;
 }
 
@@ -766,11 +728,8 @@ body.scene5 .story-text{
 .flower7{
 
     bottom:30%;
-
     left:20%;
-
     font-size:28px;
-
     animation-delay:1.8s;
 }
 
@@ -778,11 +737,8 @@ body.scene5 .story-text{
 .flower8{
 
     bottom:25%;
-
     right:20%;
-
     font-size:30px;
-
     animation-delay:.5s;
 }
 
@@ -806,7 +762,7 @@ body.scene5 .story-text{
 
 
 /*
-   گوڵەکان تەنیا لە وێنەی ١
+   گوڵەکان تەنیا لە Scene 1
 */
 
 body.sad .romantic-flower,
@@ -842,24 +798,6 @@ body.scene5 .romantic-flower{
     }
 
 
-    body.scene5 .story-text{
-
-        font-size:18px;
-    }
-
-
-    .final-title{
-
-        font-size:23px;
-    }
-
-
-    .final-date{
-
-        font-size:13px;
-    }
-
-
     /*
        Scene 2
        هەردوو دوگمە بە تەنیشت یەکتر
@@ -886,11 +824,29 @@ body.scene5 .romantic-flower{
     body.sad #helloButton,
     body.sad #sadButton{
 
-        padding:12px 15px;
+        padding:11px 13px;
 
         font-size:14px;
 
         margin:2px;
+    }
+
+
+    body.scene5 .story-text{
+
+        font-size:18px;
+    }
+
+
+    .final-title{
+
+        font-size:23px;
+    }
+
+
+    .final-date{
+
+        font-size:13px;
     }
 
 }
@@ -908,21 +864,13 @@ body.scene5 .romantic-flower{
 ===================================================== -->
 
 <div class="romantic-flower flower1">🌹</div>
-
 <div class="romantic-flower flower2">🌷</div>
-
 <div class="romantic-flower flower3">🌸</div>
-
 <div class="romantic-flower flower4">🌹</div>
-
 <div class="romantic-flower flower5">🌷</div>
-
 <div class="romantic-flower flower6">🌸</div>
-
 <div class="romantic-flower flower7">🌺</div>
-
 <div class="romantic-flower flower8">🌷</div>
-
 
 
 <!-- =====================================================
@@ -945,7 +893,9 @@ body.scene5 .romantic-flower{
     </div>
 
 
-    <!-- FINAL -->
+    <!-- =================================================
+         FINAL
+    ================================================== -->
 
     <div id="finalEnd">
 
@@ -974,18 +924,13 @@ body.scene5 .romantic-flower{
         ================================================== -->
 
         <button id="helloButton">
-
             سڵاو گیان
-
         </button>
 
 
         <button id="sadButton">
-
             خۆش حاڵ نەبووم
-
         </button>
-
 
 
         <!-- =================================================
@@ -993,18 +938,13 @@ body.scene5 .romantic-flower{
         ================================================== -->
 
         <button id="confusedButton">
-
             قەلەقی چیت
-
         </button>
 
 
         <button id="skipButton">
-
             skip naz
-
         </button>
-
 
 
         <!-- =================================================
@@ -1036,7 +976,6 @@ body.scene5 .romantic-flower{
 
 
 <script>
-
 
 /* =====================================================
    ELEMENTS
@@ -1100,7 +1039,6 @@ const kissButton =
     );
 
 
-
 /* =====================================================
    TEXTS
 ===================================================== */
@@ -1130,7 +1068,6 @@ let typingTimer = null;
 let confusedStep = 0;
 
 
-
 /* =====================================================
    TYPE TEXT
 ===================================================== */
@@ -1144,12 +1081,9 @@ function typeText(
         typingTimer
     );
 
-
     text.textContent = "";
 
-
     let i = 0;
-
 
     typingTimer =
         setInterval(
@@ -1165,7 +1099,6 @@ function typeText(
                     i++;
 
                 }
-
                 else{
 
                     clearInterval(
@@ -1180,14 +1113,13 @@ function typeText(
 }
 
 
-
 /* =====================================================
    MOVE BUTTON FAR
 ===================================================== */
 
 function moveButtonFar(button){
 
-    const margin = 10;
+    const margin = 15;
 
 
     const maxX =
@@ -1220,6 +1152,12 @@ function moveButtonFar(button){
         );
 
 
+    /*
+       گرنگ:
+       لە کاتی پەنجەلێدان
+       دەبێتە fixed
+    */
+
     button.style.position =
         "fixed";
 
@@ -1230,8 +1168,19 @@ function moveButtonFar(button){
 
     button.style.top =
         y + "px";
-}
 
+
+    button.style.right =
+        "auto";
+
+
+    button.style.bottom =
+        "auto";
+
+
+    button.style.transform =
+        "none";
+}
 
 
 /* =====================================================
@@ -1243,11 +1192,6 @@ helloButton.addEventListener(
     "pointerdown",
     function(event){
 
-        event.preventDefault();
-
-        event.stopPropagation();
-
-
         if(
             !body.classList.contains("sad") &&
             !body.classList.contains("confused") &&
@@ -1255,13 +1199,16 @@ helloButton.addEventListener(
             !body.classList.contains("scene5")
         ){
 
+            event.preventDefault();
+
+            event.stopPropagation();
+
             goToScene2();
 
         }
 
     }
 );
-
 
 
 /* =====================================================
@@ -1291,7 +1238,6 @@ sadButton.addEventListener(
 );
 
 
-
 /* =====================================================
    SCENE 2
 ===================================================== */
@@ -1311,8 +1257,6 @@ function goToScene2(){
     );
 
 
-    /* ناوی دوگمەکان */
-
     helloButton.textContent =
         "بێتاقەت مەبە 🤗";
 
@@ -1322,9 +1266,7 @@ function goToScene2(){
 
 
     /*
-       گرنگ:
-       هەموو شوێنی کۆنی دوگمەی
-       Scene 1 بە تەواوی پاک دەکرێتەوە
+       هەموو شوێنی کۆنی پاک دەکەینەوە
     */
 
     helloButton.style.position =
@@ -1366,12 +1308,11 @@ function goToScene2(){
 
 
     /*
-       هەردوو دوگمە دیار
+       هەردوو دوگمە دیارن
     */
 
     helloButton.style.display =
         "inline-flex";
-
 
     sadButton.style.display =
         "inline-flex";
@@ -1380,28 +1321,25 @@ function goToScene2(){
     confusedButton.style.display =
         "none";
 
-
     skipButton.style.display =
         "none";
-
 
     notForgiveButton.style.display =
         "none";
 
-
     kissButton.style.display =
         "none";
-
 
     finalEnd.style.display =
         "none";
 }
 
 
-
 /* =====================================================
    SCENE 2
    بێتاقەت مەبە → ڕاکردن
+
+   تەنیا pointerdown
 ===================================================== */
 
 helloButton.addEventListener(
@@ -1424,7 +1362,6 @@ helloButton.addEventListener(
 
     }
 );
-
 
 
 /* =====================================================
@@ -1452,7 +1389,6 @@ sadButton.addEventListener(
 );
 
 
-
 /* =====================================================
    SCENE 3
 ===================================================== */
@@ -1474,7 +1410,6 @@ function goToScene3(){
 
     helloButton.style.display =
         "none";
-
 
     sadButton.style.display =
         "none";
@@ -1498,22 +1433,17 @@ function goToScene3(){
     confusedButton.style.position =
         "relative";
 
-
     confusedButton.style.left =
         "auto";
-
 
     confusedButton.style.top =
         "auto";
 
-
     confusedButton.style.right =
         "auto";
 
-
     confusedButton.style.bottom =
         "auto";
-
 
     confusedButton.style.transform =
         "none";
@@ -1522,7 +1452,6 @@ function goToScene3(){
     skipButton.style.display =
         "none";
 }
-
 
 
 /* =====================================================
@@ -1583,7 +1512,6 @@ function moveConfusedButton(){
 }
 
 
-
 /* =====================================================
    SCENE 3 ACTION
 ===================================================== */
@@ -1632,7 +1560,8 @@ function confusedButtonAction(){
 
         skipButton.style.top =
             (
-                rect.bottom + 12
+                rect.bottom +
+                12
             ) + "px";
 
 
@@ -1640,7 +1569,6 @@ function confusedButtonAction(){
             "translateX(-50%)";
 
     }
-
 
     else{
 
@@ -1651,9 +1579,7 @@ function confusedButtonAction(){
         moveConfusedButton();
 
     }
-
 }
-
 
 
 /* =====================================================
@@ -1674,7 +1600,6 @@ confusedButton.addEventListener(
 );
 
 
-
 /* =====================================================
    SKIP → SCENE 4
 ===================================================== */
@@ -1691,7 +1616,6 @@ skipButton.addEventListener(
 
     }
 );
-
 
 
 /* =====================================================
@@ -1716,14 +1640,11 @@ function goToScene4(){
     helloButton.style.display =
         "none";
 
-
     sadButton.style.display =
         "none";
 
-
     confusedButton.style.display =
         "none";
-
 
     skipButton.style.display =
         "none";
@@ -1780,7 +1701,6 @@ function goToScene4(){
 }
 
 
-
 /* =====================================================
    SCENE 4
    ئاشت ناکەمەوە → ڕاکردن
@@ -1810,7 +1730,6 @@ notForgiveButton.addEventListener(
 );
 
 
-
 /* =====================================================
    SCENE 4
    ماچ → SCENE 5
@@ -1838,7 +1757,6 @@ kissButton.addEventListener(
 );
 
 
-
 /* =====================================================
    SCENE 5
 ===================================================== */
@@ -1860,22 +1778,17 @@ function goToScene5(){
     helloButton.style.display =
         "none";
 
-
     sadButton.style.display =
         "none";
-
 
     confusedButton.style.display =
         "none";
 
-
     skipButton.style.display =
         "none";
 
-
     notForgiveButton.style.display =
         "none";
-
 
     kissButton.style.display =
         "none";
@@ -1887,7 +1800,6 @@ function goToScene5(){
 
     /*
        دەقی وێنەی ٥
-       پیت بە پیت
     */
 
     typeText(
@@ -1897,7 +1809,7 @@ function goToScene5(){
 
 
     /*
-       دوای ٢.٥ چرکە
+       دوای کەمێک:
        کۆتای + بەروار + کات
     */
 
@@ -1910,9 +1822,7 @@ function goToScene5(){
         },
         2500
     );
-
 }
-
 
 
 /* =====================================================
