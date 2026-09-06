@@ -1,1944 +1,827 @@
 <!DOCTYPE html>
 <html lang="ku" dir="rtl">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>3091</title>
 
 <style>
-
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+  box-sizing:border-box;
 }
 
 html,body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
+  margin:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
 }
 
 body{
-    min-height:100vh;
-    height:100vh;
-
-    font-family:
-        Arial,
-        "Noto Sans Arabic",
-        sans-serif;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    padding:8px;
-    position:relative;
-
-    background:
-        radial-gradient(
-            circle at 15% 15%,
-            rgba(255,210,225,.65),
-            transparent 25%
-        ),
-        radial-gradient(
-            circle at 85% 20%,
-            rgba(255,235,195,.65),
-            transparent 25%
-        ),
-        linear-gradient(
-            135deg,
-            #fffafd,
-            #fff7f9,
-            #fffdf8
-        );
-
-    transition:
-        background 1s ease;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#fff,#ffeef4);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  transition:background .7s ease;
 }
 
+.story{
+  position:relative;
+  z-index:10;
+  width:min(92vw,420px);
+  text-align:center;
+}
 
-/* =========================
-   FLOWERS
-========================= */
+#characterImage{
+  width:min(75vw,280px);
+  max-height:45vh;
+  object-fit:cover;
+  border-radius:24px;
+  box-shadow:0 15px 40px rgba(0,0,0,.18);
+}
+
+.story-text{
+  min-height:58px;
+  margin:20px 0;
+  font-size:20px;
+  font-weight:700;
+  color:#5a2438;
+  transition:.5s;
+}
+
+.buttons{
+  position:relative;
+  min-height:130px;
+}
+
+button{
+  border:0;
+  border-radius:999px;
+  padding:13px 22px;
+  margin:7px;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,.16);
+  transition:all .2s ease;
+  position:relative;
+  z-index:30;
+  touch-action:none;
+}
+
+#helloButton{
+  background:#f7d7df;
+  color:#6b2039;
+}
+
+#sadButton{
+  background:#eee;
+  color:#333;
+}
+
+#confusedButton{
+  display:none;
+  background:#ffd166;
+  color:#432;
+}
+
+#skipButton{
+  display:none;
+  position:fixed;
+  font-size:12px;
+  padding:6px 12px;
+  min-width:90px;
+  background:#fff;
+  color:#444;
+}
+
+/* Emojis of first scene */
+
+.flower,
+.lily,
+.sparkle{
+  position:absolute;
+  z-index:1;
+  pointer-events:none;
+}
 
 .flower{
-    position:fixed;
-    pointer-events:none;
-    user-select:none;
-    z-index:0;
-
-    animation:
-        floating 5s ease-in-out infinite;
-
-    transition:opacity .7s ease;
+  font-size:32px;
+  animation:float 4s ease-in-out infinite;
 }
-
-.flower1{
-    top:4%;
-    left:5%;
-    font-size:34px;
-}
-
-.flower2{
-    top:12%;
-    right:5%;
-    font-size:30px;
-    animation-delay:1s;
-}
-
-.flower3{
-    bottom:8%;
-    left:6%;
-    font-size:38px;
-    animation-delay:2s;
-}
-
-.flower4{
-    bottom:10%;
-    right:5%;
-    font-size:32px;
-    animation-delay:1.5s;
-}
-
-.flower5{
-    top:45%;
-    left:2%;
-    font-size:25px;
-    animation-delay:2.5s;
-}
-
-.flower6{
-    top:55%;
-    right:2%;
-    font-size:27px;
-    animation-delay:3s;
-}
-
-
-/* =========================
-   LILY
-========================= */
 
 .lily{
-    position:fixed;
-    pointer-events:none;
-    user-select:none;
-    z-index:0;
-    opacity:.75;
-
-    filter:
-        drop-shadow(
-            0 4px 8px
-            rgba(170,100,130,.18)
-        );
-
-    animation:
-        lilyFloat 6s ease-in-out infinite;
-
-    transition:opacity .7s ease;
+  font-size:38px;
+  animation:float 5s ease-in-out infinite;
 }
-
-.lily1{
-    top:3%;
-    right:20%;
-    font-size:34px;
-}
-
-.lily2{
-    bottom:4%;
-    left:20%;
-    font-size:32px;
-    animation-delay:2s;
-}
-
-.lily3{
-    top:62%;
-    right:15%;
-    font-size:28px;
-    animation-delay:1s;
-}
-
-
-/* =========================
-   SPARKLES
-========================= */
 
 .sparkle{
-    position:fixed;
-    pointer-events:none;
-    z-index:0;
+  font-size:22px;
+  animation:twinkle 2s ease-in-out infinite;
+}
 
-    color:#d9b58b;
-    font-size:18px;
+.f1{
+  top:5%;
+  left:7%;
+}
 
-    animation:
-        sparkleMove 3s ease-in-out infinite;
+.f2{
+  top:15%;
+  right:8%;
+}
 
-    transition:opacity .7s ease;
+.f3{
+  bottom:10%;
+  left:8%;
+}
+
+.f4{
+  bottom:18%;
+  right:6%;
+}
+
+.l1{
+  top:9%;
+  left:42%;
+}
+
+.l2{
+  bottom:7%;
+  right:42%;
 }
 
 .s1{
-    top:15%;
-    left:35%;
+  top:22%;
+  left:20%;
 }
 
 .s2{
-    top:35%;
-    right:22%;
-    animation-delay:1s;
+  top:30%;
+  right:20%;
 }
 
 .s3{
-    bottom:18%;
-    right:30%;
-    animation-delay:1.7s;
+  bottom:25%;
+  left:22%;
 }
 
 .s4{
-    bottom:35%;
-    left:20%;
-    animation-delay:.5s;
+  bottom:20%;
+  right:25%;
 }
 
+@keyframes float{
+  50%{
+    transform:translateY(-14px) rotate(5deg);
+  }
+}
 
-/* =========================
-   SAD EMOJIS
-========================= */
+@keyframes twinkle{
+  50%{
+    opacity:.35;
+    transform:scale(1.4);
+  }
+}
+
+/* Emojis of sad scene */
 
 .sad-emoji{
-    position:fixed;
-    pointer-events:none;
-    user-select:none;
-    z-index:1;
-
-    opacity:0;
-    font-size:34px;
-
-    filter:
-        drop-shadow(
-            0 3px 8px
-            rgba(0,0,0,.25)
-        );
-
-    transition:opacity 1s ease;
+  position:absolute;
+  z-index:2;
+  font-size:32px;
+  opacity:.8;
+  display:none;
+  pointer-events:none;
+  animation:rain 2.8s linear infinite;
 }
-
-.sad-1{
-    top:8%;
-    left:7%;
-    animation:
-        sadFloat1 5s ease-in-out infinite;
-}
-
-.sad-2{
-    top:20%;
-    right:8%;
-    animation:
-        sadFloat2 6s ease-in-out infinite;
-    animation-delay:.5s;
-}
-
-.sad-3{
-    top:43%;
-    left:5%;
-    animation:
-        sadFloat1 5.5s ease-in-out infinite;
-    animation-delay:1s;
-}
-
-.sad-4{
-    top:50%;
-    right:5%;
-    animation:
-        sadFloat2 5s ease-in-out infinite;
-    animation-delay:1.5s;
-}
-
-.sad-5{
-    bottom:10%;
-    left:12%;
-    animation:
-        sadFloat1 6s ease-in-out infinite;
-    animation-delay:2s;
-}
-
-.sad-6{
-    bottom:8%;
-    right:12%;
-    animation:
-        sadFloat2 5.5s ease-in-out infinite;
-    animation-delay:2.5s;
-}
-
-
-/* =========================
-   SCENE 3 EMOJIS
-========================= */
-
-.confused-emoji{
-    position:fixed;
-
-    pointer-events:none;
-    user-select:none;
-
-    z-index:1;
-
-    opacity:0;
-
-    font-size:38px;
-
-    filter:
-        drop-shadow(
-            0 4px 10px
-            rgba(0,0,0,.35)
-        );
-
-    transition:
-        opacity 1s ease;
-
-    animation:
-        confusedFloat 2.5s ease-in-out infinite;
-}
-
-.confused-1{
-    top:7%;
-    left:8%;
-}
-
-.confused-2{
-    top:17%;
-    right:8%;
-    animation-delay:.4s;
-}
-
-.confused-3{
-    top:42%;
-    left:4%;
-    animation-delay:.8s;
-}
-
-.confused-4{
-    top:48%;
-    right:5%;
-    animation-delay:1.2s;
-}
-
-.confused-5{
-    bottom:10%;
-    left:12%;
-    animation-delay:1.6s;
-}
-
-.confused-6{
-    bottom:7%;
-    right:12%;
-    animation-delay:2s;
-}
-
-
-/* =========================
-   ANIMATIONS
-========================= */
-
-@keyframes floating{
-
-    0%,100%{
-        transform:
-            translateY(0)
-            rotate(0deg);
-    }
-
-    50%{
-        transform:
-            translateY(-12px)
-            rotate(7deg);
-    }
-}
-
-
-@keyframes lilyFloat{
-
-    0%,100%{
-        transform:
-            translateY(0)
-            rotate(-3deg);
-    }
-
-    50%{
-        transform:
-            translateY(-10px)
-            rotate(5deg);
-    }
-}
-
-
-@keyframes sparkleMove{
-
-    0%,100%{
-        opacity:.25;
-        transform:scale(.7);
-    }
-
-    50%{
-        opacity:1;
-        transform:scale(1.25);
-    }
-}
-
-
-@keyframes sadFloat1{
-
-    0%,100%{
-        transform:
-            translateY(0)
-            rotate(-4deg);
-    }
-
-    50%{
-        transform:
-            translateY(-15px)
-            rotate(5deg);
-    }
-}
-
-
-@keyframes sadFloat2{
-
-    0%,100%{
-        transform:
-            translateY(0)
-            rotate(4deg);
-    }
-
-    50%{
-        transform:
-            translateY(13px)
-            rotate(-5deg);
-    }
-}
-
-
-@keyframes confusedFloat{
-
-    0%,100%{
-        transform:
-            translate(0,0)
-            rotate(-8deg)
-            scale(1);
-    }
-
-    25%{
-        transform:
-            translate(8px,-12px)
-            rotate(8deg)
-            scale(1.08);
-    }
-
-    50%{
-        transform:
-            translate(-7px,8px)
-            rotate(-12deg)
-            scale(.92);
-    }
-
-    75%{
-        transform:
-            translate(10px,5px)
-            rotate(10deg)
-            scale(1.05);
-    }
-}
-
-
-/* =========================
-   SAD BACKGROUND
-========================= */
 
 body.sad{
-
-    background:
-
-        radial-gradient(
-            circle at 50% 15%,
-            rgba(100,110,130,.35),
-            transparent 35%
-        ),
-
-        radial-gradient(
-            circle at 20% 80%,
-            rgba(60,65,80,.4),
-            transparent 30%
-        ),
-
-        linear-gradient(
-            160deg,
-            #252936,
-            #171a23,
-            #0d0f15
-        );
+  background:linear-gradient(180deg,#172033,#26354d);
 }
-
 
 body.sad .flower,
 body.sad .lily,
 body.sad .sparkle{
-    opacity:0;
+  display:none;
 }
-
 
 body.sad .sad-emoji{
-    opacity:.72;
+  display:block;
 }
 
+@keyframes rain{
+  0%{
+    transform:translateY(-20vh);
+    opacity:0;
+  }
 
-/* =========================
-   SCENE 3 BACKGROUND
-========================= */
+  15%{
+    opacity:.85;
+  }
+
+  100%{
+    transform:translateY(120vh);
+    opacity:0;
+  }
+}
+
+/* Scene 3 - confused */
+
+.confused-emoji{
+  position:absolute;
+  z-index:2;
+  font-size:34px;
+  pointer-events:none;
+  animation:confusedFloat 2.2s ease-in-out infinite;
+}
+
+.c1{
+  top:8%;
+  left:8%;
+}
+
+.c2{
+  top:18%;
+  right:10%;
+}
+
+.c3{
+  top:42%;
+  left:4%;
+}
+
+.c4{
+  bottom:20%;
+  right:7%;
+}
+
+.c5{
+  bottom:8%;
+  left:18%;
+}
+
+.c6{
+  bottom:12%;
+  right:35%;
+}
 
 body.confused{
+  background:
+    radial-gradient(circle at 20% 20%,#7b2cbf,transparent 35%),
+    radial-gradient(circle at 80% 30%,#ff006e,transparent 35%),
+    radial-gradient(circle at 50% 80%,#3a86ff,transparent 35%),
+    #18051f;
 
-    background:
-
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(255,180,80,.30),
-            transparent 25%
-        ),
-
-        radial-gradient(
-            circle at 80% 70%,
-            rgba(130,90,180,.35),
-            transparent 30%
-        ),
-
-        radial-gradient(
-            circle at 50% 50%,
-            rgba(255,80,120,.18),
-            transparent 40%
-        ),
-
-        linear-gradient(
-            135deg,
-            #302438,
-            #171b30,
-            #39252d
-        );
-
-    animation:
-        confusedBackground 1.8s ease-in-out infinite;
+  animation:confusedBackground 1.8s ease-in-out infinite;
 }
-
 
 body.confused .flower,
 body.confused .lily,
 body.confused .sparkle,
 body.confused .sad-emoji{
-    opacity:0;
+  display:none;
 }
 
-
-body.confused .confused-emoji{
-    opacity:.9;
+body.confused .story-text{
+  color:#fff;
+  text-shadow:0 0 12px rgba(255,255,255,.5);
 }
 
+body.confused #confusedButton{
+  display:block;
+}
 
 @keyframes confusedBackground{
 
-    0%,100%{
-        transform:scale(1);
-    }
+  0%,100%{
+    transform:translate(0,0) rotate(0deg);
+  }
 
-    50%{
-        transform:scale(1.025);
-    }
+  25%{
+    transform:translate(3px,-2px) rotate(.4deg);
+  }
+
+  50%{
+    transform:translate(-3px,2px) rotate(-.4deg);
+  }
+
+  75%{
+    transform:translate(2px,1px) rotate(.3deg);
+  }
 }
 
+@keyframes confusedFloat{
 
-/* =========================
-   RAIN
-========================= */
+  0%,100%{
+    transform:translate(0,0) rotate(0deg);
+  }
 
-body.sad::before{
-
-    content:"";
-
-    position:fixed;
-    inset:0;
-
-    pointer-events:none;
-    z-index:0;
-
-    opacity:.32;
-
-    background-image:
-
-        repeating-linear-gradient(
-            105deg,
-            transparent 0px,
-            transparent 18px,
-            rgba(
-                180,
-                200,
-                220,
-                .25
-            ) 19px,
-            transparent 20px
-        );
-
-    background-size:
-        30px 30px;
-
-    animation:
-        rain .7s linear infinite;
+  50%{
+    transform:translate(12px,-18px) rotate(12deg);
+  }
 }
 
+/* Emojis only in scene 1 */
 
-@keyframes rain{
-
-    from{
-        background-position:
-            0 0;
-    }
-
-    to{
-        background-position:
-            -30px 60px;
-    }
+body:not(.sad):not(.confused) #helloButton::before{
+  content:"🤎 ";
 }
 
-
-/* =========================
-   STORY
-========================= */
-
-.story{
-
-    width:100%;
-    max-width:420px;
-
-    height:100vh;
-    max-height:100vh;
-
-    text-align:center;
-
-    position:relative;
-    z-index:5;
-
-    display:flex;
-    flex-direction:column;
-
-    justify-content:center;
-    align-items:center;
-
-    overflow:visible;
+body:not(.sad):not(.confused) #helloButton::after{
+  content:" 🌷";
 }
 
+/* Scene 4 */
 
-/* =========================
-   IMAGE
-========================= */
-
-.character{
-
-    width:100%;
-    max-width:310px;
-    max-height:43vh;
-
-    height:auto;
-
-    object-fit:contain;
-
-    display:block;
-
-    margin:
-        0 auto 10px auto;
-
-    user-select:none;
-
-    -webkit-user-drag:none;
-
-    filter:
-        drop-shadow(
-            0 8px 18px
-            rgba(0,0,0,.13)
-        );
-
-    animation:
-        imageShow .8s ease;
-
-    transition:
-        opacity .35s ease;
+body.scene4{
+  background:linear-gradient(135deg,#fff5f8,#ffdce7);
 }
 
-
-@keyframes imageShow{
-
-    from{
-        opacity:0;
-        transform:scale(.94);
-    }
-
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
+body.scene4 .flower,
+body.scene4 .lily,
+body.scene4 .sparkle{
+  display:block;
 }
 
-
-/* =========================
-   TEXT
-========================= */
-
-.story-text{
-
-    color:#3b3032;
-
-    font-size:19px;
-    line-height:1.65;
-
-    min-height:65px;
-
-    width:100%;
-    max-width:390px;
-
-    padding:0 8px;
-
-    margin:
-        0 auto 8px auto;
-
-    font-weight:500;
-
-    transition:
-        color .8s ease;
+body.scene4 .sad-emoji,
+body.scene4 .confused-emoji{
+  display:none;
 }
 
+@media(max-width:600px){
 
-body.sad .story-text{
-    color:#eeeeee;
+  .flower{
+    font-size:27px;
+  }
+
+  .lily{
+    font-size:32px;
+  }
+
+  .sparkle{
+    font-size:18px;
+  }
+
+  .sad-emoji{
+    font-size:27px;
+  }
+
+  .confused-emoji{
+    font-size:29px;
+  }
+
+  .story-text{
+    font-size:18px;
+  }
 }
-
-
-body.confused .story-text{
-
-    color:#ffffff;
-
-    font-size:20px;
-
-    font-weight:bold;
-
-    text-shadow:
-        0 3px 12px
-        rgba(0,0,0,.5);
-}
-
-
-/* =========================
-   BUTTON AREA
-========================= */
-
-.buttons{
-
-    position:relative;
-
-    width:100%;
-    height:125px;
-
-    overflow:visible;
-}
-
-
-/* =========================
-   BUTTONS
-========================= */
-
-button{
-
-    width:82%;
-    max-width:300px;
-
-    padding:10px 15px;
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            .96
-        );
-
-    color:#3b3032;
-
-    border:
-        1px solid #eadde1;
-
-    border-radius:13px;
-
-    font-size:16px;
-
-    font-family:inherit;
-
-    cursor:pointer;
-
-    box-shadow:
-        0 4px 15px
-        rgba(
-            120,
-            80,
-            90,
-            .12
-        );
-
-    transition:
-        left .07s linear,
-        top .07s linear,
-        transform .07s linear;
-}
-
-
-/* =========================
-   FIRST BUTTON
-========================= */
-
-#helloButton{
-
-    position:absolute;
-
-    top:0;
-    left:50%;
-
-    transform:
-        translateX(-50%);
-}
-
-
-#helloButton::before{
-
-    content:"🤎";
-
-    margin-left:8px;
-
-    font-size:20px;
-}
-
-
-#helloButton::after{
-
-    content:"🌷";
-
-    margin-right:8px;
-
-    font-size:20px;
-}
-
-
-/* =========================
-   SECOND BUTTON
-========================= */
-
-#sadButton{
-
-    position:absolute;
-
-    top:55px;
-    left:50%;
-
-    transform:
-        translateX(-50%);
-
-    z-index:20;
-
-    white-space:nowrap;
-}
-
-
-/* =========================
-   SCENE 2 BUTTONS
-========================= */
-
-body.sad #helloButton{
-
-    position:absolute;
-
-    top:0;
-    left:50%;
-
-    transform:
-        translateX(-50%);
-}
-
-
-body.sad #helloButton::before,
-body.sad #helloButton::after{
-
-    content:"";
-}
-
-
-body.sad #sadButton{
-
-    position:absolute;
-
-    top:55px;
-    left:50%;
-
-    transform:
-        translateX(-50%);
-}
-
-
-/* =========================
-   SCENE 3 BUTTON
-========================= */
-
-body.confused #helloButton,
-body.confused #sadButton{
-
-    display:none;
-}
-
-
-body.confused #confusedButton{
-
-    display:block;
-}
-
-
-/* =========================
-   CONFUSED BUTTON
-========================= */
-
-#confusedButton{
-
-    display:none;
-
-    position:absolute;
-
-    top:0;
-    left:50%;
-
-    transform:
-        translateX(-50%);
-
-    width:82%;
-    max-width:300px;
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            .95
-        );
-
-    color:#332c38;
-
-    border:
-        1px solid rgba(
-            255,
-            255,
-            255,
-            .7
-        );
-
-    box-shadow:
-        0 6px 22px
-        rgba(0,0,0,.25);
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-height:700px){
-
-    .character{
-
-        max-width:260px;
-        max-height:36vh;
-
-        margin-bottom:5px;
-    }
-
-
-    .story-text{
-
-        font-size:17px;
-        line-height:1.5;
-
-        min-height:55px;
-
-        margin-bottom:5px;
-    }
-
-
-    .buttons{
-        height:115px;
-    }
-
-
-    button{
-
-        padding:8px 12px;
-        font-size:15px;
-    }
-
-
-    #sadButton{
-        top:50px;
-    }
-
-
-    .sad-emoji,
-    .confused-emoji{
-        font-size:27px;
-    }
-}
-
-
-/* =========================
-   VERY SMALL SCREEN
-========================= */
-
-@media (max-height:600px){
-
-    .character{
-
-        max-width:220px;
-        max-height:31vh;
-    }
-
-
-    .story-text{
-
-        font-size:15px;
-        min-height:45px;
-    }
-
-
-    .buttons{
-        height:100px;
-    }
-
-
-    button{
-
-        padding:7px 10px;
-        font-size:14px;
-    }
-
-
-    #sadButton{
-        top:43px;
-    }
-
-
-    .sad-emoji,
-    .confused-emoji{
-        font-size:23px;
-    }
-}
-
-
-/* =========================
-   WIDE SCREEN
-========================= */
-
-@media (min-width:501px){
-
-    .character{
-        max-width:320px;
-    }
-
-
-    .story-text{
-        font-size:20px;
-    }
-}
-
 </style>
 </head>
 
-
 <body>
 
+<!-- First scene flowers -->
 
-<!-- =========================
-     FLOWERS
-========================= -->
+<div class="flower f1">🌸</div>
+<div class="flower f2">🌷</div>
+<div class="flower f3">🌺</div>
+<div class="flower f4">🌹</div>
 
-<div class="flower flower1">🌸</div>
-<div class="flower flower2">🌷</div>
-<div class="flower flower3">🌺</div>
-<div class="flower flower4">🌸</div>
-<div class="flower flower5">🌷</div>
-<div class="flower flower6">🌺</div>
+<div class="lily l1">🌷</div>
+<div class="lily l2">🌷</div>
 
-
-<!-- =========================
-     LILY
-========================= -->
-
-<div class="lily lily1">🌷</div>
-<div class="lily lily2">🌷</div>
-<div class="lily lily3">🌷</div>
+<div class="sparkle s1">✨</div>
+<div class="sparkle s2">💫</div>
+<div class="sparkle s3">✨</div>
+<div class="sparkle s4">💖</div>
 
 
-<!-- =========================
-     SPARKLES
-========================= -->
+<!-- Sad emojis -->
 
-<div class="sparkle s1">✦</div>
-<div class="sparkle s2">✧</div>
-<div class="sparkle s3">✦</div>
-<div class="sparkle s4">✧</div>
-
-
-<!-- =========================
-     SAD EMOJIS
-========================= -->
-
-<div class="sad-emoji sad-1">😟</div>
-<div class="sad-emoji sad-2">🙁</div>
-<div class="sad-emoji sad-3">😿</div>
-<div class="sad-emoji sad-4">☹️</div>
-<div class="sad-emoji sad-5">😭</div>
-<div class="sad-emoji sad-6">😢</div>
+<div class="sad-emoji" style="left:8%;top:-10%">😟</div>
+<div class="sad-emoji" style="left:25%;top:-30%;animation-delay:.4s">🙁</div>
+<div class="sad-emoji" style="left:45%;top:-20%;animation-delay:.8s">😿</div>
+<div class="sad-emoji" style="left:65%;top:-35%;animation-delay:1.2s">☹️</div>
+<div class="sad-emoji" style="left:82%;top:-15%;animation-delay:1.6s">😭</div>
+<div class="sad-emoji" style="left:55%;top:-45%;animation-delay:2s">😢</div>
 
 
-<!-- =========================
-     SCENE 3 EMOJIS
-========================= -->
+<!-- Confused emojis -->
 
-<div class="confused-emoji confused-1">🧐</div>
-<div class="confused-emoji confused-2">😣</div>
-<div class="confused-emoji confused-3">😧</div>
-<div class="confused-emoji confused-4">😵‍💫</div>
-<div class="confused-emoji confused-5">😵</div>
-<div class="confused-emoji confused-6">🥴</div>
+<div class="confused-emoji c1">🧐</div>
+<div class="confused-emoji c2">😣</div>
+<div class="confused-emoji c3">😧</div>
+<div class="confused-emoji c4">😵‍💫</div>
+<div class="confused-emoji c5">😵</div>
+<div class="confused-emoji c6">🥴</div>
 
 
-<!-- =========================
-     STORY
-========================= -->
+<!-- Story -->
 
 <div class="story">
 
-    <img
-        id="characterImage"
-        src="bc2f39106e1a0c2f00d3cc1204eaec7a.jpg"
-        alt="کاوی"
-        class="character"
-    >
+  <img
+    id="characterImage"
+    src="bc2f39106e1a0c2f00d3cc1204eaec7a.jpg"
+    alt="story image"
+  >
 
+  <div class="story-text" id="storyText"></div>
 
-    <div
-        class="story-text"
-        id="storyText">
-    </div>
+  <div class="buttons">
 
+    <button id="helloButton">
+      سڵاو گیان
+    </button>
 
-    <div
-        class="buttons"
-        id="buttonArea">
+    <button id="sadButton">
+      خۆش حاڵ نەبووم
+    </button>
 
+    <button id="confusedButton">
+      قەلەقی چیت
+    </button>
 
-        <!-- SCENE 1 / SCENE 2 BUTTON 1 -->
+    <button id="skipButton">
+      skip naz
+    </button>
 
-        <button id="helloButton">
-            سڵاو گیان
-        </button>
-
-
-        <!-- SCENE 1 / SCENE 2 BUTTON 2 -->
-
-        <button id="sadButton">
-            خۆش حاڵ نەبووم
-        </button>
-
-
-        <!-- SCENE 3 BUTTON -->
-
-        <button id="confusedButton">
-            قەلەقی چیت
-        </button>
-
-    </div>
+  </div>
 
 </div>
 
 
-
 <script>
 
-/* =========================
-   ELEMENTS
-========================= */
+const body = document.body;
 
-const body =
-    document.body;
+const image = document.getElementById("characterImage");
 
-const image =
-    document.getElementById(
-        "characterImage"
-    );
+const text = document.getElementById("storyText");
 
-const text =
-    document.getElementById(
-        "storyText"
-    );
+const helloButton = document.getElementById("helloButton");
 
-const helloButton =
-    document.getElementById(
-        "helloButton"
-    );
+const sadButton = document.getElementById("sadButton");
 
-const sadButton =
-    document.getElementById(
-        "sadButton"
-    );
+const confusedButton = document.getElementById("confusedButton");
 
-const confusedButton =
-    document.getElementById(
-        "confusedButton"
-    );
+const skipButton = document.getElementById("skipButton");
 
 
-/* =========================
-   TEXTS
-========================= */
+/* Texts */
 
 const firstMessage =
-    "سڵاو من کاوی، زۆرم خۆشەوێی بەساقەو بم نونی گیان";
+"سڵاو من کاوی، زۆرم خۆشەوێی بەساقەو بم نونی گیان";
 
 const secondMessage =
-    "زۆر بێتاقەتم";
+"زۆر بێتاقەتم";
 
 const thirdMessage =
-    "بەخوا زۆر قەلەقم 💔";
-
-const fourthMessage =
-    "دڵ نیای ئەتەوێ بزانیت ؟";
-
-const fifthMessage =
-    "ئەخر بێتاقەت ترم ناکەی";
+"بەخوا زۆر قەلەقم 💔";
 
 
 let typingTimer = null;
 
-
-/* =========================
-   TYPE TEXT
-========================= */
-
-function typeText(message){
-
-    if(typingTimer){
-
-        clearTimeout(
-            typingTimer
-        );
-    }
-
-
-    text.textContent = "";
-
-
-    let i = 0;
-
-
-    function writeLetter(){
-
-        if(i < message.length){
-
-            text.textContent +=
-                message.charAt(i);
-
-            i++;
-
-
-            typingTimer =
-                setTimeout(
-                    writeLetter,
-                    75
-                );
-        }
-    }
-
-
-    writeLetter();
-}
-
-
-/* =========================
-   START
-========================= */
-
-typeText(
-    firstMessage
-);
-
-
-/* =========================
-   MOVE SCENE 1 BUTTON 2
-========================= */
-
-function moveSadButton(){
-
-    if(
-        body.classList.contains(
-            "sad"
-        )
-    ){
-
-        return;
-    }
-
-
-    const buttonWidth =
-        sadButton.offsetWidth;
-
-    const buttonHeight =
-        sadButton.offsetHeight;
-
-    const screenWidth =
-        window.innerWidth;
-
-    const screenHeight =
-        window.innerHeight;
-
-
-    const maxX =
-        Math.max(
-            5,
-            screenWidth -
-            buttonWidth -
-            5
-        );
-
-
-    const maxY =
-        Math.max(
-            5,
-            screenHeight -
-            buttonHeight -
-            5
-        );
-
-
-    const randomX =
-        Math.floor(
-            Math.random() *
-            maxX
-        );
-
-
-    const randomY =
-        Math.floor(
-            Math.random() *
-            maxY
-        );
-
-
-    sadButton.style.position =
-        "fixed";
-
-    sadButton.style.left =
-        randomX + "px";
-
-    sadButton.style.top =
-        randomY + "px";
-
-    sadButton.style.transform =
-        "none";
-}
-
-
-/* =========================
-   SCENE 1 BUTTON 2
-   TOUCH
-========================= */
-
-sadButton.addEventListener(
-    "touchstart",
-    function(event){
-
-        if(
-            body.classList.contains(
-                "sad"
-            )
-        ){
-
-            return;
-        }
-
-
-        event.preventDefault();
-
-        moveSadButton();
-
-    },
-    {
-        passive:false
-    }
-);
-
-
-/* =========================
-   SCENE 1 BUTTON 2
-   POINTER
-========================= */
-
-sadButton.addEventListener(
-    "pointerenter",
-    function(){
-
-        if(
-            body.classList.contains(
-                "sad"
-            )
-        ){
-
-            return;
-        }
-
-
-        moveSadButton();
-    }
-);
-
-
-sadButton.addEventListener(
-    "pointerdown",
-    function(event){
-
-        if(
-            body.classList.contains(
-                "sad"
-            )
-        ){
-
-            return;
-        }
-
-
-        event.preventDefault();
-
-        moveSadButton();
-    }
-);
-
-
-sadButton.addEventListener(
-    "click",
-    function(event){
-
-        if(
-            body.classList.contains(
-                "sad"
-            )
-        ){
-
-            return;
-        }
-
-
-        event.preventDefault();
-
-        moveSadButton();
-    }
-);
-
-
-/* =========================
-   BUTTON 1
-   GO TO SCENE 2
-========================= */
-
-helloButton.addEventListener(
-    "click",
-    function(){
-
-        /* IMAGE 2 */
-
-        image.style.opacity =
-            "0";
-
-
-        setTimeout(
-            function(){
-
-                image.src =
-                    "7b4e45edfbedd4efbcc4bab78fbefaec.jpg";
-
-                image.style.opacity =
-                    "1";
-
-            },
-            350
-        );
-
-
-        /* SAD BACKGROUND */
-
-        body.classList.add(
-            "sad"
-        );
-
-
-        /* TEXT 2 */
-
-        typeText(
-            secondMessage
-        );
-
-
-        /* BUTTON TEXT */
-
-        helloButton.textContent =
-            "بێتاقەت مەبە 🤗";
-
-        sadButton.textContent =
-            "بۆ بێتاقەتی 🤔";
-
-
-        /* BUTTON 1 FIXED */
-
-        helloButton.style.position =
-            "absolute";
-
-        helloButton.style.left =
-            "50%";
-
-        helloButton.style.top =
-            "0";
-
-        helloButton.style.transform =
-            "translateX(-50%)";
-
-
-        /* BUTTON 2 FIXED */
-
-        sadButton.style.position =
-            "absolute";
-
-        sadButton.style.left =
-            "50%";
-
-        sadButton.style.top =
-            "55px";
-
-        sadButton.style.transform =
-            "translateX(-50%)";
-
-    }
-);
-
-
-/* =========================
-   SCENE 2
-   BUTTON 1 MOVEMENT
-========================= */
-
-function moveHelloButton(){
-
-    if(
-        !body.classList.contains(
-            "sad"
-        )
-    ){
-
-        return;
-    }
-
-
-    const buttonWidth =
-        helloButton.offsetWidth;
-
-    const buttonHeight =
-        helloButton.offsetHeight;
-
-    const screenWidth =
-        window.innerWidth;
-
-    const screenHeight =
-        window.innerHeight;
-
-
-    const maxX =
-        Math.max(
-            5,
-            screenWidth -
-            buttonWidth -
-            5
-        );
-
-
-    const maxY =
-        Math.max(
-            5,
-            screenHeight -
-            buttonHeight -
-            5
-        );
-
-
-    const randomX =
-        Math.floor(
-            Math.random() *
-            maxX
-        );
-
-
-    const randomY =
-        Math.floor(
-            Math.random() *
-            maxY
-        );
-
-
-    helloButton.style.position =
-        "fixed";
-
-    helloButton.style.left =
-        randomX + "px";
-
-    helloButton.style.top =
-        randomY + "px";
-
-    helloButton.style.transform =
-        "none";
-}
-
-
-/* =========================
-   SCENE 2 BUTTON 1
-   TOUCH
-========================= */
-
-helloButton.addEventListener(
-    "touchstart",
-    function(event){
-
-        if(
-            !body.classList.contains(
-                "sad"
-            )
-        ){
-
-            return;
-        }
-
-
-        event.preventDefault();
-
-        moveHelloButton();
-
-    },
-    {
-        passive:false
-    }
-);
-
-
-/* =========================
-   SCENE 2 BUTTON 1
-   POINTER DOWN
-========================= */
-
-helloButton.addEventListener(
-    "pointerdown",
-    function(event){
-
-        if(
-            !body.classList.contains(
-                "sad"
-            )
-        ){
-
-            return;
-        }
-
-
-        event.preventDefault();
-
-        moveHelloButton();
-    }
-);
-
-
-/* =========================
-   SCENE 2 BUTTON 2
-   GO TO SCENE 3
-========================= */
-
-sadButton.addEventListener(
-    "click",
-    function(){
-
-        if(
-            !body.classList.contains(
-                "sad"
-            )
-        ){
-
-            return;
-        }
-
-
-        goToScene3();
-
-    }
-);
-
-
-/* =========================
-   TOUCH FOR BUTTON 2
-   GO TO SCENE 3
-========================= */
-
-sadButton.addEventListener(
-    "touchstart",
-    function(event){
-
-        if(
-            !body.classList.contains(
-                "sad"
-            )
-        ){
-
-            return;
-        }
-
-
-        event.preventDefault();
-
-        goToScene3();
-
-    },
-    {
-        passive:false
-    }
-);
-
-
-/* =========================
-   SCENE 3
-========================= */
-
-function goToScene3(){
-
-    /* REMOVE SAD */
-
-    body.classList.remove(
-        "sad"
-    );
-
-
-    /* ADD CONFUSED */
-
-    body.classList.add(
-        "confused"
-    );
-
-
-    /* IMAGE 3 */
-
-    image.style.opacity =
-        "0";
-
-
-    setTimeout(
-        function(){
-
-            image.src =
-                "610ab076d09e74dd9d2b8bdd5fcaf35e.jpg";
-
-            image.style.opacity =
-                "1";
-
-        },
-        350
-    );
-
-
-    /* TEXT 3 */
-
-    typeText(
-        thirdMessage
-    );
-
-
-    /* HIDE OLD BUTTONS */
-
-    helloButton.style.display =
-        "none";
-
-    sadButton.style.display =
-        "none";
-
-
-    /* SHOW NEW BUTTON */
-
-    confusedButton.style.display =
-        "block";
-
-}
-
-
-/* =========================
-   SCENE 3 BUTTON
-   FIRST TOUCH
-========================= */
-
 let confusedStep = 0;
 
 
-function confusedButtonAction(){
+/* Letter by letter */
 
-    if(
-        !body.classList.contains(
-            "confused"
-        )
-    ){
+function typeText(message){
 
-        return;
+  clearInterval(typingTimer);
+
+  text.textContent = "";
+
+  let i = 0;
+
+  typingTimer = setInterval(function(){
+
+    text.textContent += message[i] || "";
+
+    i++;
+
+    if(i > message.length){
+
+      clearInterval(typingTimer);
+
     }
 
-
-    confusedStep++;
-
-
-    /* FIRST TOUCH */
-
-    if(confusedStep === 1){
-
-        typeText(
-            fourthMessage
-        );
-
-        moveConfusedButton();
-
-        return;
-    }
-
-
-    /* SECOND TOUCH */
-
-    if(confusedStep >= 2){
-
-        typeText(
-            fifthMessage
-        );
-
-        moveConfusedButton();
-
-        return;
-    }
-
+  },75);
 }
 
 
-/* =========================
-   MOVE SCENE 3 BUTTON
-========================= */
+/* Move button randomly */
+
+function moveSadButton(){
+
+  sadButton.style.position = "fixed";
+
+  const x =
+    Math.random() *
+    (window.innerWidth - sadButton.offsetWidth - 30) + 15;
+
+  const y =
+    Math.random() *
+    (window.innerHeight - sadButton.offsetHeight - 30) + 15;
+
+  sadButton.style.left = x + "px";
+
+  sadButton.style.top = y + "px";
+}
+
+
+/* Scene 2 first button moves */
+
+function moveHelloButton(){
+
+  helloButton.style.position = "fixed";
+
+  const x =
+    Math.random() *
+    (window.innerWidth - helloButton.offsetWidth - 30) + 15;
+
+  const y =
+    Math.random() *
+    (window.innerHeight - helloButton.offsetHeight - 30) + 15;
+
+  helloButton.style.left = x + "px";
+
+  helloButton.style.top = y + "px";
+}
+
+
+/* Scene 3 button moves moderately */
 
 function moveConfusedButton(){
 
-    const buttonWidth =
-        confusedButton.offsetWidth;
+  confusedButton.style.position = "fixed";
 
-    const buttonHeight =
-        confusedButton.offsetHeight;
+  const rangeX = 120;
 
-    const screenWidth =
-        window.innerWidth;
+  const rangeY = 80;
 
-    const screenHeight =
-        window.innerHeight;
+  const centerX = window.innerWidth / 2;
 
+  const centerY = window.innerHeight * 0.72;
 
-    const maxX =
-        Math.max(
-            5,
-            screenWidth -
-            buttonWidth -
-            5
-        );
+  const x =
+    centerX -
+    rangeX / 2 +
+    Math.random() * rangeX -
+    confusedButton.offsetWidth / 2;
 
+  const y =
+    centerY -
+    rangeY / 2 +
+    Math.random() * rangeY -
+    confusedButton.offsetHeight / 2;
 
-    const maxY =
-        Math.max(
-            5,
-            screenHeight -
-            buttonHeight -
-            5
-        );
+  confusedButton.style.left =
+    Math.max(10,x) + "px";
 
-
-    const randomX =
-        Math.floor(
-            Math.random() *
-            maxX
-        );
-
-
-    const randomY =
-        Math.floor(
-            Math.random() *
-            maxY
-        );
-
-
-    confusedButton.style.position =
-        "fixed";
-
-    confusedButton.style.left =
-        randomX + "px";
-
-    confusedButton.style.top =
-        randomY + "px";
-
-    confusedButton.style.transform =
-        "none";
+  confusedButton.style.top =
+    Math.max(10,y) + "px";
 }
 
 
-/* =========================
-   SCENE 3 BUTTON TOUCH
-========================= */
+/* Scene 1 → Scene 2 */
 
-confusedButton.addEventListener(
-    "touchstart",
-    function(event){
+function goToScene2(){
 
-        event.preventDefault();
+  body.classList.remove("confused");
+  body.classList.remove("scene4");
 
-        confusedButtonAction();
+  body.classList.add("sad");
 
-    },
-    {
-        passive:false
-    }
-);
+  image.src =
+    "7b4e45edfbedd4efbcc4bab78fbefaec.jpg";
+
+  typeText(secondMessage);
+
+  helloButton.textContent =
+    "بێتاقەت مەبە 🤗";
+
+  sadButton.textContent =
+    "بۆ بێتاقەتی 🤔";
+
+  helloButton.style.position = "relative";
+
+  helloButton.style.left = "";
+
+  helloButton.style.top = "";
+
+  sadButton.style.position = "relative";
+
+  sadButton.style.left = "";
+
+  sadButton.style.top = "";
+
+  confusedButton.style.display = "none";
+
+  skipButton.style.display = "none";
+}
 
 
-/* =========================
-   SCENE 3 BUTTON POINTER
-========================= */
+/* Scene 2 → Scene 3 */
 
-confusedButton.addEventListener(
-    "pointerdown",
-    function(event){
+function goToScene3(){
 
-        event.preventDefault();
+  body.classList.remove("sad");
+  body.classList.remove("scene4");
 
-        confusedButtonAction();
+  body.classList.add("confused");
 
-    }
-);
+  image.src =
+    "610ab076d09e74dd9d2b8bdd5fcaf35e.jpg";
+
+  typeText(thirdMessage);
+
+  helloButton.style.display = "none";
+
+  sadButton.style.display = "none";
+
+  confusedButton.style.display = "block";
+
+  confusedButton.textContent =
+    "قەلەقی چیت";
+
+  confusedStep = 0;
+
+  confusedButton.style.position = "relative";
+
+  confusedButton.style.left = "";
+
+  confusedButton.style.top = "";
+
+  skipButton.style.display = "none";
+}
+
+
+/* Scene 3 button */
+
+function confusedButtonAction(){
+
+  if(!body.classList.contains("confused")){
+    return;
+  }
+
+  confusedStep++;
+
+  if(confusedStep === 1){
+
+    confusedButton.textContent =
+      "نا نایڵێم ناز ئەکەم";
+
+    moveConfusedButton();
+
+    skipButton.style.display = "block";
+
+    /* Skip naz stays fixed below the moved button */
+
+    const rect =
+      confusedButton.getBoundingClientRect();
+
+    skipButton.style.position = "fixed";
+
+    skipButton.style.left =
+      (rect.left + rect.width / 2) + "px";
+
+    skipButton.style.top =
+      (rect.bottom + 12) + "px";
+
+    skipButton.style.transform =
+      "translateX(-50%)";
+
+  }else{
+
+    confusedButton.textContent =
+      "دەی نازم زیاتر هەڵگرە 🤓";
+
+    moveConfusedButton();
+
+  }
+}
+
+
+/* Scene 3 → Scene 4 */
+
+function goToScene4(){
+
+  body.classList.remove("confused");
+  body.classList.remove("sad");
+
+  body.classList.add("scene4");
+
+  /* Image 4 */
+
+  image.src =
+    "ece914e7ddcc0c54f9f9e56c7dccc1e2.jpg";
+
+  /*
+    Text of scene 3 remains until you decide
+    what you want to put in scene 4.
+  */
+
+  text.textContent =
+    "💖";
+
+  /* Hide old buttons */
+
+  confusedButton.style.display = "none";
+
+  skipButton.style.display = "none";
+
+  helloButton.style.display = "none";
+
+  sadButton.style.display = "none";
+}
+
+
+/* Start */
+
+typeText(firstMessage);
+
+
+/* Scene 1 button */
+
+helloButton.addEventListener("click",function(){
+
+  if(body.classList.contains("sad")){
+    return;
+  }
+
+  if(body.classList.contains("confused")){
+    return;
+  }
+
+  goToScene2();
+
+});
+
+
+/* Scene 2 moving button */
+
+helloButton.addEventListener("pointerdown",function(event){
+
+  if(body.classList.contains("sad")){
+
+    event.preventDefault();
+
+    moveHelloButton();
+
+  }
+
+});
+
+
+/* Scene 1 second button */
+
+sadButton.addEventListener("pointerdown",function(event){
+
+  if(!body.classList.contains("sad")){
+
+    event.preventDefault();
+
+    moveSadButton();
+
+  }
+
+});
+
+
+/* Scene 2 fixed button → Scene 3 */
+
+sadButton.addEventListener("click",function(){
+
+  if(body.classList.contains("sad")){
+
+    goToScene3();
+
+  }
+
+});
+
+
+/* Scene 3 button */
+
+confusedButton.addEventListener("pointerdown",function(event){
+
+  event.preventDefault();
+
+  confusedButtonAction();
+
+});
+
+
+/* Skip naz → Image 4 */
+
+skipButton.addEventListener("click",function(){
+
+  goToScene4();
+
+});
 
 </script>
 
