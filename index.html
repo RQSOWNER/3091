@@ -20,13 +20,20 @@ html,body{
 
 body{
   font-family:Arial,sans-serif;
-  background:linear-gradient(135deg,#fff,#ffeef4);
   display:flex;
   align-items:center;
   justify-content:center;
   position:relative;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(255,255,255,.9),transparent 20%),
+    radial-gradient(circle at 85% 15%,rgba(255,220,230,.8),transparent 25%),
+    linear-gradient(135deg,#fff7fa,#ffe0e9,#fff);
   transition:background .7s ease;
 }
+
+/* =========================
+   STORY
+========================= */
 
 .story{
   position:relative;
@@ -40,8 +47,7 @@ body{
   max-height:45vh;
   object-fit:cover;
   border-radius:24px;
-  box-shadow:0 15px 40px rgba(0,0,0,.18);
-  transition:.5s;
+  box-shadow:0 15px 40px rgba(120,30,60,.22);
 }
 
 .story-text{
@@ -49,7 +55,8 @@ body{
   margin:20px 0;
   font-size:20px;
   font-weight:700;
-  color:#5a2438;
+  color:#6b2039;
+  text-shadow:0 2px 8px rgba(255,255,255,.8);
 }
 
 .buttons{
@@ -60,12 +67,12 @@ body{
 button{
   border:0;
   border-radius:999px;
-  padding:13px 22px;
+  padding:14px 24px;
   margin:7px;
   font-size:16px;
   font-weight:700;
   cursor:pointer;
-  box-shadow:0 8px 20px rgba(0,0,0,.16);
+  box-shadow:0 8px 22px rgba(90,20,50,.2);
   position:relative;
   z-index:30;
   user-select:none;
@@ -73,13 +80,13 @@ button{
 }
 
 #helloButton{
-  background:#f7d7df;
-  color:#6b2039;
+  background:linear-gradient(135deg,#f7cbd8,#fff0f5);
+  color:#721d3d;
 }
 
 #sadButton{
-  background:#eee;
-  color:#333;
+  background:#f7eef1;
+  color:#555;
 }
 
 #confusedButton{
@@ -98,95 +105,107 @@ button{
   color:#444;
 }
 
-/* ---------------- FIRST SCENE ---------------- */
+/* =========================
+   ROMANTIC FLOWERS
+   Scene 1
+========================= */
 
-.flower,
-.lily,
-.sparkle{
+.romantic-flower{
   position:absolute;
   z-index:1;
   pointer-events:none;
+  user-select:none;
+  animation:flowerFloat 5s ease-in-out infinite;
+  filter:drop-shadow(0 5px 10px rgba(180,50,90,.15));
 }
 
-.flower{
-  font-size:32px;
-  animation:float 4s ease-in-out infinite;
-}
-
-.lily{
-  font-size:38px;
-  animation:float 5s ease-in-out infinite;
-}
-
-.sparkle{
-  font-size:22px;
-  animation:twinkle 2s ease-in-out infinite;
-}
-
-.f1{
+.flower1{
   top:5%;
-  left:7%;
+  left:5%;
+  font-size:48px;
 }
 
-.f2{
-  top:15%;
-  right:8%;
-}
-
-.f3{
-  bottom:10%;
-  left:8%;
-}
-
-.f4{
-  bottom:18%;
+.flower2{
+  top:10%;
   right:6%;
+  font-size:42px;
+  animation-delay:1s;
 }
 
-.l1{
-  top:9%;
-  left:42%;
+.flower3{
+  bottom:8%;
+  left:7%;
+  font-size:45px;
+  animation-delay:2s;
 }
 
-.l2{
-  bottom:7%;
-  right:42%;
+.flower4{
+  bottom:12%;
+  right:6%;
+  font-size:50px;
+  animation-delay:.7s;
 }
 
-.s1{
-  top:22%;
+.flower5{
+  top:38%;
+  left:3%;
+  font-size:35px;
+  animation-delay:1.5s;
+}
+
+.flower6{
+  top:42%;
+  right:4%;
+  font-size:37px;
+  animation-delay:2.5s;
+}
+
+.flower7{
+  bottom:30%;
   left:20%;
+  font-size:28px;
+  animation-delay:1.8s;
 }
 
-.s2{
-  top:30%;
-  right:20%;
-}
-
-.s3{
+.flower8{
   bottom:25%;
-  left:22%;
+  right:20%;
+  font-size:30px;
+  animation-delay:.5s;
 }
 
-.s4{
-  bottom:20%;
-  right:25%;
-}
+@keyframes flowerFloat{
+  0%,100%{
+    transform:translateY(0) rotate(-3deg);
+  }
 
-@keyframes float{
   50%{
-    transform:translateY(-14px) rotate(5deg);
+    transform:translateY(-15px) rotate(5deg);
   }
 }
 
-@keyframes twinkle{
-  50%{
-    opacity:.35;
-    transform:scale(1.4);
-  }
+/* Scene 1 only */
+
+body.sad .romantic-flower,
+body.confused .romantic-flower,
+body.scene4 .romantic-flower{
+  display:none;
 }
 
-/* ---------------- SAD SCENE ---------------- */
+/* =========================
+   FAST ESCAPE BUTTON
+========================= */
+
+#sadButton{
+  transition:
+    left .08s linear,
+    top .08s linear,
+    transform .08s linear;
+}
+
+/* =========================
+   SAD SCENE
+========================= */
 
 .sad-emoji{
   position:absolute;
@@ -202,18 +221,11 @@ body.sad{
   background:linear-gradient(180deg,#172033,#26354d);
 }
 
-body.sad .flower,
-body.sad .lily,
-body.sad .sparkle{
-  display:none;
-}
-
 body.sad .sad-emoji{
   display:block;
 }
 
 @keyframes rain{
-
   0%{
     transform:translateY(-20vh);
     opacity:0;
@@ -229,7 +241,9 @@ body.sad .sad-emoji{
   }
 }
 
-/* ---------------- CONFUSED SCENE ---------------- */
+/* =========================
+   CONFUSED SCENE
+========================= */
 
 .confused-emoji{
   position:absolute;
@@ -279,9 +293,6 @@ body.confused{
   animation:confusedBackground 1.8s ease-in-out infinite;
 }
 
-body.confused .flower,
-body.confused .lily,
-body.confused .sparkle,
 body.confused .sad-emoji{
   display:none;
 }
@@ -325,57 +336,44 @@ body.confused #confusedButton{
   }
 }
 
-/* Emojis only on first scene */
-
-body:not(.sad):not(.confused):not(.scene4)
-#helloButton::before{
-  content:"🤎 ";
-}
-
-body:not(.sad):not(.confused):not(.scene4)
-#helloButton::after{
-  content:" 🌷";
-}
-
-/* ---------------- SCENE 4 ---------------- */
+/* =========================
+   SCENE 4
+========================= */
 
 body.scene4{
   background:linear-gradient(135deg,#fff5f8,#ffdce7);
 }
 
-body.scene4 .flower,
-body.scene4 .lily,
-body.scene4 .sparkle{
-  display:block;
-}
-
-body.scene4 .sad-emoji,
-body.scene4 .confused-emoji{
-  display:none;
-}
-
-/* Mobile */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:600px){
 
-  .flower{
-    font-size:27px;
+  .flower1{
+    font-size:40px;
   }
 
-  .lily{
-    font-size:32px;
+  .flower2{
+    font-size:36px;
   }
 
-  .sparkle{
-    font-size:18px;
+  .flower3{
+    font-size:38px;
   }
 
-  .sad-emoji{
-    font-size:27px;
+  .flower4{
+    font-size:42px;
   }
 
-  .confused-emoji{
-    font-size:29px;
+  .flower5,
+  .flower6{
+    font-size:30px;
+  }
+
+  .flower7,
+  .flower8{
+    font-size:24px;
   }
 
   .story-text{
@@ -387,23 +385,23 @@ body.scene4 .confused-emoji{
 
 <body>
 
-<!-- Flowers -->
+<!-- =========================
+     ROMANTIC FLOWERS
+========================= -->
 
-<div class="flower f1">🌸</div>
-<div class="flower f2">🌷</div>
-<div class="flower f3">🌺</div>
-<div class="flower f4">🌹</div>
-
-<div class="lily l1">🌷</div>
-<div class="lily l2">🌷</div>
-
-<div class="sparkle s1">✨</div>
-<div class="sparkle s2">💫</div>
-<div class="sparkle s3">✨</div>
-<div class="sparkle s4">💖</div>
+<div class="romantic-flower flower1">🌹</div>
+<div class="romantic-flower flower2">🌷</div>
+<div class="romantic-flower flower3">🌸</div>
+<div class="romantic-flower flower4">🌹</div>
+<div class="romantic-flower flower5">🌷</div>
+<div class="romantic-flower flower6">🌸</div>
+<div class="romantic-flower flower7">🌺</div>
+<div class="romantic-flower flower8">🌷</div>
 
 
-<!-- Sad emojis -->
+<!-- =========================
+     SAD EMOJIS
+========================= -->
 
 <div class="sad-emoji" style="left:8%;top:-10%">😟</div>
 <div class="sad-emoji" style="left:25%;top:-30%;animation-delay:.4s">🙁</div>
@@ -413,7 +411,9 @@ body.scene4 .confused-emoji{
 <div class="sad-emoji" style="left:55%;top:-45%;animation-delay:2s">😢</div>
 
 
-<!-- Confused emojis -->
+<!-- =========================
+     CONFUSED EMOJIS
+========================= -->
 
 <div class="confused-emoji c1">🧐</div>
 <div class="confused-emoji c2">😣</div>
@@ -423,7 +423,9 @@ body.scene4 .confused-emoji{
 <div class="confused-emoji c6">🥴</div>
 
 
-<!-- Story -->
+<!-- =========================
+     STORY
+========================= -->
 
 <div class="story">
 
@@ -465,13 +467,17 @@ body.scene4 .confused-emoji{
 
 const body = document.body;
 
-const image = document.getElementById("characterImage");
+const image =
+document.getElementById("characterImage");
 
-const text = document.getElementById("storyText");
+const text =
+document.getElementById("storyText");
 
-const helloButton = document.getElementById("helloButton");
+const helloButton =
+document.getElementById("helloButton");
 
-const sadButton = document.getElementById("sadButton");
+const sadButton =
+document.getElementById("sadButton");
 
 const confusedButton =
 document.getElementById("confusedButton");
@@ -480,7 +486,9 @@ const skipButton =
 document.getElementById("skipButton");
 
 
-/* Messages */
+/* =========================
+   TEXTS
+========================= */
 
 const firstMessage =
 "سڵاو من کاوی، زۆرم خۆشەوێی بەساقەو بم نونی گیان";
@@ -497,7 +505,9 @@ let typingTimer = null;
 let confusedStep = 0;
 
 
-/* Type text letter by letter */
+/* =========================
+   TYPE TEXT
+========================= */
 
 function typeText(message){
 
@@ -507,7 +517,8 @@ function typeText(message){
 
   let i = 0;
 
-  typingTimer = setInterval(function(){
+  typingTimer =
+  setInterval(function(){
 
     if(i < message.length){
 
@@ -525,17 +536,13 @@ function typeText(message){
 }
 
 
-/* ---------------- MOVE BUTTON ---------------- */
+/* =========================
+   VERY FAST + FAR MOVE
+========================= */
 
-/*
-   ئەم فانکشنە دوگمەکە هەر جارێک
-   هەوڵی دەست لێدان/کلیک دەکرێت
-   شوێنی دەگۆڕێت.
-*/
+function moveFarFast(button){
 
-function moveAway(button){
-
-  const margin = 15;
+  const margin = 10;
 
   const maxX =
     window.innerWidth -
@@ -559,258 +566,31 @@ function moveAway(button){
 
   button.style.position = "fixed";
 
-  button.style.left = x + "px";
+  button.style.left =
+    x + "px";
 
-  button.style.top = y + "px";
+  button.style.top =
+    y + "px";
 }
 
 
-/* ---------------- SCENE 2 BUTTON ---------------- */
-
-function moveSadButton(){
-
-  moveAway(sadButton);
-
-}
-
-
-/* ---------------- SCENE 2 BUTTON 1 ---------------- */
-
-function moveHelloButton(){
-
-  moveAway(helloButton);
-
-}
-
-
-/* ---------------- SCENE 3 BUTTON ---------------- */
-
-function moveConfusedButton(){
-
-  confusedButton.style.position = "fixed";
-
-  const rangeX = 120;
-
-  const rangeY = 80;
-
-  const centerX =
-    window.innerWidth / 2;
-
-  const centerY =
-    window.innerHeight * .72;
-
-  const x =
-    centerX -
-    rangeX / 2 +
-    Math.random() * rangeX -
-    confusedButton.offsetWidth / 2;
-
-  const y =
-    centerY -
-    rangeY / 2 +
-    Math.random() * rangeY -
-    confusedButton.offsetHeight / 2;
-
-  confusedButton.style.left =
-    Math.max(10,x) + "px";
-
-  confusedButton.style.top =
-    Math.max(10,y) + "px";
-}
-
-
-/* ---------------- SCENE 1 → SCENE 2 ---------------- */
-
-function goToScene2(){
-
-  body.classList.remove("confused");
-
-  body.classList.remove("scene4");
-
-  body.classList.add("sad");
-
-  image.src =
-    "7b4e45edfbedd4efbcc4bab78fbefaec.jpg";
-
-  typeText(secondMessage);
-
-  helloButton.textContent =
-    "بێتاقەت مەبە 🤗";
-
-  sadButton.textContent =
-    "بۆ بێتاقەتی 🤔";
-
-
-  /* Reset positions */
-
-  helloButton.style.position = "relative";
-
-  helloButton.style.left = "";
-
-  helloButton.style.top = "";
-
-  sadButton.style.position = "relative";
-
-  sadButton.style.left = "";
-
-  sadButton.style.top = "";
-
-
-  confusedButton.style.display = "none";
-
-  skipButton.style.display = "none";
-}
-
-
-/* ---------------- SCENE 2 → SCENE 3 ---------------- */
-
-function goToScene3(){
-
-  body.classList.remove("sad");
-
-  body.classList.remove("scene4");
-
-  body.classList.add("confused");
-
-  image.src =
-    "610ab076d09e74dd9d2b8bdd5fcaf35e.jpg";
-
-  typeText(thirdMessage);
-
-  helloButton.style.display = "none";
-
-  sadButton.style.display = "none";
-
-  confusedButton.style.display = "block";
-
-  confusedButton.textContent =
-    "قەلەقی چیت";
-
-  confusedStep = 0;
-
-  confusedButton.style.position =
-    "relative";
-
-  confusedButton.style.left = "";
-
-  confusedButton.style.top = "";
-
-  skipButton.style.display = "none";
-}
-
-
-/* ---------------- SCENE 3 BUTTON ---------------- */
-
-function confusedButtonAction(){
-
-  if(!body.classList.contains("confused")){
-    return;
-  }
-
-  confusedStep++;
-
-
-  if(confusedStep === 1){
-
-    confusedButton.textContent =
-      "نا نایڵێم ناز ئەکەم";
-
-    /* Move first */
-
-    moveConfusedButton();
-
-    /* Show skip */
-
-    skipButton.style.display =
-      "block";
-
-
-    /* Put skip below button */
-
-    const rect =
-      confusedButton.getBoundingClientRect();
-
-    skipButton.style.position =
-      "fixed";
-
-    skipButton.style.left =
-      (rect.left + rect.width / 2) + "px";
-
-    skipButton.style.top =
-      (rect.bottom + 12) + "px";
-
-    skipButton.style.transform =
-      "translateX(-50%)";
-
-
-  }else{
-
-    confusedButton.textContent =
-      "دەی نازم زیاتر هەڵگرە 🤓";
-
-    moveConfusedButton();
-
-  }
-}
-
-
-/* ---------------- SCENE 3 → SCENE 4 ---------------- */
-
-function goToScene4(){
-
-  body.classList.remove("confused");
-
-  body.classList.remove("sad");
-
-  body.classList.add("scene4");
-
-
-  /* Image 4 */
-
-  image.src =
-    "ece914e7ddcc0c54f9f9e56c7dccc1e2.jpg";
-
-
-  /* Scene 4 text */
-
-  text.textContent = "💖";
-
-
-  /* Hide buttons */
-
-  confusedButton.style.display =
-    "none";
-
-  skipButton.style.display =
-    "none";
-
-  helloButton.style.display =
-    "none";
-
-  sadButton.style.display =
-    "none";
-}
-
-
-/* ---------------- START ---------------- */
-
-typeText(firstMessage);
-
+/* =========================
+   SCENE 1
+========================= */
 
 /*
-   Scene 1:
-   سڵاو گیان → Scene 2
+  تەنیا سڵاو گیان دەچێتە Scene 2
 */
 
 helloButton.addEventListener(
   "click",
   function(){
 
-    if(body.classList.contains("sad")){
-      return;
-    }
-
-    if(body.classList.contains("confused")){
+    if(
+      body.classList.contains("sad") ||
+      body.classList.contains("confused") ||
+      body.classList.contains("scene4")
+    ){
       return;
     }
 
@@ -821,30 +601,9 @@ helloButton.addEventListener(
 
 
 /*
-   Scene 2:
-   بێتاقەت مەبە → هەڵدێت
-*/
-
-helloButton.addEventListener(
-  "pointerdown",
-  function(event){
-
-    if(body.classList.contains("sad")){
-
-      event.preventDefault();
-
-      moveHelloButton();
-
-    }
-
-  }
-);
-
-
-/*
-   Scene 1:
-   خۆش حاڵ نەبووم → هەڵدێت
-   هەر جارێک دەستت لێی دەدات
+  خۆش حاڵ نەبووم
+  هەر هەوڵێک بۆ دەست لێدان
+  = جوڵانێکی خێرا و دوور
 */
 
 sadButton.addEventListener(
@@ -855,7 +614,7 @@ sadButton.addEventListener(
 
       event.preventDefault();
 
-      moveSadButton();
+      moveFarFast(sadButton);
 
     }
 
@@ -864,8 +623,26 @@ sadButton.addEventListener(
 
 
 /*
-   بۆ ئەوەی لە Scene 1
-   بە کلیک هیچ شتێک ڕوونەدات
+  هەروەها کاتێک ماوس/دەست نزیک دەبێتەوە
+*/
+
+sadButton.addEventListener(
+  "pointerenter",
+  function(){
+
+    if(!body.classList.contains("sad")){
+
+      moveFarFast(sadButton);
+
+    }
+
+  }
+);
+
+
+/*
+  کلیکی وێنەی یەکەم
+  هیچ شوێنێک نابێت ببات
 */
 
 sadButton.addEventListener(
@@ -876,23 +653,256 @@ sadButton.addEventListener(
 
       event.preventDefault();
 
-      moveSadButton();
-
-      return;
+      moveFarFast(sadButton);
 
     }
-
-    /* Scene 2 → Scene 3 */
-
-    goToScene3();
 
   }
 );
 
 
-/*
-   Scene 3 button
-*/
+/* =========================
+   SCENE 1 → SCENE 2
+========================= */
+
+function goToScene2(){
+
+  body.classList.remove("confused");
+
+  body.classList.remove("scene4");
+
+  body.classList.add("sad");
+
+
+  image.src =
+  "7b4e45edfbedd4efbcc4bab78fbefaec.jpg";
+
+
+  typeText(secondMessage);
+
+
+  helloButton.textContent =
+  "بێتاقەت مەبە 🤗";
+
+
+  sadButton.textContent =
+  "بۆ بێتاقەتی 🤔";
+
+
+  helloButton.style.position =
+  "relative";
+
+  helloButton.style.left = "";
+
+  helloButton.style.top = "";
+
+
+  sadButton.style.position =
+  "relative";
+
+  sadButton.style.left = "";
+
+  sadButton.style.top = "";
+
+
+  confusedButton.style.display =
+  "none";
+
+  skipButton.style.display =
+  "none";
+}
+
+
+/* =========================
+   SCENE 2 BUTTON 1
+========================= */
+
+helloButton.addEventListener(
+  "pointerdown",
+  function(event){
+
+    if(body.classList.contains("sad")){
+
+      event.preventDefault();
+
+      moveFarFast(helloButton);
+
+    }
+
+  }
+);
+
+
+/* =========================
+   SCENE 2 BUTTON 2
+   → SCENE 3
+========================= */
+
+sadButton.addEventListener(
+  "click",
+  function(){
+
+    if(body.classList.contains("sad")){
+
+      goToScene3();
+
+    }
+
+  }
+);
+
+
+/* =========================
+   SCENE 2 → SCENE 3
+========================= */
+
+function goToScene3(){
+
+  body.classList.remove("sad");
+
+  body.classList.remove("scene4");
+
+  body.classList.add("confused");
+
+
+  image.src =
+  "610ab076d09e74dd9d2b8bdd5fcaf35e.jpg";
+
+
+  typeText(thirdMessage);
+
+
+  helloButton.style.display =
+  "none";
+
+  sadButton.style.display =
+  "none";
+
+
+  confusedButton.style.display =
+  "block";
+
+
+  confusedButton.textContent =
+  "قەلەقی چیت";
+
+
+  confusedStep = 0;
+
+
+  confusedButton.style.position =
+  "relative";
+
+  confusedButton.style.left = "";
+
+  confusedButton.style.top = "";
+
+
+  skipButton.style.display =
+  "none";
+}
+
+
+/* =========================
+   SCENE 3 MOVE
+========================= */
+
+function moveConfusedButton(){
+
+  confusedButton.style.position =
+  "fixed";
+
+  const rangeX = 120;
+
+  const rangeY = 80;
+
+  const centerX =
+  window.innerWidth / 2;
+
+  const centerY =
+  window.innerHeight * .72;
+
+
+  const x =
+  centerX -
+  rangeX / 2 +
+  Math.random() * rangeX -
+  confusedButton.offsetWidth / 2;
+
+
+  const y =
+  centerY -
+  rangeY / 2 +
+  Math.random() * rangeY -
+  confusedButton.offsetHeight / 2;
+
+
+  confusedButton.style.left =
+  Math.max(10,x) + "px";
+
+  confusedButton.style.top =
+  Math.max(10,y) + "px";
+}
+
+
+/* =========================
+   SCENE 3 BUTTON
+========================= */
+
+function confusedButtonAction(){
+
+  if(!body.classList.contains("confused")){
+    return;
+  }
+
+
+  confusedStep++;
+
+
+  if(confusedStep === 1){
+
+    confusedButton.textContent =
+    "نا نایڵێم ناز ئەکەم";
+
+
+    moveConfusedButton();
+
+
+    skipButton.style.display =
+    "block";
+
+
+    const rect =
+    confusedButton.getBoundingClientRect();
+
+
+    skipButton.style.position =
+    "fixed";
+
+
+    skipButton.style.left =
+    (rect.left + rect.width / 2) + "px";
+
+
+    skipButton.style.top =
+    (rect.bottom + 12) + "px";
+
+
+    skipButton.style.transform =
+    "translateX(-50%)";
+
+
+  }else{
+
+    confusedButton.textContent =
+    "دەی نازم زیاتر هەڵگرە 🤓";
+
+
+    moveConfusedButton();
+
+  }
+}
+
 
 confusedButton.addEventListener(
   "pointerdown",
@@ -906,9 +916,44 @@ confusedButton.addEventListener(
 );
 
 
-/*
-   Skip naz → Image 4
-*/
+/* =========================
+   SCENE 3 → SCENE 4
+========================= */
+
+function goToScene4(){
+
+  body.classList.remove("confused");
+
+  body.classList.remove("sad");
+
+  body.classList.add("scene4");
+
+
+  image.src =
+  "ece914e7ddcc0c54f9f9e56c7dccc1e2.jpg";
+
+
+  text.textContent =
+  "💖";
+
+
+  confusedButton.style.display =
+  "none";
+
+  skipButton.style.display =
+  "none";
+
+  helloButton.style.display =
+  "none";
+
+  sadButton.style.display =
+  "none";
+}
+
+
+/* =========================
+   SKIP NAZ
+========================= */
 
 skipButton.addEventListener(
   "pointerdown",
@@ -920,6 +965,13 @@ skipButton.addEventListener(
 
   }
 );
+
+
+/* =========================
+   START
+========================= */
+
+typeText(firstMessage);
 
 </script>
 
